@@ -1,0 +1,44 @@
+name: Daily site refresh
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Seed DB from JSON
+        run: python3 scripts/seed_db.py
+
+      - name: Generate site
+        run: python3 scripts/generate_site.py
+
+      - name: Sync JSON from DB
+        run: |
+          python3 -c "
+          import db, json
+          opps = db.get_all()
+          out = [{k: o[k] for k in ['id','name','category','deadline','start_date','prize_usd','prize_note','theme_fit','status','tracks','angle','url','resubmittable','notes','submission_url'] if k in o} for o in opps]
+          with open('data/opportunities.json', 'w') as f:
+              json.dump(out, f, indent=2)
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git diff --quiet docs/index.html data/opportunities.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/ data/opportunities.json
+          git commit -m "Auto-refresh: close expired entries, regenerate site"
+          git push
