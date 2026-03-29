@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
+  # NOTE: No push trigger. The action commits with GITHUB_TOKEN which
+  # doesn't trigger workflows, but removing push trigger entirely
+  # avoids any confusion. Use workflow_dispatch for manual runs.
 
 permissions:
   contents: write
