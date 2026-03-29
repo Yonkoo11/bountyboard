@@ -295,6 +295,12 @@ def _build_hero(opp: dict, tier: str, score: int) -> str:
 def generate() -> str:
     """Generate the full HTML page."""
     today = date.today()
+
+    # Auto-close expired entries before rendering
+    for o in db.get_all():
+        if o.get("status") == "active" and classify(o) == "Expired":
+            db.update_field(o["id"], "status", "closed")
+
     opps = db.get_all()
 
     # Score and classify

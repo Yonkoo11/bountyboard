@@ -1,5 +1,46 @@
 [
   {
+    "id": "higgsfield-action",
+    "name": "Higgsfield Action Contest",
+    "category": "hackathon",
+    "deadline": "2026-02-28",
+    "start_date": null,
+    "prize_usd": 0,
+    "prize_note": "Closed -- missed",
+    "theme_fit": 4,
+    "status": "closed",
+    "tracks": [
+      "AI video",
+      "action generation"
+    ],
+    "angle": "Watch for new rounds -- Higgsfield 26/2 from whiteboard was Feb 26 deadline.",
+    "url": "",
+    "resubmittable": false,
+    "notes": "Closed Feb 28. Monitor Higgsfield for next contest round. Lower theme fit anyway.",
+    "submission_url": ""
+  },
+  {
+    "id": "legion-simplicity",
+    "name": "Legion | Simplicity Accelerator",
+    "category": "accelerator",
+    "deadline": "2026-03-03",
+    "start_date": null,
+    "prize_usd": 0,
+    "prize_note": "Accelerator cohort",
+    "theme_fit": 7,
+    "status": "closed",
+    "tracks": [
+      "accelerator",
+      "Stacks",
+      "Bitcoin"
+    ],
+    "angle": "Missed Mar 3 deadline. Watch for next cohort -- Stacks + Simplicity = Bitcoin scripting fit for TRUTHBOUND.",
+    "url": "",
+    "resubmittable": false,
+    "notes": "Legion|Simplicity 3/3 from whiteboard. Deadline was Mar 3 -- check if late applications accepted. Otherwise track for next cycle.",
+    "submission_url": ""
+  },
+  {
     "id": "chainlink-convergence",
     "name": "Chainlink Convergence",
     "category": "hackathon",
@@ -8,7 +49,7 @@
     "prize_usd": 100000,
     "prize_note": "$100k+ across tracks",
     "theme_fit": 9,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "AI agents",
       "oracles",
@@ -22,26 +63,27 @@
     "submission_url": "https://airtable.com/appAbClub49vmpqMe/pagE8dOPtGqSLHClz/form"
   },
   {
-    "id": "pl-genesis",
-    "name": "PL Genesis (Protocol Labs Frontiers)",
-    "category": "accelerator",
-    "deadline": "2026-03-16",
-    "start_date": "2026-03-08",
-    "prize_usd": 150000,
-    "prize_note": "$150k+ with Founders Forge pathway (VC funnel)",
-    "theme_fit": 10,
-    "status": "active",
+    "id": "tokenton26-deaura",
+    "name": "TokenTon26 by DeAura (Solana)",
+    "category": "hackathon",
+    "deadline": "2026-03-08",
+    "start_date": "2026-02-02",
+    "prize_usd": 100000,
+    "prize_note": "$100K+ total: Grand $10.5K, DeFi $8.5K, AI $8.5K, Consumer $8.5K + $2K audit credits (Hacken) + RPC credits (Triton One) + Vercel Pro + Bonk Advisory interviews + DeAura ecosystem airdrop allocation",
+    "theme_fit": 9,
+    "status": "closed",
     "tracks": [
-      "privacy",
+      "DeFi",
       "AI",
-      "governance",
-      "open source"
+      "Consumer Apps",
+      "Solana",
+      "token launch"
     ],
-    "angle": "TRUTHBOUND IV as privacy-preserving AI truth layer. Governance + verifiability = perfect PL narrative. Top teams get Founders Forge (seed funding).",
-    "url": "https://www.plgenesis.com/",
+    "angle": "DeAura's Limitless Launch Engine -- solves Dead Liquidity Ratio ($10B+ problem). Build AI agent with on-chain truth layer as utility token launch on Solana. SENTINEL fits AI track perfectly. Can also angle DeFi track with privacy/verifiability layer. One prototype, submit to DeFi + AI tracks.",
+    "url": "https://www.buildifi.ai/hackathon/693bb38c238f4bd5a9b40e7f",
     "resubmittable": true,
-    "notes": "Hacking ends Mar 16. Top finalists get Founders Forge accelerator invite with real VC. Highest long-term upside of all events.",
-    "submission_url": "https://docs.google.com/forms/d/e/1FAIpQLSfIPJBWJJXnp3TK7sKqFbkivD4vF1EMaLMNFkRmfDHV8Rn4RA/viewform"
+    "notes": "Hosted on BuildiFi. Partners: Orca (liquidity/AMM), Codespect (audits), Vercel, Triton One (RPC), Hacken (audit credits), Deks (token spending). Backed by 13+ Solana Superteams globally. Focus on LAUNCHES not demos -- idea to product to live token to real users. Builder Mode ethos aligns with TRUTHBOUND IV. Also live event in Malaga with Vercel. Originally misidentified as 'Token (slone)' from whiteboard.",
+    "submission_url": "https://earn.superteam.fun/listings/?filter=hackathon&tag=tokenton26"
   },
   {
     "id": "monolith-seeker",
@@ -52,7 +94,7 @@
     "prize_usd": 125000,
     "prize_note": "$125k+ total, mobile dApps for Seeker device",
     "theme_fit": 7,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "mobile",
       "Solana",
@@ -66,28 +108,6 @@
     "submission_url": "https://solanamobile.com/hackathon"
   },
   {
-    "id": "ai-trading-agents-erc8004",
-    "name": "AI Trading Agents with ERC-8004",
-    "category": "hackathon",
-    "deadline": "2026-03-22",
-    "start_date": "2026-03-09",
-    "prize_usd": 50000,
-    "prize_note": "$50k USDC",
-    "theme_fit": 8,
-    "status": "active",
-    "tracks": [
-      "AI agents",
-      "DeFi",
-      "trustless finance",
-      "ERC-8004"
-    ],
-    "angle": "SENTINEL as a trustless AI financial verification agent using ERC-8004 standard. Truth layer for on-chain agent actions -- prevents hallucinated trades.",
-    "url": "https://lablab.ai/ai-hackathons/ai-trading-agents-with-erc-8004",
-    "resubmittable": true,
-    "notes": "Starts Mar 9, ends Mar 22 (lablab.ai). Trustless AI financial agents = direct SENTINEL use case. Register by Mar 9.",
-    "submission_url": "https://lablab.ai/ai-hackathons/ai-trading-agents-with-erc-8004"
-  },
-  {
     "id": "starknet-redefine",
     "name": "Starknet Re{define} (Bitcoin & Privacy)",
     "category": "hackathon",
@@ -96,7 +116,7 @@
     "prize_usd": 21500,
     "prize_note": "$21.5k",
     "theme_fit": 8,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "Bitcoin",
       "privacy",
@@ -106,29 +126,47 @@
     "angle": "SENTINEL truth layer on Starknet using Cairo + ZK proofs for privacy-preserving verification. Bitcoin settlement layer tie-in via Starknet Bitcoin bridge.",
     "url": "",
     "resubmittable": true,
-    "notes": "Extended to Mar 10. Solstice fallback Mar 22. Bitcoin + Privacy = strong TRUTHBOUND theme. ZK truth proofs are the angle."
+    "notes": "Extended to Mar 10. Solstice fallback Mar 22. Bitcoin + Privacy = strong TRUTHBOUND theme. ZK truth proofs are the angle.",
+    "submission_url": ""
   },
   {
-    "id": "stablehacks-2026",
-    "name": "StableHacks 2026 (Solana)",
+    "id": "pacifica",
+    "name": "Pacifica",
     "category": "hackathon",
-    "deadline": "2026-03-22",
-    "start_date": "2026-03-13",
-    "prize_usd": 202000,
-    "prize_note": "$202k effective total prizes",
-    "theme_fit": 5,
-    "status": "active",
-    "tracks": [
-      "stablecoins",
-      "institutional",
-      "Solana",
-      "DeFi"
-    ],
-    "angle": "Truth-verified stablecoin oracle feed using SENTINEL. Weak fit but huge prize pool. Only pursue if Chainlink/PL bandwidth allows.",
-    "url": "https://dorahacks.io/hackathon/stablehacks/detail",
+    "deadline": "2026-03-15",
+    "start_date": null,
+    "prize_usd": 15000,
+    "prize_note": "$15k",
+    "theme_fit": 6,
+    "status": "closed",
+    "tracks": [],
+    "angle": "SENTINEL core build. Details unclear -- confirm tracks before investing time.",
+    "url": "https://pacifica.gitbook.io/closed-alpha/hackathon",
     "resubmittable": true,
-    "notes": "Starts Mar 13, ends Mar 22. Lower theme fit but massive prize. Institutional stablecoins -- SENTINEL oracle verification angle is a stretch.",
-    "submission_url": "https://dorahacks.io/hackathon/stablehacks/buidl"
+    "notes": "Mid-March (~Mar 15). Listed on whiteboard as 'Pacifica'. Low prize, need to verify event details before prioritizing.",
+    "submission_url": "https://docs.google.com/forms/d/e/1FAIpQLSfzW7x_1Uh0niU3BQY6MHCeN_Bb0kTOi0hR_c40ISNuBPlVEg/viewform"
+  },
+  {
+    "id": "pl-genesis",
+    "name": "PL Genesis (Protocol Labs Frontiers)",
+    "category": "accelerator",
+    "deadline": "2026-03-16",
+    "start_date": "2026-03-08",
+    "prize_usd": 150000,
+    "prize_note": "$150k+ with Founders Forge pathway (VC funnel)",
+    "theme_fit": 10,
+    "status": "closed",
+    "tracks": [
+      "privacy",
+      "AI",
+      "governance",
+      "open source"
+    ],
+    "angle": "TRUTHBOUND IV as privacy-preserving AI truth layer. Governance + verifiability = perfect PL narrative. Top teams get Founders Forge (seed funding).",
+    "url": "https://www.plgenesis.com/",
+    "resubmittable": true,
+    "notes": "Hacking ends Mar 16. Top finalists get Founders Forge accelerator invite with real VC. Highest long-term upside of all events.",
+    "submission_url": "https://docs.google.com/forms/d/e/1FAIpQLSfIPJBWJJXnp3TK7sKqFbkivD4vF1EMaLMNFkRmfDHV8Rn4RA/viewform"
   },
   {
     "id": "avalanche-retro9000",
@@ -139,7 +177,7 @@
     "prize_usd": 0,
     "prize_note": "Retroactive grant, amount TBD based on activity",
     "theme_fit": 6,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "infrastructure",
       "C-Chain",
@@ -161,7 +199,7 @@
     "prize_usd": 30000,
     "prize_note": "$30k",
     "theme_fit": 5,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "Polkadot",
       "Solidity",
@@ -175,63 +213,48 @@
     "submission_url": "https://dorahacks.io/hackathon/polkadot-solidity-hackathon/buidl"
   },
   {
-    "id": "pacifica",
-    "name": "Pacifica",
+    "id": "stablehacks-2026",
+    "name": "StableHacks 2026 (Solana)",
     "category": "hackathon",
-    "deadline": "2026-03-15",
-    "start_date": null,
-    "prize_usd": 15000,
-    "prize_note": "$15k",
-    "theme_fit": 6,
-    "status": "active",
-    "tracks": [],
-    "angle": "SENTINEL core build. Details unclear -- confirm tracks before investing time.",
-    "url": "https://pacifica.gitbook.io/closed-alpha/hackathon",
-    "resubmittable": true,
-    "notes": "Mid-March (~Mar 15). Listed on whiteboard as 'Pacifica'. Low prize, need to verify event details before prioritizing.",
-    "submission_url": "https://docs.google.com/forms/d/e/1FAIpQLSfzW7x_1Uh0niU3BQY6MHCeN_Bb0kTOi0hR_c40ISNuBPlVEg/viewform"
-  },
-  {
-    "id": "mezo-hackathon",
-    "name": "MEZO Hackathon (Bitcoin's Future)",
-    "category": "hackathon",
-    "deadline": "2026-04-30",
-    "start_date": "2026-04-13",
-    "prize_usd": 35000,
-    "prize_note": "$30-40k range",
-    "theme_fit": 7,
-    "status": "active",
-    "tracks": [
-      "Bitcoin",
-      "DeFi",
-      "programmable Bitcoin",
-      "MEZO"
-    ],
-    "angle": "SENTINEL truth agent on MEZO -- Bitcoin-native verification layer. Privacy + Bitcoin = core TRUTHBOUND narrative.",
-    "url": "",
-    "resubmittable": true,
-    "notes": "Starts Apr 13. April 1 was likely the registration/interest date from whiteboard. Good Bitcoin + privacy fit. Plan SENTINEL for Bitcoin deployment."
-  },
-  {
-    "id": "liquify-indexer",
-    "name": "Liquify Indexer API",
-    "category": "bounty",
-    "deadline": null,
-    "start_date": null,
-    "prize_usd": 100000,
-    "prize_note": "$100k total rolling Q1-Q2 2026",
+    "deadline": "2026-03-22",
+    "start_date": "2026-03-13",
+    "prize_usd": 202000,
+    "prize_note": "$202k effective total prizes",
     "theme_fit": 5,
-    "status": "active",
+    "status": "closed",
     "tracks": [
-      "indexer",
-      "data",
-      "API",
-      "infrastructure"
+      "stablecoins",
+      "institutional",
+      "Solana",
+      "DeFi"
     ],
-    "angle": "Build a truth-verified data indexer using SENTINEL + Liquify API. Moderate fit but large ongoing prize pool.",
-    "url": "",
-    "resubmittable": false,
-    "notes": "Rolling Q1-Q2. Low urgency but high total pool. Track for when bandwidth opens in May. 'Liquify -- may' from whiteboard confirms May focus."
+    "angle": "Truth-verified stablecoin oracle feed using SENTINEL. Weak fit but huge prize pool. Only pursue if Chainlink/PL bandwidth allows.",
+    "url": "https://dorahacks.io/hackathon/stablehacks/detail",
+    "resubmittable": true,
+    "notes": "Starts Mar 13, ends Mar 22. Lower theme fit but massive prize. Institutional stablecoins -- SENTINEL oracle verification angle is a stretch.",
+    "submission_url": "https://dorahacks.io/hackathon/stablehacks/buidl"
+  },
+  {
+    "id": "ai-trading-agents-erc8004",
+    "name": "AI Trading Agents with ERC-8004",
+    "category": "hackathon",
+    "deadline": "2026-03-22",
+    "start_date": "2026-03-09",
+    "prize_usd": 50000,
+    "prize_note": "$50k USDC",
+    "theme_fit": 8,
+    "status": "closed",
+    "tracks": [
+      "AI agents",
+      "DeFi",
+      "trustless finance",
+      "ERC-8004"
+    ],
+    "angle": "SENTINEL as a trustless AI financial verification agent using ERC-8004 standard. Truth layer for on-chain agent actions -- prevents hallucinated trades.",
+    "url": "https://lablab.ai/ai-hackathons/ai-trading-agents-with-erc-8004",
+    "resubmittable": true,
+    "notes": "Starts Mar 9, ends Mar 22 (lablab.ai). Trustless AI financial agents = direct SENTINEL use case. Register by Mar 9.",
+    "submission_url": "https://lablab.ai/ai-hackathons/ai-trading-agents-with-erc-8004"
   },
   {
     "id": "mit-bitcoin-expo",
@@ -253,6 +276,70 @@
     "resubmittable": true,
     "notes": "~Apr 10-12. Prestige over cash. Good for network building and MEZO/Bitcoin narrative consistency.",
     "submission_url": "https://docs.google.com/forms/d/e/1FAIpQLSdeA7jE3-SMOzXGRoSEl-kH2QY9RDaZb-x2QnbK2DXCqxT6gg/viewform"
+  },
+  {
+    "id": "mezo-hackathon",
+    "name": "MEZO Hackathon (Bitcoin's Future)",
+    "category": "hackathon",
+    "deadline": "2026-04-30",
+    "start_date": "2026-04-13",
+    "prize_usd": 35000,
+    "prize_note": "$30-40k range",
+    "theme_fit": 7,
+    "status": "active",
+    "tracks": [
+      "Bitcoin",
+      "DeFi",
+      "programmable Bitcoin",
+      "MEZO"
+    ],
+    "angle": "SENTINEL truth agent on MEZO -- Bitcoin-native verification layer. Privacy + Bitcoin = core TRUTHBOUND narrative.",
+    "url": "",
+    "resubmittable": true,
+    "notes": "Starts Apr 13. April 1 was likely the registration/interest date from whiteboard. Good Bitcoin + privacy fit. Plan SENTINEL for Bitcoin deployment.",
+    "submission_url": ""
+  },
+  {
+    "id": "liquify-indexer",
+    "name": "Liquify Indexer API",
+    "category": "bounty",
+    "deadline": null,
+    "start_date": null,
+    "prize_usd": 100000,
+    "prize_note": "$100k total rolling Q1-Q2 2026",
+    "theme_fit": 5,
+    "status": "active",
+    "tracks": [
+      "indexer",
+      "data",
+      "API",
+      "infrastructure"
+    ],
+    "angle": "Build a truth-verified data indexer using SENTINEL + Liquify API. Moderate fit but large ongoing prize pool.",
+    "url": "",
+    "resubmittable": false,
+    "notes": "Rolling Q1-Q2. Low urgency but high total pool. Track for when bandwidth opens in May. 'Liquify -- may' from whiteboard confirms May focus.",
+    "submission_url": ""
+  },
+  {
+    "id": "cortensor",
+    "name": "Cortensor (Monthly Bounty)",
+    "category": "bounty",
+    "deadline": null,
+    "start_date": null,
+    "prize_usd": 5000,
+    "prize_note": "Small monthly bounties",
+    "theme_fit": 5,
+    "status": "active",
+    "tracks": [
+      "AI",
+      "decentralized compute"
+    ],
+    "angle": "SENTINEL inference on Cortensor decentralized compute. Small ongoing upside.",
+    "url": "",
+    "resubmittable": false,
+    "notes": "Rolling monthly. Small prize but consistent. Low effort once SENTINEL is deployed. Background task.",
+    "submission_url": ""
   },
   {
     "id": "brinc-fair-data",
@@ -295,7 +382,8 @@
     "angle": "Deploy SENTINEL on Base. Ongoing ecosystem grants for active builders. 'Base 003 3/3' from whiteboard = Base round 3.",
     "url": "",
     "resubmittable": false,
-    "notes": "Rolling. Deploy SENTINEL on Base as part of multi-chain strategy. Apply when prototype is production-ready."
+    "notes": "Rolling. Deploy SENTINEL on Base as part of multi-chain strategy. Apply when prototype is production-ready.",
+    "submission_url": ""
   },
   {
     "id": "polygon-grants",
@@ -315,65 +403,8 @@
     "angle": "SENTINEL deployment on Polygon. Lower priority -- pursue opportunistically.",
     "url": "",
     "resubmittable": false,
-    "notes": "Rolling. Low urgency. Include as part of multi-chain deployment plan but not a primary focus."
-  },
-  {
-    "id": "cortensor",
-    "name": "Cortensor (Monthly Bounty)",
-    "category": "bounty",
-    "deadline": null,
-    "start_date": null,
-    "prize_usd": 5000,
-    "prize_note": "Small monthly bounties",
-    "theme_fit": 5,
-    "status": "active",
-    "tracks": [
-      "AI",
-      "decentralized compute"
-    ],
-    "angle": "SENTINEL inference on Cortensor decentralized compute. Small ongoing upside.",
-    "url": "",
-    "resubmittable": false,
-    "notes": "Rolling monthly. Small prize but consistent. Low effort once SENTINEL is deployed. Background task."
-  },
-  {
-    "id": "higgsfield-action",
-    "name": "Higgsfield Action Contest",
-    "category": "contest",
-    "deadline": "2026-02-28",
-    "start_date": null,
-    "prize_usd": 0,
-    "prize_note": "Closed -- missed",
-    "theme_fit": 4,
-    "status": "closed",
-    "tracks": [
-      "AI video",
-      "action generation"
-    ],
-    "angle": "Watch for new rounds -- Higgsfield 26/2 from whiteboard was Feb 26 deadline.",
-    "url": "",
-    "resubmittable": false,
-    "notes": "Closed Feb 28. Monitor Higgsfield for next contest round. Lower theme fit anyway."
-  },
-  {
-    "id": "legion-simplicity",
-    "name": "Legion | Simplicity Accelerator",
-    "category": "accelerator",
-    "deadline": "2026-03-03",
-    "start_date": null,
-    "prize_usd": 0,
-    "prize_note": "Accelerator cohort",
-    "theme_fit": 7,
-    "status": "closed",
-    "tracks": [
-      "accelerator",
-      "Stacks",
-      "Bitcoin"
-    ],
-    "angle": "Missed Mar 3 deadline. Watch for next cohort -- Stacks + Simplicity = Bitcoin scripting fit for TRUTHBOUND.",
-    "url": "",
-    "resubmittable": false,
-    "notes": "Legion|Simplicity 3/3 from whiteboard. Deadline was Mar 3 -- check if late applications accepted. Otherwise track for next cycle."
+    "notes": "Rolling. Low urgency. Include as part of multi-chain deployment plan but not a primary focus.",
+    "submission_url": ""
   },
   {
     "id": "arb-mentorship",
@@ -396,28 +427,5 @@
     "resubmittable": false,
     "notes": "Whiteboard item. Rolling. Good for network + VC intro. Pursue after core hackathon sprint (post Mar 22).",
     "submission_url": "https://tally.so/r/mO5Drx"
-  },
-  {
-    "id": "tokenton26-deaura",
-    "name": "TokenTon26 by DeAura (Solana)",
-    "category": "hackathon",
-    "deadline": "2026-03-08",
-    "start_date": "2026-02-02",
-    "prize_usd": 100000,
-    "prize_note": "$100K+ total: Grand $10.5K, DeFi $8.5K, AI $8.5K, Consumer $8.5K + $2K audit credits (Hacken) + RPC credits (Triton One) + Vercel Pro + Bonk Advisory interviews + DeAura ecosystem airdrop allocation",
-    "theme_fit": 9,
-    "status": "active",
-    "tracks": [
-      "DeFi",
-      "AI",
-      "Consumer Apps",
-      "Solana",
-      "token launch"
-    ],
-    "angle": "DeAura's Limitless Launch Engine -- solves Dead Liquidity Ratio ($10B+ problem). Build AI agent with on-chain truth layer as utility token launch on Solana. SENTINEL fits AI track perfectly. Can also angle DeFi track with privacy/verifiability layer. One prototype, submit to DeFi + AI tracks.",
-    "url": "https://www.buildifi.ai/hackathon/693bb38c238f4bd5a9b40e7f",
-    "resubmittable": true,
-    "notes": "Hosted on BuildiFi. Partners: Orca (liquidity/AMM), Codespect (audits), Vercel, Triton One (RPC), Hacken (audit credits), Deks (token spending). Backed by 13+ Solana Superteams globally. Focus on LAUNCHES not demos -- idea to product to live token to real users. Builder Mode ethos aligns with TRUTHBOUND IV. Also live event in Malaga with Vercel. Originally misidentified as 'Token (slone)' from whiteboard.",
-    "submission_url": "https://earn.superteam.fun/listings/?filter=hackathon&tag=tokenton26"
   }
 ]
