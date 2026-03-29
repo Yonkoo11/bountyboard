@@ -300,6 +300,27 @@
     "submission_url": ""
   },
   {
+    "id": "ethglobal-open-agents",
+    "name": "ETHGlobal Open Agents",
+    "category": "hackathon",
+    "deadline": "2026-05-06",
+    "start_date": "2026-04-24",
+    "prize_usd": 0,
+    "prize_note": "TBD (ETHGlobal typically $100K+)",
+    "theme_fit": 9,
+    "status": "active",
+    "tracks": [
+      "AI agents",
+      "DeFi",
+      "infrastructure"
+    ],
+    "angle": "Ideas bank Tier 1: DeFi parameter simulation (#45) or smart account security (#51). Both fit AI agents track.",
+    "url": "https://ethglobal.com/events/openagents",
+    "resubmittable": true,
+    "notes": "Async online hackathon. Apr 24 - May 6. ETHGlobal = high prestige. AI agents = direct fit for ideas bank Tier 1 ideas.",
+    "submission_url": "https://ethglobal.com/events/openagents"
+  },
+  {
     "id": "liquify-indexer",
     "name": "Liquify Indexer API",
     "category": "bounty",
