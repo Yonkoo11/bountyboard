@@ -1,6 +1,35 @@
 # BountyBoard - Progress
 
-## Last Session: 2026-03-12 (continued)
+## Last Session: 2026-03-30
+
+### Summary
+Ideas bank sustainability session. Added Twitter/X intelligence (`twitter_watch.py` via twit.sh), Exa competitor alerts (`exa_competitor_watch.py`), staleness tracking, outcome tracking enforcement, quarterly review reminders. Revised kill policy: constraint-based kills removed, 5 ideas revived. Live-tested Twitter watch: 64 real pain-point tweets captured. Budget-gated via cost_monitor.
+
+### New Files
+- `scripts/twitter_watch.py` -- 3 modes: competitor tracking (6 queries), pain point discovery (8 queries), signal detection (3 queries). $0.17/run via twit.sh x402.
+- `scripts/exa_competitor_watch.py` -- 7 Exa queries for Tier 1 competitive landscape. $0.07/run.
+- `data/twitter_watch.jsonl` -- tweet log (64 entries from live test)
+- `data/competitor_watch.jsonl` -- Exa findings log (empty, not yet run live)
+
+### Modified Files
+- `scripts/scout_pipeline.sh` -- added Step 0a (Exa competitor watch) and Step 0b (Twitter watch) before scout
+
+### Cost Impact
+- Twitter watch: $0.17/run x weekly = $0.68/month
+- Exa competitor watch: $0.07/run x weekly = $0.28/month
+- Total new: ~$0.96/month additional
+- Previous estimate: ~$5/month → now ~$6/month total
+
+---
+
+## Previous Session: 2026-03-29
+
+### Summary
+Ideas bank session. No bountyboard code changes this session. Consumer research (Parts 23-27), AI tooling research (Part 28), co-author removal from all repos, critique + fixes, article evaluation. Context7 MCP installed. Ideas bank at 74 unique ideas, 7 Tier 1. Next: pick a Tier 1 and build.
+
+---
+
+## Previous Session: 2026-03-12 (continued)
 
 ### What Was Done (all verified)
 1. **Cost monitor** -- `scripts/cost_monitor.py` gates all stableenrich API calls. Daily ($0.50) + weekly ($2.00) hard caps. Spend logged to `data/spend_log.jsonl` with file locking. Tested: $0.033 spent so far.

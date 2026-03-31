@@ -11,6 +11,14 @@ cd "$REPO"
 
 echo "=== Scout Pipeline $(date) ==="
 
+# Step 0a: Watch Tier 1 idea competitive landscape (Exa)
+echo "--- Competitor watch (Exa) ---"
+$PYTHON scripts/exa_competitor_watch.py 2>&1 || echo "Competitor watch had errors (continuing)"
+
+# Step 0b: Twitter/X intelligence (twit.sh)
+echo "--- Twitter watch ---"
+$PYTHON scripts/twitter_watch.py 2>&1 || echo "Twitter watch had errors (continuing)"
+
 # Step 1: Scout for new opportunities
 echo "--- Running scout ---"
 $PYTHON scripts/scout.py 2>&1 || echo "Scout had errors (continuing)"
@@ -32,5 +40,9 @@ else
     git commit -m "auto: update site $(date +%Y-%m-%d)"
     git push origin main 2>&1 || echo "Push failed (will retry next run)"
 fi
+
+# Step 5: Weekly intelligence digest (aggregates Twitter + Exa findings)
+echo "--- Weekly digest ---"
+$PYTHON scripts/weekly_digest.py 2>&1 || echo "Digest had errors (continuing)"
 
 echo "=== Pipeline complete ==="
