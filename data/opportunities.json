@@ -308,7 +308,7 @@
     "prize_usd": 0,
     "prize_note": "TBD (ETHGlobal typically $100K+)",
     "theme_fit": 9,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "AI agents",
       "DeFi",
