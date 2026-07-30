@@ -339,8 +339,15 @@
     "angle": "Build a truth-verified data indexer using SENTINEL + Liquify API. Moderate fit but large ongoing prize pool.",
     "url": "",
     "resubmittable": false,
-    "notes": "Rolling Q1-Q2. Low urgency but high total pool. Track for when bandwidth opens in May. 'Liquify -- may' from whiteboard confirms May focus.",
-    "submission_url": ""
+    "notes": "Unverified lead retained for awareness. The claimed Q1-Q2 2026 pool and availability need an official source.",
+    "submission_url": "",
+    "source": "manual lead",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "eligibility": "",
+    "award_type": "bounty",
+    "max_award_usd": null,
+    "win_probability": null
   },
   {
     "id": "cortensor",
@@ -359,8 +366,15 @@
     "angle": "SENTINEL inference on Cortensor decentralized compute. Small ongoing upside.",
     "url": "",
     "resubmittable": false,
-    "notes": "Rolling monthly. Small prize but consistent. Low effort once SENTINEL is deployed. Background task.",
-    "submission_url": ""
+    "notes": "Unverified lead retained for awareness. Confirm the current monthly round, official source, and individual payout before investing time.",
+    "submission_url": "",
+    "source": "manual lead",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "eligibility": "",
+    "award_type": "bounty",
+    "max_award_usd": null,
+    "win_probability": null
   },
   {
     "id": "brinc-fair-data",
@@ -379,10 +393,19 @@
       "fair data"
     ],
     "angle": "TRUTHBOUND IV as FAIR data verification platform. Privacy + truth + Web3 data = strong narrative fit for Brinc.",
-    "url": "https://www.brinc.io/fair-data-web3-accelerator/",
+    "url": "https://web.brinc.io/fair-data-web3-accelerator/",
     "resubmittable": false,
-    "notes": "Open now, rolling. Accelerator format = VC pathway. Apply after core prototype is ready (post Mar 16 PL Genesis push).",
-    "submission_url": "https://www.brinc.io/fair-data-web3-accelerator/"
+    "notes": "Official page advertises up to $250K investment per selected team, subject to terms and exchanged for equity or token warrants. This is investment capital, not prize income.",
+    "submission_url": "https://web.brinc.io/fair-data-web3-accelerator/",
+    "source": "official program page",
+    "verification_status": "verified",
+    "verified_at": "2026-07-30",
+    "last_checked_at": "2026-07-30",
+    "application_status": "rolling",
+    "eligibility": "Pre-seed to seed startups; strong idea-stage teams may be considered",
+    "award_type": "investment",
+    "max_award_usd": 250000,
+    "win_probability": null
   },
   {
     "id": "base-ecosystem",
@@ -400,11 +423,20 @@
       "DeFi",
       "AI"
     ],
-    "angle": "Deploy SENTINEL on Base. Ongoing ecosystem grants for active builders. 'Base 003 3/3' from whiteboard = Base round 3.",
-    "url": "",
+    "angle": "Base offers several active funding paths. Match a shipped project to weekly rewards, retroactive Builder Grants, or the founder program instead of treating Base as one generic grant.",
+    "url": "https://docs.base.org/get-started/get-funded",
     "resubmittable": false,
-    "notes": "Rolling. Deploy SENTINEL on Base as part of multi-chain strategy. Apply when prototype is production-ready.",
-    "submission_url": ""
+    "notes": "Official documentation lists weekly rewards, 1-5 ETH retroactive Builder Grants, OP Retro Funding, and Base Batches. Each path has different requirements.",
+    "submission_url": "https://docs.base.org/get-started/get-funded",
+    "source": "official Base documentation",
+    "verification_status": "verified",
+    "verified_at": "2026-07-30",
+    "last_checked_at": "2026-07-30",
+    "application_status": "rolling",
+    "eligibility": "Builders with shipped value on Base; requirements vary by funding path",
+    "award_type": "grant",
+    "max_award_usd": null,
+    "win_probability": null
   },
   {
     "id": "polygon-grants",
@@ -421,32 +453,49 @@
       "EVM",
       "DeFi"
     ],
-    "angle": "SENTINEL deployment on Polygon. Lower priority -- pursue opportunistically.",
-    "url": "",
+    "angle": "Monitor Polygon's builder funding portal for a current grant season. The known community-grants page describes prior rounds and needs a fresh application check.",
+    "url": "https://polygon.technology/village",
     "resubmittable": false,
-    "notes": "Rolling. Low urgency. Include as part of multi-chain deployment plan but not a primary focus.",
-    "submission_url": ""
+    "notes": "Retained as a possible ecosystem funding lead. Current open round and application terms are not confirmed.",
+    "submission_url": "",
+    "source": "official Polygon program page",
+    "verification_status": "partially_verified",
+    "last_checked_at": "2026-07-30",
+    "application_status": "unknown",
+    "eligibility": "Polygon ecosystem builders; current round requirements unconfirmed",
+    "award_type": "grant",
+    "max_award_usd": null,
+    "win_probability": null
   },
   {
     "id": "arb-mentorship",
     "name": "Arb Mentorship / Blok Capital",
     "category": "accelerator",
-    "deadline": null,
-    "start_date": null,
+    "deadline": "2026-04-07",
+    "start_date": "2026-04-13",
     "prize_usd": 0,
     "prize_note": "Mentorship + potential funding",
     "theme_fit": 6,
-    "status": "active",
+    "status": "closed",
     "tracks": [
       "mentorship",
       "VC",
       "Arbitrum",
       "DeFi"
     ],
-    "angle": "TRUTHBOUND IV pitch to Blok Capital. Arb Mentorship for technical guidance. Network value over immediate cash.",
-    "url": "https://blog.arbitrum.foundation/introducing-the-arbitrum-mentorship-program",
+    "angle": "Eight-week, equity-free Arbitrum mentorship program for up to 15 teams, with product guidance, distribution support, and investor introductions.",
+    "url": "https://blog.arbitrum.foundation/introducing-the-arbitrum-mentorship-program-access-capital-and-strategic-support/",
     "resubmittable": false,
-    "notes": "Whiteboard item. Rolling. Good for network + VC intro. Pursue after core hackathon sprint (post Mar 22).",
-    "submission_url": "https://tally.so/r/mO5Drx"
+    "notes": "Applications closed April 7, 2026 and the program began April 13, 2026. Archived for future-cohort monitoring.",
+    "submission_url": "https://tally.so/r/mO5Drx",
+    "source": "official Arbitrum Foundation announcement",
+    "verification_status": "verified",
+    "verified_at": "2026-07-30",
+    "last_checked_at": "2026-07-30",
+    "application_status": "closed",
+    "eligibility": "Early-stage teams building on Arbitrum chains",
+    "award_type": "mentorship",
+    "max_award_usd": null,
+    "win_probability": null
   }
 ]

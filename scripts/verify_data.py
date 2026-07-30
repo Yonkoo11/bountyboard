@@ -101,6 +101,12 @@ def verify(dry_run: bool = False, check_urls: bool = False) -> dict:
                 ok, code = _check_url(url)
                 if not ok:
                     broken_urls.append((opp_id, o["name"], url, code))
+                    if not dry_run:
+                        db.update_field(opp_id, "verification_status", "stale")
+                elif not dry_run:
+                    db.update_field(opp_id, "last_checked_at", today.isoformat())
+                    if o.get("verification_status") == "unverified":
+                        db.update_field(opp_id, "verification_status", "partially_verified")
             if sub_url:
                 ok, code = _check_url(sub_url)
                 if not ok:

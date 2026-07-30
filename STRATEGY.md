@@ -1,146 +1,139 @@
-# BountyBoard — Hackathon Strategy
+# BountyBoard Strategy
 
-## The Meta-Principle
-**Target underserved tracks.** Judges see 60-100 projects. The winner is almost never the best-executed generic idea — it's the one that uses the sponsor's tech in a way the sponsor built it for but rarely sees.
+## Mission
 
----
+Maximize the probability of discovering valuable builder opportunities early
+enough to act.
 
-## Why You Lose Hackathons (Brutal Assessment)
-1. **Generic idea** — "AI agent that monitors X." Every LLM suggests this. Judges see 40 of them.
-2. **Sponsor tech as decoration** — "We use Chainlink for price data" when you could remove Chainlink and nothing breaks. Judges notice.
-3. **Too much scope** — 80% complete across 5 features vs 100% complete on 1 feature. Judges only remember the demo.
-4. **Poor demo moment** — no single WOW in the 3-minute presentation. Judges move on.
-5. **Missing the judging criteria** — building for technical elegance when criteria weight real-world impact 40%.
+BountyBoard is not a promise that advertised prize pools become income. It is an
+awareness and decision system:
 
----
+> discover broadly → verify quickly → choose deliberately → submit → learn
 
-## Why You Win
+## Discovery policy
 
-### The 3-Minute Rule
-Judges are tired. By project 50, their default answer is "nice." To win, you need ONE moment where they lean forward. Design backward from that moment:
-1. What is the single most surprising thing your project can show?
-2. Build everything else to lead up to that moment.
-3. Cut anything that doesn't support the moment.
+Coverage comes first. Plausible opportunities remain visible even when important
+details are missing.
 
-### The "Built for This" Rule
-The Chainlink team built Functions because they wanted non-financial use cases. The FVM team built Filecoin EVM because they wanted programmable storage. The Seeker team built the hardware seed vault because they wanted hardware-anchored trust. **Demo the features they built and no one uses.** You signal: "I did my homework."
+Every record belongs to one evidence state:
 
-### The Narrative Rule
-Technical quality is a filter, not a selector. After filtering for "does it work," judges pick based on narrative:
-- Problem: specific, verifiable, not hypothetical
-- Solution: only possible with this sponsor's tech (not swappable)
-- Demo: real data, not mock data. Historical replays beat simulated futures.
-- Vision: one sentence that makes a judge think "this could be real in 3 years"
+- **Verified:** official source and decision-critical facts checked recently.
+- **Partially verified:** the program exists, but at least one critical fact is
+  still uncertain.
+- **Unverified:** a lead worth investigating.
+- **Stale:** prior evidence is more than 30 days old or a source stopped working.
 
----
+Unverified leads are not deleted. They are ranked lower and display research tasks.
 
-## BountyBoard's Winning Narrative
+## What counts as decision-critical
 
-**One-line pitch:** "SENTINEL makes AI reasoning auditable on-chain — because trust without proof is just marketing."
+Before committing serious time, confirm:
 
-**Why it works across events:**
-- Chainlink: oracle disagreement is a security signal (non-obvious angle)
-- PL Genesis: content-addressed knowledge graph (native to PL's mission)
-- Starknet: ZK proofs make AI inference verifiable without revealing inputs
-- Seeker: hardware-backed attestations anchor AI claims to physical reality
-- ERC-8004: accountability middleware for AI agent permission delegation
+1. Official source
+2. Application state
+3. Deadline and timezone
+4. Eligibility and geography
+5. Required deliverables
+6. Total pool versus maximum individual award
+7. Award type: cash, grant, investment, credits, or mentorship
+8. Sponsor-specific judging criteria
+9. Estimated work and cash cost
+10. Whether existing work can be reused honestly
 
-**The key:** same core concept (AI + on-chain truth), different sponsor tech entry point. Build once, rebrand 5 times.
+## Portfolio strategy
 
----
+The million-dollar ambition is a long-term portfolio target, not a dashboard sum.
+Use several income paths:
 
-## What Every LLM (Including Claude) Will Suggest
-These are the ideas that show up in every hackathon. Avoid all of them:
-- "AI-powered smart contract auditor"
-- "Decentralized AI training / federated learning"
-- "Privacy-preserving data marketplace"
-- "AI chatbot with on-chain memory"
-- "Sentiment analysis trading bot"
-- "Cross-chain bridge with AI routing"
-- "NFT generator with AI"
-- "DeFi yield optimizer with AI signals"
-- "Crypto portfolio tracker with AI analysis"
-- "Telegram bot + Web3" (confirmed oversaturated, research-backed)
+- Hackathon prizes
+- Fixed-scope bounties
+- Grants
+- Accelerator or investor funding
+- Products created from reusable hackathon infrastructure
+- Consulting, partnerships, or jobs created by public proof of work
 
-If you can describe your project in one of these templates: start over.
+Track these separately because they have different risk, ownership, and liquidity.
 
-## Research-Confirmed: What Wins Per Ecosystem
+## Selection model
 
-**Chainlink:** Multi-service (CRE + Functions + Automation + CCIP). Non-DeFi CAN win (Block Magic 2024 grand prize was an educational game). Judge Scott Dykstra co-founded Space and Time — integrate it.
+Discovery should be broad; execution must be selective.
 
-**Protocol Labs:** "Improve the infrastructure, don't just use it." Open Data track judges want the "this could be huge" moment AND clean UX for researchers/scientists. Build FOR researchers, not for crypto users.
+Actionability combines:
 
-**Starknet:** Cairo performance matters — judges are Cairo language engineers. Use Poseidon hashing, benchmark your circuit. The gap between Cairo-native and Solidity-port is immediately obvious to these judges.
+- Deadline urgency
+- Evidence freshness
+- Eligibility confidence
+- Maximum individual award
+- Theme and technical fit
+- Required effort
+- Probability of submitting a complete project
+- Reuse value after the event
 
-**Solana Mobile:** Utility wins over DeFi complexity. Tap (cash app, $30K) and LootGo ($25K) were both daily-use utility apps, not protocol dashboards. Ask: would a non-crypto person open this daily?
+When enough results exist, estimate:
 
-**lablab.ai:** Business Value = 30% of score (most underestimate this). Domain-specific agents win over general assistants. Recent winners: supply chain risk, route optimization, logistics — all have clear P&L impact numbers.
+`expected cash value = maximum individual award × calibrated win probability`
 
-## The Narrow Scope Rule (Confirmed)
-Research confirmed: "a working mediocre idea beats a half-built genius idea." Judges penalize:
-- Projects that promise a "platform" instead of solving one problem
-- Scope that requires 2 weeks to build shipped in 48 hours
-- Any "future work" section longer than one line
+Then compare expected value with hours and cash required. Until outcomes exist,
+probability estimates must be labeled as assumptions.
 
-**The fix:** Pick ONE narrow use case. "SENTINEL verifies oracle disagreement events for DeFi lending protocols" beats "SENTINEL is a universal AI truth layer for all information."
+## Project reuse rule
 
----
+Reuse infrastructure, not superficial narratives.
 
-## Build Strategy
+Good reuse:
 
-### Phase 0 — Foundation (Day 1, ~15h)
-Build shared components that unlock 5 events:
-1. `sentinel-core` — AI claim analyzer, REST API, 8h
-2. `on-chain-commitment` — 40-line Solidity contract, 3h
-3. `react-shell` — wallet connect + score visualization, 4h
+- Authentication and wallet plumbing
+- Deployment pipelines
+- Agent orchestration
+- Indexers and data ingestion
+- Testing harnesses
+- Design systems
 
-These three unlock Chainlink, PL Genesis, Starknet, ERC-8004, StableHacks.
+Bad reuse:
 
-### The Build Order (Why It Matters)
-1. Chainlink (Mar 8) — first, uses sentinel-core + Chainlink Functions, 16h new work
-2. Starknet (Mar 10) — second, shares sentinel-core, adds Cairo circuit, 20h new work
-3. Seeker (Mar 9) — parallel with Starknet, completely different stack, 20h
-4. PL Genesis (Mar 16) — the big one, most effort, 34h focused work
-5. ERC-8004 (Mar 22) — last, reuses sentinel-core + on-chain-commitment, 20h
+- Renaming the same product for every chain
+- Adding a sponsor SDK that can be removed without changing the product
+- Claiming native integration without using the sponsor's distinctive capability
 
----
+For every submission, answer:
 
-## Demo Construction Rules
-1. Use **real historical data** for replays. Coingecko historical API, Wikipedia facts, real block data.
-2. Show **contrast**: honest vs deceptive agent. Before vs after. Manipulated vs verified.
-3. **Time your demo to the submission requirements.** Most hackathons want 2-3 minute videos.
-4. **Ship the demo video FIRST, then polish code.** Judges see the video. Most don't clone the repo.
-5. Write a **single compelling README sentence** first. If you can't write it, the project isn't clear enough.
+> What important user outcome becomes possible specifically because of this
+> sponsor’s technology?
 
----
+If the answer is weak, do not force the fit.
 
-## Submission Checklist (per event)
-- [ ] Smart contract deployed on testnet (not localhost)
-- [ ] Frontend hosted (Vercel free tier, or GitHub Pages)
-- [ ] Demo video: 2-3 minutes, shows the WOW moment, real data
-- [ ] GitHub repo: clean README, setup instructions that actually work
-- [ ] Submission form filled correctly: tracks selected match your implementation
-- [ ] Project uses the sponsor's specific tech in a non-swappable way
+## Outcome feedback loop
 
----
+For every serious opportunity record:
 
-## Prize Money is Not the Only Signal
+- Decision: applied, skipped, or missed
+- Reason for decision
+- Hours spent
+- Cash spent
+- Project and submission links
+- Result
+- Award received
+- Judge feedback
+- Follow-up leads, interviews, users, or funding
+- Components reusable elsewhere
 
-In order of long-term value:
-1. **PL Genesis Founders Forge** — VC funnel. Worth more than any cash prize.
-2. **Chainlink ecosystem grant pipeline** — winning Chainlink hackathons gets you on their radar for ecosystem grants.
-3. **Starknet dev grants** — Starkware has ongoing developer grants; hackathon winners get introductions.
-4. Cash prizes (direct value but doesn't compound).
-5. **Network at judging events** — the people you meet judging are worth more than the prize.
+Review outcomes monthly. Adjust rankings from evidence rather than intuition.
 
----
+## Weekly operating rhythm
 
-## Honest Assessment of BountyBoard
-**Strengths:** The AI + on-chain truth theme is genuinely differentiated. It's not DeFi. It's not a token. Judges who are tired of DeFi projects will notice it.
+1. Review newly discovered and stale leads.
+2. Verify the highest-potential unknowns.
+3. Close expired programs but retain them in the archive.
+4. Choose no more active builds than can be finished well.
+5. Schedule submission work backward from the real deadline.
+6. Record decisions and outcomes.
+7. Convert strong prototypes into reusable products or portfolio proof.
 
-**Risks:**
-- zkML for Starknet is technically ambitious for a 6-day solo sprint. Scope down the circuit aggressively.
-- PL Genesis needs the strongest demo — don't underinvest in the UI.
-- "Truth layer" is abstract. Make it concrete with a specific, memorable use case for each event.
+## Non-negotiable truths
 
-**Confidence in winning any single event:** Low-to-medium (hackathons are noisy). Confidence in generating multiple submissions with differentiated, non-generic ideas: High.
+- A missed opportunity has zero chance of paying.
+- An unverified opportunity can waste days.
+- A total prize pool is not personal expected income.
+- Accelerator investment is not prize revenue.
+- More submissions do not help if they are unfinished or sponsor-generic.
+- A complete, differentiated demonstration is more valuable than a broad promise.

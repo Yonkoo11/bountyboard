@@ -1,4 +1,4 @@
-name: Daily site refresh
+name: Discover, verify, and publish
 
 on:
   schedule:
@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: bountyboard-radar-refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -21,8 +25,20 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
       - name: Seed DB from JSON
         run: python3 scripts/seed_db.py
+
+      - name: Discover opportunities
+        run: python3 scripts/scout.py
+
+      - name: Check data quality
+        run: python3 scripts/verify_data.py --check-urls
+
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
 
       - name: Generate site
         run: python3 scripts/generate_site.py
@@ -32,16 +48,23 @@ jobs:
           python3 -c "
           import db, json
           opps = db.get_all()
-          out = [{k: o[k] for k in ['id','name','category','deadline','start_date','prize_usd','prize_note','theme_fit','status','tracks','angle','url','resubmittable','notes','submission_url'] if k in o} for o in opps]
+          fields = [
+              'id','name','category','deadline','start_date','prize_usd','prize_note',
+              'theme_fit','status','tracks','angle','url','resubmittable','notes',
+              'submission_url','source','verification_status','verified_at',
+              'last_checked_at','application_status','eligibility','award_type',
+              'max_award_usd','win_probability'
+          ]
+          out = [{k: o[k] for k in fields if k in o} for o in opps]
           with open('data/opportunities.json', 'w') as f:
               json.dump(out, f, indent=2)
           "
 
       - name: Commit and push if changed
         run: |
-          git diff --quiet docs/index.html data/opportunities.json && exit 0
+          git diff --quiet docs/ data/opportunities.json data/scout_candidates.json && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ data/opportunities.json
-          git commit -m "Auto-refresh: close expired entries, regenerate site"
+          git add docs/ data/opportunities.json data/scout_candidates.json
+          git commit -m "Radar refresh: discover, verify, and regenerate"
           git push

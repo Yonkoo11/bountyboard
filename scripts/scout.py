@@ -902,6 +902,10 @@ def main():
                 "notes":          f"Auto-discovered via {item['source']} on {TODAY_ISO}. Score: {s}/10.",
                 "source":         item["source"],
                 "calendar_synced": False,
+                "verification_status": "unverified",
+                "application_status": "unknown",
+                "last_checked_at": TODAY_ISO,
+                "award_type": "unknown",
             }
             new_opps.append(new_opp)
             stats["new_review"] += 1
