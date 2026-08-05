@@ -8,6 +8,9 @@
   const empty = document.getElementById("filterEmpty");
   const resetButtons = [document.getElementById("clearFilters"), document.getElementById("clearEmpty")].filter(Boolean);
   const themeToggle = document.getElementById("themeToggle");
+  const freshness = document.getElementById("freshnessStatus");
+  const freshnessLabel = document.getElementById("freshnessLabel");
+  const freshnessDetail = document.getElementById("freshnessDetail");
 
   function cards() {
     return Array.from(list.querySelectorAll(".opportunity"));
@@ -67,4 +70,30 @@
     syncThemeLabel();
   });
   syncThemeLabel();
+
+  function updateFreshness() {
+    if (!freshness) return;
+    const generatedAt = new Date(freshness.dataset.generatedAt);
+    if (Number.isNaN(generatedAt.getTime())) {
+      freshness.className = "freshness stale";
+      freshnessLabel.textContent = "Refresh time unavailable";
+      freshnessDetail.textContent = "Treat this page as stale until the publishing pipeline runs again.";
+      return;
+    }
+    const ageHours = Math.max(0, (Date.now() - generatedAt.getTime()) / 3600000);
+    const ageDays = Math.floor(ageHours / 24);
+    freshness.className = "freshness current";
+    if (ageHours >= 72) {
+      freshness.className = "freshness stale";
+      freshnessLabel.textContent = `Data refresh is ${ageDays} days old`;
+      freshnessDetail.textContent = "The publishing pipeline may be delayed. Re-check sources before acting.";
+    } else if (ageHours >= 36) {
+      freshness.className = "freshness delayed";
+      freshnessLabel.textContent = "Refresh delayed";
+      freshnessDetail.textContent = "This page is over 36 hours old. Opportunity-level check dates still apply.";
+    } else {
+      freshnessLabel.textContent = ageHours < 24 ? "Updated today" : "Updated yesterday";
+    }
+  }
+  updateFreshness();
 })();

@@ -23,12 +23,9 @@
 <body>
   <a class="skip-link" href="#opportunities">Skip to opportunities</a>
   <header class="site-header">
-    <a class="brand" href="./" aria-label="BountyBoard home">
-      <span class="brand-mark" aria-hidden="true">BB</span>
-      <span><strong>BountyBoard</strong><small>Opportunity intelligence</small></span>
-    </a>
+    <a class="brand" href="./" aria-label="BountyBoard home"><strong>BOUNTYBOARD</strong></a>
     <div class="header-actions">
-      <span class="updated">Radar updated <time datetime="2026-08-05">August 05, 2026</time></span>
+      <span class="updated">Last successful refresh <time id="refreshTime" datetime="2026-08-05T00:00:00Z">August 05, 2026</time></span>
       <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
         <span aria-hidden="true">◐</span>
       </button>
@@ -36,35 +33,33 @@
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="intro" aria-labelledby="hero-title">
       <div>
-        <p class="kicker">Broad discovery. Honest evidence.</p>
-        <h1 id="hero-title">See the opportunity<br>before it passes.</h1>
-        <p class="hero-copy">BountyBoard keeps every credible lead on the radar, then shows what is verified, what needs research, and what deserves action now.</p>
+        <p class="kicker">Opportunity radar</p>
+        <h1 id="hero-title">Find what is worth building next.</h1>
+        <p>Hackathons, grants, accelerators, and bounties in one place. Missing facts stay visible as research tasks.</p>
       </div>
-      <div class="coverage-panel" aria-label="Radar coverage">
-        <span class="coverage-label">Radar coverage</span>
-        <strong>10</strong>
-        <span>open and possible leads</span>
-        <div class="coverage-bar" aria-hidden="true"><span style="width:80%"></span></div>
-        <small>8 with source links · 0 with known deadlines</small>
+      <div class="freshness current" id="freshnessStatus" role="status" data-generated-at="2026-08-05T00:00:00Z">
+        <span class="freshness-dot" aria-hidden="true"></span>
+        <span><strong id="freshnessLabel">Updated today</strong><small id="freshnessDetail">Page generated August 05, 2026; individual sources have their own check dates.</small></span>
       </div>
     </section>
 
     <section class="metrics" aria-label="Opportunity summary">
-      <div><strong>10</strong><span>On the radar</span></div>
-      <div><strong>1</strong><span>Verified</span></div>
-      <div><strong>9</strong><span>Need research</span></div>
-      <div><strong>$105K</strong><span>Reported pools <em>not expected earnings</em></span></div>
-      <div><strong>16</strong><span>Archived</span></div>
+      <div><strong>10</strong><span>on radar</span></div>
+      <div><strong>1</strong><span>verified</span></div>
+      <div><strong>9</strong><span>need research</span></div>
+      <div><strong>0</strong><span>known deadlines</span></div>
+      <div><strong>$105K</strong><span>reported pools <em>not expected earnings</em></span></div>
+      <div><strong>16</strong><span>archived</span></div>
     </section>
 
     <section class="workspace" id="opportunities" aria-labelledby="opportunities-title">
       <div class="section-heading">
         <div>
           <p class="kicker">Full radar</p>
-          <h2 id="opportunities-title">All possible opportunities</h2>
-          <p>Incomplete leads remain visible. Verification changes confidence and ranking—not inclusion.</p>
+          <h2 id="opportunities-title">Possible opportunities</h2>
+          <p>8 have source links. Verification changes confidence and ranking, not inclusion.</p>
         </div>
         <div class="result-count" aria-live="polite"><strong id="visibleCount">10</strong> shown</div>
       </div>
@@ -423,15 +418,7 @@
       </div>
     </section>
 
-    <section class="method" aria-labelledby="method-title">
-      <p class="kicker">How to read the board</p>
-      <h2 id="method-title">Discovery first. Confidence second.</h2>
-      <div class="method-grid">
-        <div><span>01</span><h3>Discover broadly</h3><p>Scouts collect hackathons, grants, accelerators, and bounties from multiple ecosystems.</p></div>
-        <div><span>02</span><h3>Keep uncertain leads</h3><p>Missing data becomes a research task. It does not make the opportunity disappear.</p></div>
-        <div><span>03</span><h3>Verify before investing</h3><p>Source, deadline, eligibility, and award terms determine whether a lead becomes actionable.</p></div>
-      </div>
-    </section>
+    <aside class="method" aria-label="Freshness note"><strong>Recently generated is not the same as verified.</strong> Check each card's evidence date before investing time in an application.</aside>
   </main>
 
   <footer>

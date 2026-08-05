@@ -43,6 +43,12 @@ jobs:
       - name: Generate site
         run: python3 scripts/generate_site.py
 
+      - name: Assert freshness metadata
+        run: |
+          grep -q 'id="freshnessStatus"' docs/index.html
+          grep -q 'data-generated-at=' docs/index.html
+          grep -q 'Last successful refresh' docs/index.html
+
       - name: Sync JSON from DB
         run: |
           python3 -c "

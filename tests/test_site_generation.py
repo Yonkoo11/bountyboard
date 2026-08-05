@@ -75,6 +75,17 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertEqual(generate_site.safe_url("//example.com"), "")
         self.assertEqual(generate_site.safe_url("javascript:alert(1)"), "")
 
+    def test_generated_page_exposes_refresh_age_without_claiming_source_verification(self):
+        with patch.object(generate_site.db, "get_all", return_value=[]), patch.object(
+            generate_site, "load_candidates", return_value=[]
+        ):
+            page = generate_site.generate()
+        self.assertIn('id="freshnessStatus"', page)
+        self.assertIn('data-generated-at="', page)
+        self.assertIn("Last successful refresh", page)
+        self.assertIn("Recently generated is not the same as verified", page)
+        self.assertNotIn("See the opportunity<br>before it passes", page)
+
 
 if __name__ == "__main__":
     unittest.main()

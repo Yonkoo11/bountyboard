@@ -11,7 +11,7 @@ import html
 import json
 import re
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, time, timezone
 from pathlib import Path
 from typing import Any
 
@@ -250,6 +250,10 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
 
 def generate() -> str:
     today = date.today()
+    # Day-level precision keeps committed output reproducible during CI rebuilds.
+    # The deployed HTML still gives visitors an honest maximum age for this refresh.
+    generated_at = datetime.combine(today, time.min, tzinfo=timezone.utc)
+    generated_iso = generated_at.isoformat().replace("+00:00", "Z")
     database_items = db.get_all()
     candidates = load_candidates()
     all_items = deduplicate(database_items + candidates)
@@ -304,12 +308,9 @@ def generate() -> str:
 <body>
   <a class="skip-link" href="#opportunities">Skip to opportunities</a>
   <header class="site-header">
-    <a class="brand" href="./" aria-label="BountyBoard home">
-      <span class="brand-mark" aria-hidden="true">BB</span>
-      <span><strong>BountyBoard</strong><small>Opportunity intelligence</small></span>
-    </a>
+    <a class="brand" href="./" aria-label="BountyBoard home"><strong>BOUNTYBOARD</strong></a>
     <div class="header-actions">
-      <span class="updated">Radar updated <time datetime="{today.isoformat()}">{updated}</time></span>
+      <span class="updated">Last successful refresh <time id="refreshTime" datetime="{generated_iso}">{updated}</time></span>
       <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
         <span aria-hidden="true">◐</span>
       </button>
@@ -317,35 +318,33 @@ def generate() -> str:
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="intro" aria-labelledby="hero-title">
       <div>
-        <p class="kicker">Broad discovery. Honest evidence.</p>
-        <h1 id="hero-title">See the opportunity<br>before it passes.</h1>
-        <p class="hero-copy">BountyBoard keeps every credible lead on the radar, then shows what is verified, what needs research, and what deserves action now.</p>
+        <p class="kicker">Opportunity radar</p>
+        <h1 id="hero-title">Find what is worth building next.</h1>
+        <p>Hackathons, grants, accelerators, and bounties in one place. Missing facts stay visible as research tasks.</p>
       </div>
-      <div class="coverage-panel" aria-label="Radar coverage">
-        <span class="coverage-label">Radar coverage</span>
-        <strong>{len(visible)}</strong>
-        <span>open and possible leads</span>
-        <div class="coverage-bar" aria-hidden="true"><span style="width:{round(linked_count / max(len(visible), 1) * 100)}%"></span></div>
-        <small>{linked_count} with source links · {known_deadlines} with known deadlines</small>
+      <div class="freshness current" id="freshnessStatus" role="status" data-generated-at="{generated_iso}">
+        <span class="freshness-dot" aria-hidden="true"></span>
+        <span><strong id="freshnessLabel">Updated today</strong><small id="freshnessDetail">Page generated {updated}; individual sources have their own check dates.</small></span>
       </div>
     </section>
 
     <section class="metrics" aria-label="Opportunity summary">
-      <div><strong>{len(visible)}</strong><span>On the radar</span></div>
-      <div><strong>{verified_count}</strong><span>Verified</span></div>
-      <div><strong>{research_count}</strong><span>Need research</span></div>
-      <div><strong>${total_pool / 1000:.0f}K</strong><span>Reported pools <em>not expected earnings</em></span></div>
-      <div><strong>{len(closed)}</strong><span>Archived</span></div>
+      <div><strong>{len(visible)}</strong><span>on radar</span></div>
+      <div><strong>{verified_count}</strong><span>verified</span></div>
+      <div><strong>{research_count}</strong><span>need research</span></div>
+      <div><strong>{known_deadlines}</strong><span>known deadlines</span></div>
+      <div><strong>${total_pool / 1000:.0f}K</strong><span>reported pools <em>not expected earnings</em></span></div>
+      <div><strong>{len(closed)}</strong><span>archived</span></div>
     </section>
 
     <section class="workspace" id="opportunities" aria-labelledby="opportunities-title">
       <div class="section-heading">
         <div>
           <p class="kicker">Full radar</p>
-          <h2 id="opportunities-title">All possible opportunities</h2>
-          <p>Incomplete leads remain visible. Verification changes confidence and ranking—not inclusion.</p>
+          <h2 id="opportunities-title">Possible opportunities</h2>
+          <p>{linked_count} have source links. Verification changes confidence and ranking, not inclusion.</p>
         </div>
         <div class="result-count" aria-live="polite"><strong id="visibleCount">{len(visible)}</strong> shown</div>
       </div>
@@ -404,15 +403,7 @@ def generate() -> str:
       </div>
     </section>
 
-    <section class="method" aria-labelledby="method-title">
-      <p class="kicker">How to read the board</p>
-      <h2 id="method-title">Discovery first. Confidence second.</h2>
-      <div class="method-grid">
-        <div><span>01</span><h3>Discover broadly</h3><p>Scouts collect hackathons, grants, accelerators, and bounties from multiple ecosystems.</p></div>
-        <div><span>02</span><h3>Keep uncertain leads</h3><p>Missing data becomes a research task. It does not make the opportunity disappear.</p></div>
-        <div><span>03</span><h3>Verify before investing</h3><p>Source, deadline, eligibility, and award terms determine whether a lead becomes actionable.</p></div>
-      </div>
-    </section>
+    <aside class="method" aria-label="Freshness note"><strong>Recently generated is not the same as verified.</strong> Check each card's evidence date before investing time in an application.</aside>
   </main>
 
   <footer>
