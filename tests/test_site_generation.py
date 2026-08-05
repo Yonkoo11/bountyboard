@@ -103,6 +103,25 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertIn('app.js?v=', page)
         self.assertNotIn("See the opportunity<br>before it passes", page)
 
+    def test_generated_page_surfaces_hackathons_before_full_radar(self):
+        item = {
+            "id": "visible-hackathon",
+            "name": "Visible Hackathon",
+            "category": "hackathon",
+            "status": "active",
+            "deadline": "2026-09-16",
+            "url": "https://example.com/hackathon",
+            "verification_status": "partially_verified",
+            "application_status": "open",
+        }
+        with patch.object(generate_site.db, "get_all", return_value=[item]), patch.object(
+            generate_site, "load_candidates", return_value=[]
+        ):
+            page = generate_site.generate()
+        self.assertIn("1 hackathons open now", page)
+        self.assertIn("Visible Hackathon", page)
+        self.assertLess(page.index('id="hackathons-title"'), page.index('id="opportunities-title"'))
+
 
 if __name__ == "__main__":
     unittest.main()

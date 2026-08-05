@@ -536,3 +536,21 @@ footer { min-height: 80px; }
   .intro h1 { max-width: 11ch; }
   .intro p, .freshness small, .section-heading p { max-width: 34ch; }
 }
+
+.hackathons { padding-block: var(--space-8); border-bottom: 1px solid var(--line); }
+.compact-heading { align-items: center; margin-bottom: var(--space-4); }
+.compact-heading h2 { margin-bottom: 0; }
+.text-link { color: var(--accent); font-size: 14px; font-weight: 700; text-decoration: none; }
+.text-link:hover { text-decoration: underline; }
+.hackathon-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+.hackathon-card { min-width: 0; padding: var(--space-4); border: 1px solid var(--line); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); }
+.hackathon-card > div { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.hackathon-card h3 { margin: var(--space-3) 0 var(--space-1); font-size: 17px; line-height: 1.3; }
+.hackathon-date { margin-bottom: var(--space-4); color: var(--muted); font-size: 14px; }
+.hackathon-card > a, .hackathon-card > span { color: var(--accent); font-size: 14px; font-weight: 700; text-decoration: none; }
+.hackathon-card > a:hover { text-decoration: underline; }
+@media (max-width: 760px) {
+  .hackathon-grid { grid-template-columns: 1fr; }
+  .compact-heading { display: block; }
+  .compact-heading .text-link { display: inline-block; margin-top: var(--space-2); }
+}

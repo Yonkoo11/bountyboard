@@ -248,6 +248,27 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
 </article>"""
 
 
+def hackathon_card(opportunity: dict[str, Any]) -> str:
+    """Render the small, high-visibility summary used above the full radar."""
+    deadline = opportunity.get("deadline")
+    try:
+        date_text = datetime.strptime(deadline, "%Y-%m-%d").strftime("%b %d, %Y")
+    except (TypeError, ValueError):
+        date_text = "Date needs confirmation"
+    source_url = safe_url(opportunity.get("url"))
+    link = (
+        f'<a href="{escape(source_url)}" target="_blank" rel="noopener noreferrer">View official page <span aria-hidden="true">↗</span></a>'
+        if source_url else '<span>Official page needed</span>'
+    )
+    return f"""
+<article class="hackathon-card">
+  <div><span class="category">Hackathon</span><span class="status {effective_verification(opportunity)}"><span aria-hidden="true"></span>{verification_label(effective_verification(opportunity))}</span></div>
+  <h3>{escape(opportunity.get("name"))}</h3>
+  <p class="hackathon-date">Ends {escape(date_text)}</p>
+  {link}
+</article>"""
+
+
 def generate() -> str:
     # GitHub Actions runs in UTC. Using UTC locally as well keeps the committed
     # static build reproducible around local midnight in other time zones.
@@ -275,6 +296,11 @@ def generate() -> str:
     linked_count = sum(bool(item.get("url")) for item in visible)
     known_deadlines = sum(days_until(item.get("deadline")) is not None for item in visible)
     total_pool = sum(item.get("prize_usd") or 0 for item in visible)
+    hackathons = sorted(
+        (item for item in visible if item.get("category") == "hackathon"),
+        key=lambda item: item.get("deadline") or "9999-12-31",
+    )
+    hackathon_cards = "".join(hackathon_card(item) for item in hackathons)
 
     rows = "".join(opportunity_row(item, index) for index, item in enumerate(visible, 1))
     if not rows:
@@ -340,6 +366,17 @@ def generate() -> str:
       <div><strong>{known_deadlines}</strong><span>known deadlines</span></div>
       <div><strong>${total_pool / 1000:.0f}K</strong><span>reported pools <em>not expected earnings</em></span></div>
       <div><strong>{len(closed)}</strong><span>archived</span></div>
+    </section>
+
+    <section class="hackathons" aria-labelledby="hackathons-title">
+      <div class="section-heading compact-heading">
+        <div>
+          <p class="kicker">Upcoming hackathons</p>
+          <h2 id="hackathons-title">{len(hackathons)} hackathons open now</h2>
+        </div>
+        <a class="text-link" href="#opportunities">View the full radar ↓</a>
+      </div>
+      <div class="hackathon-grid">{hackathon_cards}</div>
     </section>
 
     <section class="workspace" id="opportunities" aria-labelledby="opportunities-title">
