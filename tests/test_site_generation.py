@@ -19,6 +19,21 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertEqual(leads[0]["status"], "radar")
         self.assertEqual(leads[0]["verification_status"], "unverified")
 
+    def test_reviewed_candidate_keeps_evidence_state(self):
+        with tempfile.TemporaryDirectory() as directory:
+            candidate_file = Path(directory) / "candidates.json"
+            candidate_file.write_text(
+                '[{"name":"Reviewed event","url":"https://example.com",'
+                '"verification_status":"partially_verified","application_status":"open",'
+                '"last_checked_at":"2026-08-06","eligibility":"Application required"}]'
+            )
+            with patch.object(generate_site, "CANDIDATES_FILE", candidate_file):
+                leads = generate_site.load_candidates()
+        self.assertEqual(leads[0]["verification_status"], "partially_verified")
+        self.assertEqual(leads[0]["application_status"], "open")
+        self.assertEqual(leads[0]["last_checked_at"], "2026-08-06")
+        self.assertEqual(leads[0]["eligibility"], "Application required")
+
     def test_unknown_deadline_uses_human_label(self):
         self.assertEqual(
             generate_site.deadline_label({"application_status": "unknown"}),

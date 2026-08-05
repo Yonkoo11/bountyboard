@@ -95,11 +95,11 @@ def load_candidates() -> list[dict[str, Any]]:
             "angle": item.get("description") or item.get("summary") or "",
             "url": safe_url(item.get("url")),
             "source": item.get("source") or "scout",
-            "verification_status": "unverified",
-            "application_status": "unknown",
-            "last_checked_at": item.get("scout_date"),
-            "award_type": "unknown",
-            "eligibility": "",
+            "verification_status": item.get("verification_status") or "unverified",
+            "application_status": item.get("application_status") or "unknown",
+            "last_checked_at": item.get("last_checked_at") or item.get("scout_date"),
+            "award_type": item.get("award_type") or "unknown",
+            "eligibility": item.get("eligibility") or "",
         })
     return candidates
 
