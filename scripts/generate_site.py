@@ -254,6 +254,7 @@ def generate() -> str:
     # The deployed HTML still gives visitors an honest maximum age for this refresh.
     generated_at = datetime.combine(today, time.min, tzinfo=timezone.utc)
     generated_iso = generated_at.isoformat().replace("+00:00", "Z")
+    asset_version = today.strftime("%Y%m%d")
     database_items = db.get_all()
     candidates = load_candidates()
     all_items = deduplicate(database_items + candidates)
@@ -289,14 +290,14 @@ def generate() -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A broad radar for hackathons, grants, accelerators, bounties, and builder opportunities.">
-  <meta name="theme-color" content="#f5f2ea">
+  <meta name="theme-color" content="#fafafa">
   <meta property="og:title" content="BountyBoard — Opportunity Radar">
   <meta property="og:description" content="Discover broadly. Verify quickly. Never miss a serious builder opportunity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yonkoo11.github.io/bountyboard/">
   <link rel="canonical" href="https://yonkoo11.github.io/bountyboard/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v={asset_version}">
   <title>BountyBoard — Opportunity Radar</title>
   <script>
     try {{
@@ -410,7 +411,7 @@ def generate() -> str:
     <strong>BountyBoard</strong>
     <span>Built to make missed opportunities less likely.</span>
   </footer>
-  <script src="app.js" defer></script>
+  <script src="app.js?v={asset_version}" defer></script>
 </body>
 </html>"""
 

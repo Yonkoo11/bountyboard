@@ -84,6 +84,8 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertIn('data-generated-at="', page)
         self.assertIn("Last successful refresh", page)
         self.assertIn("Recently generated is not the same as verified", page)
+        self.assertIn('styles.css?v=', page)
+        self.assertIn('app.js?v=', page)
         self.assertNotIn("See the opportunity<br>before it passes", page)
 
 

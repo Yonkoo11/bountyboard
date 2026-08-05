@@ -486,3 +486,53 @@ footer { min-height: 80px; }
   .opportunity { min-width: 0; padding: var(--space-4); }
   .opportunity-facts div { grid-template-columns: 96px 1fr; }
 }
+
+/* Original BountyBoard visual language: neutral, compact, and utility-first. */
+:root {
+  --canvas: #fafafa;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --ink: #171717;
+  --muted: #68707d;
+  --faint: #9299a5;
+  --line: #e5e7eb;
+  --line-strong: #cfd4dc;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --focus: #2563eb;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+[data-theme="dark"] {
+  --canvas: #0a0a0a;
+  --surface: #141414;
+  --surface-strong: #181818;
+  --ink: #f2f2f2;
+  --muted: #a3a3a3;
+  --faint: #737373;
+  --line: #292929;
+  --line-strong: #424242;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-soft: #172554;
+  --focus: #60a5fa;
+}
+.brand strong { font-weight: 800; }
+.intro { padding-block: var(--space-8); }
+.intro > *, .section-heading > * { min-width: 0; }
+.intro h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 760; }
+.freshness { border-left: 3px solid var(--accent); border-radius: 8px; box-shadow: var(--shadow); }
+.metrics > div { padding: var(--space-3) var(--space-4); }
+.workspace { padding-block: var(--space-8); }
+.toolbar { border-radius: 10px; box-shadow: var(--shadow); }
+.opportunity { padding: var(--space-4); border-radius: 10px; box-shadow: var(--shadow); }
+.opportunity h3 { font-size: 17px; }
+.method { border-left-width: 3px; }
+@media (hover: hover) {
+  .opportunity:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); transform: translateY(-1px); }
+}
+@media (max-width: 600px) {
+  .intro h1, .intro p, .freshness small, .section-heading p { overflow-wrap: anywhere; }
+  .intro h1 { max-width: 11ch; }
+  .intro p, .freshness small, .section-heading p { max-width: 34ch; }
+}
