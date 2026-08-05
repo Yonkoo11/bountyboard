@@ -249,7 +249,9 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
 
 
 def generate() -> str:
-    today = date.today()
+    # GitHub Actions runs in UTC. Using UTC locally as well keeps the committed
+    # static build reproducible around local midnight in other time zones.
+    today = datetime.now(timezone.utc).date()
     # Day-level precision keeps committed output reproducible during CI rebuilds.
     # The deployed HTML still gives visitors an honest maximum age for this refresh.
     generated_at = datetime.combine(today, time.min, tzinfo=timezone.utc)
