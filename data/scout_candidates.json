@@ -83,5 +83,60 @@
     "application_status": "active",
     "eligibility": "Attendance application available; participation requirements need confirmation",
     "award_type": "prize"
+  },
+  {
+    "source": "ethglobal",
+    "url": "https://ethglobal.com/events/ethonline2026",
+    "name": "ETHGlobal September416Fri\u2014WedETHOnline 2026Async HackathonApply to Attend",
+    "description": "ETHGlobal hackathon: September416Fri\u2014WedETHOnline 2026Async HackathonApply to Attend. Aug 06 Thu Cowork with ETHGlobal in Arrecife with Coworking Guru Lanzarote Arrecife , Spain Co-Working Apply to Attend September 4 16 Fri \u2014 Wed ETHOnline 2026 Async Hackathon Apply to Attend September",
+    "deadline": null,
+    "prize_usd": 0,
+    "prize_note": "ETHGlobal prize pool (TBD)",
+    "theme_fit": 4,
+    "scout_date": "2026-08-06"
+  },
+  {
+    "source": "ethglobal",
+    "url": "https://ethglobal.com/events/tokyo2026",
+    "name": "ETHGlobal September2527Fri\u2014SunETHGlobal Tokyo 2026Tokyo,JapanIRL HackathonApply to Attend",
+    "description": "ETHGlobal hackathon: September2527Fri\u2014SunETHGlobal Tokyo 2026Tokyo,JapanIRL HackathonApply to Attend. Aug 06 Thu Cowork with ETHGlobal in Arrecife with Coworking Guru Lanzarote Arrecife , Spain Co-Working Apply to Attend September 4 16 Fri \u2014 Wed ETHOnline 2026 Async Hackathon Apply to Attend September",
+    "deadline": null,
+    "prize_usd": 0,
+    "prize_note": "ETHGlobal prize pool (TBD)",
+    "theme_fit": 4,
+    "scout_date": "2026-08-06"
+  },
+  {
+    "source": "ethglobal",
+    "url": "https://ethglobal.com/events/pragma-tokyo2026",
+    "name": "ETHGlobal Sep26SatPragma Tokyo 2026Tokyo,JapanConferenceApply to Attend",
+    "description": "ETHGlobal hackathon: Sep26SatPragma Tokyo 2026Tokyo,JapanConferenceApply to Attend. Aug 06 Thu Cowork with ETHGlobal in Arrecife with Coworking Guru Lanzarote Arrecife , Spain Co-Working Apply to Attend September 4 16 Fri \u2014 Wed ETHOnline 2026 Async Hackathon Apply to Attend September",
+    "deadline": null,
+    "prize_usd": 0,
+    "prize_note": "ETHGlobal prize pool (TBD)",
+    "theme_fit": 4,
+    "scout_date": "2026-08-06"
+  },
+  {
+    "source": "ethglobal",
+    "url": "https://ethglobal.com/events/pragma-mumbai",
+    "name": "ETHGlobal Nov05ThuPragma MumbaiMumbai,IndiaConferenceApply to Attend",
+    "description": "ETHGlobal hackathon: Nov05ThuPragma MumbaiMumbai,IndiaConferenceApply to Attend. Aug 06 Thu Cowork with ETHGlobal in Arrecife with Coworking Guru Lanzarote Arrecife , Spain Co-Working Apply to Attend September 4 16 Fri \u2014 Wed ETHOnline 2026 Async Hackathon Apply to Attend September",
+    "deadline": null,
+    "prize_usd": 0,
+    "prize_note": "ETHGlobal prize pool (TBD)",
+    "theme_fit": 4,
+    "scout_date": "2026-08-06"
+  },
+  {
+    "source": "ethglobal",
+    "url": "https://ethglobal.com/events/mumbai",
+    "name": "ETHGlobal November68Fri\u2014SunETHGlobal MumbaiMumbai,IndiaIRL HackathonApply to Attend",
+    "description": "ETHGlobal hackathon: November68Fri\u2014SunETHGlobal MumbaiMumbai,IndiaIRL HackathonApply to Attend. Aug 06 Thu Cowork with ETHGlobal in Arrecife with Coworking Guru Lanzarote Arrecife , Spain Co-Working Apply to Attend September 4 16 Fri \u2014 Wed ETHOnline 2026 Async Hackathon Apply to Attend September",
+    "deadline": null,
+    "prize_usd": 0,
+    "prize_note": "ETHGlobal prize pool (TBD)",
+    "theme_fit": 4,
+    "scout_date": "2026-08-06"
   }
 ]
