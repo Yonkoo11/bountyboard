@@ -58,11 +58,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--days", type=int, default=14)
     parser.add_argument("--notify", action="store_true")
+    parser.add_argument("--markdown-output", type=Path)
     args = parser.parse_args()
     candidates = json.loads(CANDIDATES_FILE.read_text())
     items = urgent_candidates(candidates, days=max(0, args.days))
     digest = render_digest(items)
     print(digest)
+    if args.markdown_output:
+        rendered = "# BountyBoard deadline priorities\n\n" + digest if items else digest
+        args.markdown_output.write_text(rendered + "\n")
     if args.notify and items:
         from scripts.notify import send
         notification_items = items[:15]

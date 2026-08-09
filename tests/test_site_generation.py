@@ -199,6 +199,8 @@ class SiteGenerationTests(unittest.TestCase):
         }, 1)
         self.assertIn('data-availability="unavailable"', row)
         self.assertIn("In-person only", row)
+        self.assertIn('data-review="pending"', row)
+        self.assertIn('data-application="open"', row)
 
 
 if __name__ == "__main__":

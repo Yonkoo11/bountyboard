@@ -20,6 +20,14 @@ class CandidateTriageTests(unittest.TestCase):
         self.assertIn("deadline", item["research_reasons"])
         self.assertIn("eligibility", item["research_reasons"])
 
+    def test_student_restriction_requires_known_profile_fact(self):
+        item = triage(
+            {"name": "Student AI", "format": "online", "eligibility": "University students", "url": "https://example.com"},
+            {"remote_only": True, "student_status": "unknown"},
+        )
+        self.assertEqual(item["profile_match"], "conditional")
+        self.assertIn("student status", item["research_reasons"])
+
 
 if __name__ == "__main__":
     unittest.main()

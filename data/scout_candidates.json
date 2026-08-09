@@ -16,8 +16,10 @@
     "eligibility": "Adults worldwide subject to official country exclusions; solo entries allowed; project must be newly created during the submission period",
     "award_type": "prize",
     "availability_state": "available",
-    "research_reasons": [],
-    "profile_match": "yes",
+    "research_reasons": [
+      "country/residency"
+    ],
+    "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
     "candidate_id": "lead-eed10620c817",
@@ -40,8 +42,10 @@
     "eligibility": "Online; confirm country and entrant restrictions in the official rules",
     "award_type": "prize",
     "availability_state": "available",
-    "research_reasons": [],
-    "profile_match": "yes",
+    "research_reasons": [
+      "country/residency"
+    ],
+    "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
     "candidate_id": "lead-96004498561b",
@@ -88,7 +92,12 @@
     "eligibility": "Students above the legal age of majority; teams of 2 to 4 required; standard country exclusions apply",
     "award_type": "prize",
     "availability_state": "conditional",
-    "research_reasons": [],
+    "research_reasons": [
+      "student status",
+      "country/residency",
+      "age",
+      "team requirements"
+    ],
     "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
@@ -112,8 +121,10 @@
     "eligibility": "Online; confirm country and entrant restrictions in the official rules",
     "award_type": "prize",
     "availability_state": "available",
-    "research_reasons": [],
-    "profile_match": "yes",
+    "research_reasons": [
+      "country/residency"
+    ],
+    "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
     "candidate_id": "lead-9b71948be0f8",
@@ -137,8 +148,10 @@
     "eligibility": "Worldwide; all experience levels; solo or teams up to 5; standard country exclusions apply",
     "award_type": "prize",
     "availability_state": "available",
-    "research_reasons": [],
-    "profile_match": "yes",
+    "research_reasons": [
+      "country/residency"
+    ],
+    "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
     "candidate_id": "lead-5c6dd043eda0",
@@ -186,7 +199,11 @@
     "eligibility": "Students ages 13 to 20 worldwide; standard country exclusions apply",
     "award_type": "prize",
     "availability_state": "conditional",
-    "research_reasons": [],
+    "research_reasons": [
+      "student status",
+      "country/residency",
+      "age"
+    ],
     "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
@@ -211,7 +228,11 @@
     "eligibility": "Students ages 13 to 19; standard country exclusions apply; separate Google Form registration required",
     "award_type": "prize",
     "availability_state": "conditional",
-    "research_reasons": [],
+    "research_reasons": [
+      "student status",
+      "country/residency",
+      "age"
+    ],
     "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
@@ -236,7 +257,11 @@
     "eligibility": "Students ages 13+; standard country exclusions apply",
     "award_type": "non_monetary",
     "availability_state": "conditional",
-    "research_reasons": [],
+    "research_reasons": [
+      "student status",
+      "country/residency",
+      "age"
+    ],
     "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
@@ -286,7 +311,11 @@
     "eligibility": "Students ages 13+ worldwide; standard country exclusions apply",
     "award_type": "prize",
     "availability_state": "conditional",
-    "research_reasons": [],
+    "research_reasons": [
+      "student status",
+      "country/residency",
+      "age"
+    ],
     "profile_match": "conditional",
     "review_status": "pending",
     "reviewed_at": null,
@@ -2602,7 +2631,8 @@
     "availability_state": "conditional",
     "research_reasons": [
       "deadline",
-      "eligibility"
+      "eligibility",
+      "country/residency"
     ],
     "profile_match": "conditional",
     "review_status": "pending",
@@ -2817,6 +2847,7 @@
     "research_reasons": [
       "deadline",
       "eligibility",
+      "age",
       "participation format"
     ],
     "profile_match": "conditional",

@@ -17,6 +17,29 @@ CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
 PROFILE_FILE = REPO_DIR / "data" / "user_profile.json"
 
 
+def profile_unknowns(item: dict, profile: dict) -> list[str]:
+    """Return personal facts needed before claiming this lead is eligible."""
+    text = " ".join(str(item.get(field) or "") for field in
+                    ("name", "title", "description", "summary", "eligibility", "format", "location")).lower()
+    unknowns: list[str] = []
+    student_restricted = bool(re.search(
+        r"\b(?:students? only|university students?|college students?|high school|students? ages?|student hackathon)\b",
+        text,
+    )) or str(item.get("eligibility") or "").lower().startswith("students")
+    if student_restricted \
+            and profile.get("student_status") in (None, "", "unknown"):
+        unknowns.append("student status")
+    if any(term in text for term in ("resident", "residency", "citizen", "country", "countries", "region", "apac", "emea")) \
+            and profile.get("country") in (None, "", "unknown"):
+        unknowns.append("country/residency")
+    if re.search(r"\b(?:age[sd]?|under|over|13\+|16\+|18\+)\b", text) \
+            and profile.get("age_band") in (None, "", "unknown"):
+        unknowns.append("age")
+    if any(term in text for term in ("team of", "team size", "teams of", "individuals or teams")):
+        unknowns.append("team requirements")
+    return unknowns
+
+
 def triage(item: dict, profile: dict) -> dict:
     normalized = dict(item)
     if item.get("source") == "lablab" and "##" in str(item.get("description") or ""):
@@ -40,6 +63,7 @@ def triage(item: dict, profile: dict) -> dict:
         reasons.append("deadline")
     if not item.get("eligibility"):
         reasons.append("eligibility")
+    reasons.extend(profile_unknowns(normalized, profile))
     if availability == "unknown":
         reasons.append("participation format")
     if not item.get("url"):
@@ -53,7 +77,7 @@ def triage(item: dict, profile: dict) -> dict:
     normalized.setdefault("decision_note", "")
     normalized["profile_match"] = (
         "no" if "in-person only" in reasons
-        else "conditional" if availability in ("conditional", "unknown")
+        else "conditional" if availability in ("conditional", "unknown") or profile_unknowns(normalized, profile)
         else "yes"
     )
     return normalized

@@ -101,6 +101,7 @@ def load_candidates() -> list[dict[str, Any]]:
             "verification_status": verification_status,
             "verified_at": item.get("verified_at") or (last_checked_at if verification_status == "verified" else None),
             "application_status": item.get("application_status") or "unknown",
+            "review_status": item.get("review_status") or "pending",
             "last_checked_at": last_checked_at,
             "award_type": item.get("award_type") or "unknown",
             "eligibility": item.get("eligibility") or "",
@@ -232,6 +233,10 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     checked = opportunity.get("last_checked_at") or opportunity.get("verified_at") or "never"
     eligibility = opportunity.get("eligibility") or "Not confirmed"
     availability = availability_state(opportunity)
+    review_status = opportunity.get("review_status") or (
+        "accepted" if opportunity.get("status") == "active" else "pending"
+    )
+    application_status = opportunity.get("application_status") or "unknown"
     ev_html = f'<span>EV estimate <strong>${expected:,}</strong></span>' if expected is not None else ""
     details_link = ""
     source_url = safe_url(opportunity.get("url"))
@@ -254,6 +259,7 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
 <article class="opportunity" data-search="{escape(search_text)}"
   data-category="{escape(opportunity.get("category") or "other")}"
   data-verification="{verification}" data-state="{state}" data-availability="{availability}"
+  data-review="{escape(review_status)}" data-application="{escape(application_status)}"
   data-score="{score}" data-prize="{opportunity.get("max_award_usd") or opportunity.get("prize_usd") or 0}"
   data-deadline="{escape(opportunity.get("deadline") or "9999-12-31")}">
   <div class="rank" aria-label="Actionability rank {rank}">{rank:02d}</div>
@@ -263,6 +269,7 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
       <span class="category">{escape(opportunity.get("category") or "other")}</span>
       <span class="source">via {escape(source)}</span>
       <span class="availability {availability}">{availability_label(availability)}</span>
+      <span class="source">{escape(str(review_status).replace("_", " "))} · {escape(str(application_status).replace("_", " "))}</span>
     </div>
     <h3>{escape(opportunity.get("name"))}</h3>
     <p class="summary">{escape(angle[:260])}</p>
@@ -421,6 +428,16 @@ def generate() -> str:
             <option value="partially_verified">Partial</option>
             <option value="unverified">Unverified</option>
             <option value="stale">Needs re-check</option>
+          </select>
+        </label>
+        <label class="select-control">
+          <span>Workflow</span>
+          <select id="workflowFilter">
+            <option value="all">Any stage</option>
+            <option value="pending">Pending review</option>
+            <option value="accepted">Accepted</option>
+            <option value="pursuing">Pursuing</option>
+            <option value="applied">Applied</option>
           </select>
         </label>
         <label class="select-control">

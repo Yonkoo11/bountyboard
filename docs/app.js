@@ -4,6 +4,7 @@
   const category = document.getElementById("categoryFilter");
   const verification = document.getElementById("verificationFilter");
   const availability = document.getElementById("availabilityFilter");
+  const workflow = document.getElementById("workflowFilter");
   const sort = document.getElementById("sort");
   const count = document.getElementById("visibleCount");
   const empty = document.getElementById("filterEmpty");
@@ -27,7 +28,8 @@
       const matches = availabilityMatches &&
         (!query || card.dataset.search.includes(query)) &&
         (category.value === "all" || card.dataset.category === category.value) &&
-        (verification.value === "all" || card.dataset.verification === verification.value);
+        (verification.value === "all" || card.dataset.verification === verification.value) &&
+        (workflow.value === "all" || card.dataset.review === workflow.value || card.dataset.application === workflow.value);
       card.hidden = !matches;
       if (matches) visible += 1;
     });
@@ -46,13 +48,14 @@
     applyControls();
   }
 
-  [search, category, verification, availability].forEach((control) => control.addEventListener("input", applyControls));
+  [search, category, verification, availability, workflow].forEach((control) => control.addEventListener("input", applyControls));
   sort.addEventListener("change", applySort);
   resetButtons.forEach((button) => button.addEventListener("click", () => {
     search.value = "";
     category.value = "all";
     verification.value = "all";
     availability.value = "for_me";
+    workflow.value = "all";
     sort.value = "score";
     applySort();
     search.focus();

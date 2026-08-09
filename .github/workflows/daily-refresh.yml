@@ -37,22 +37,9 @@ jobs:
         run: python3 scripts/scout.py
 
       - name: Triage personal eligibility
-        run: python3 scripts/triage_candidates.py
-
-      - name: Send approaching-deadline digest
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 scripts/deadline_digest.py --days 14 --notify
-
-      - name: Preserve notification delivery receipts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: notification-receipts-${{ github.run_id }}
-          path: logs/notifications.jsonl
-          if-no-files-found: warn
-          retention-days: 30
+        run: |
+          python3 scripts/validate_profile.py
+          python3 scripts/triage_candidates.py
 
       - name: Evaluate discovery coverage
         id: discovery_gate
