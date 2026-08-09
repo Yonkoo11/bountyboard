@@ -138,9 +138,9 @@ def availability_state(opportunity: dict[str, Any]) -> str:
     text = " ".join(compact_text(opportunity.get(field, "")) for field in
                     ("name", "angle", "notes", "description", "eligibility", "format", "location")).lower()
     online = any(term in text for term in ("online", "virtual", "remote", "worldwide"))
-    in_person = any(term in text for term in ("in-person", "in person", "offline", "irl hackathon"))
+    in_person = any(term in text for term in ("in-person", "in person", "on-site", "onsite", "offline", "irl hackathon"))
     mandatory = any(term in text for term in ("shortlisted teams travel", "in-person final", "in person final", "live final in", "culminating in a live demo day", "finale at"))
-    optional = any(term in text for term in ("may be invited", "invited to attend", "optional in-person", "optional in person", "travel opportunity", "invitation to"))
+    optional = any(term in text for term in ("may be invited", "invited to attend", "by invitation only", "optional in-person", "optional in person", "travel opportunity", "invitation to"))
     restricted = any(term in text for term in ("students only", "student hackathon", "university students", "high school", "ages 13", "ages 14", "ages 15", "ages 16", "ages 17", "ages 18", "apac-focused", "residents of", "must reside", "team of 2", "teams of 2"))
     if mandatory or optional or (in_person and online):
         return "conditional"

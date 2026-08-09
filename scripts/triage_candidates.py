@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import re
 import sys
 from pathlib import Path
 
@@ -17,9 +19,17 @@ PROFILE_FILE = REPO_DIR / "data" / "user_profile.json"
 
 def triage(item: dict, profile: dict) -> dict:
     normalized = dict(item)
+    if item.get("source") == "lablab" and "##" in str(item.get("description") or ""):
+        description = str(item["description"]).split("##", 1)[1].strip()
+        title = str(item.get("name") or "")
+        if description.startswith(title):
+            description = description[len(title):].strip()
+        normalized["description"] = re.sub(r"\s+", " ", description)
+    identity = str(item.get("url") or item.get("name") or item.get("title") or "unknown")
+    normalized.setdefault("candidate_id", f"lead-{hashlib.sha256(identity.encode()).hexdigest()[:12]}")
     opportunity = {
         "name": item.get("name") or item.get("title"),
-        "angle": item.get("description") or item.get("summary") or "",
+        "angle": normalized.get("description") or item.get("summary") or "",
         "eligibility": item.get("eligibility") or "",
         "format": item.get("format") or "",
         "location": item.get("location") or "",
@@ -40,6 +50,7 @@ def triage(item: dict, profile: dict) -> dict:
     normalized["research_reasons"] = reasons
     normalized.setdefault("review_status", "pending")
     normalized.setdefault("reviewed_at", None)
+    normalized.setdefault("decision_note", "")
     normalized["profile_match"] = (
         "no" if "in-person only" in reasons
         else "conditional" if availability in ("conditional", "unknown")

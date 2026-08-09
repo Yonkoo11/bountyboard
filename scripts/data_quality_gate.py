@@ -18,7 +18,7 @@ SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
 
 CORE_SOURCES = {"ethglobal", "devpost"}
 EXPECTED_SOURCES = {"devfolio", "hacklist"}
-OPTIONAL_SOURCES = {"mlh", "solana", "twitter", "exa"}
+OPTIONAL_SOURCES = {"lablab", "mlh", "solana", "twitter", "exa"}
 RETIRED_SOURCES = {"dorahacks", "gitcoin"}
 MINIMUM_TOTAL_RESULTS = 10
 

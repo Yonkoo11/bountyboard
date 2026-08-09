@@ -230,12 +230,18 @@ def _fetch(url: str, **kwargs) -> Optional["requests.Response"]:  # type: ignore
     global _last_request_time
     import requests
     last_error: Exception | None = None
+    custom_headers = kwargs.pop("headers", {})
     for attempt in range(1, 4):
         elapsed = time.time() - _last_request_time
         if elapsed < 2.0:
             time.sleep(2.0 - elapsed)
         try:
-            resp = requests.get(url, timeout=12, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36", "Accept": "application/json, text/html,*/*"}, **kwargs)
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "Accept": "application/json, text/html,*/*",
+            }
+            headers.update(custom_headers)
+            resp = requests.get(url, timeout=12, headers=headers, **kwargs)
             _last_request_time = time.time()
             resp.raise_for_status()
             return resp
@@ -498,6 +504,63 @@ def fetch_mlh() -> list[dict]:
         })
 
     log.info(f"MLH: {len(results)} future digital entries")
+    return results
+
+
+def fetch_lablab() -> list[dict]:
+    """Discover lablab events through a text mirror when its WAF blocks bots."""
+    log.info("Fetching lablab.ai hackathons...")
+    resp = _fetch(
+        "https://r.jina.ai/http://lablab.ai/ai-hackathons",
+        headers={"User-Agent": "curl/8.0", "Accept": "text/plain"},
+    )
+    if not resp:
+        return []
+    results: list[dict] = []
+    seen: set[str] = set()
+    for line in resp.text.splitlines():
+        if "lablab.ai/ai-hackathons/" not in line or "## " not in line or re.search(r"\bFinished\b", line, re.IGNORECASE):
+            continue
+        link_match = re.search(r"\]\((https?://lablab\.ai/ai-hackathons/[^)]+)\)", line)
+        title_match = re.search(r"Image\s+\d+:\s+([^]]+)\]", line) or re.search(
+            r"##\s+(.+?)(?:\s+[🌎💻⏱️📅🏆]|\s{2,})", line
+        )
+        if not link_match or not title_match:
+            continue
+        url = link_match.group(1).replace("http://", "https://", 1)
+        text = re.sub(r"!\[[^]]*\]\([^)]*\)", "", line)
+        text = re.sub(r"\s+", " ", text).strip()
+        if url in seen or not re.search(r"\b(?:Online|Hybrid|online build)\b", text, re.IGNORECASE):
+            continue
+        seen.add(url)
+        submission_match = re.search(
+            r"(?:submitted by end of day on|submissions? (?:close|ends?)(?: on)?)\s*"
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+            r"(\d{1,2})",
+            text,
+            re.IGNORECASE,
+        )
+        year_match = re.search(r"\b(20\d{2})\b", text)
+        deadline = _normalize_date(
+            f"{submission_match.group(1)} {submission_match.group(2)}, {year_match.group(1)}"
+            if submission_match and year_match else text
+        )
+        prize = _usd_amount(text)
+        title = title_match.group(1).strip()
+        description = text.split("##", 1)[-1].strip()
+        if description.startswith(title):
+            description = description[len(title):].strip()
+        results.append({
+            "source": "lablab",
+            "url": url,
+            "name": title,
+            "description": description[:700],
+            "deadline": deadline,
+            "format": "hybrid" if re.search(r"\bHybrid\b", text, re.IGNORECASE) else "online",
+            "prize_usd": prize,
+            "prize_note": f"${prize:,}" if prize else "",
+        })
+    log.info(f"lablab.ai: {len(results)} current remote-capable entries")
     return results
 
 
@@ -1096,6 +1159,7 @@ SOURCES = {
     "devpost":   fetch_devpost,
     "devfolio":  fetch_devfolio,
     "mlh":       fetch_mlh,
+    "lablab":    fetch_lablab,
     "hacklist":  fetch_hacklist,
     # DoraHacks' anonymous API is WAF-protected. HackList is the active
     # cross-platform redundancy feed until DoraHacks publishes a stable API.
@@ -1237,6 +1301,7 @@ def main():
                 "theme_fit":      s,
                 "status":         "needs_review",
                 "url":            url,
+                "angle":          item.get("description", "")[:500],
                 "notes":          f"Auto-discovered via {item['source']} on {TODAY_ISO}. Score: {s}/10.",
                 "source":         item["source"],
                 "calendar_synced": False,

@@ -100,6 +100,27 @@ class ScoutTests(unittest.TestCase):
         self.assertEqual(rows[0]["deadline"], "2026-08-18")
         self.assertEqual(rows[0]["format"], "online")
 
+    def test_lablab_keeps_current_remote_events_and_skips_finished_or_onsite(self):
+        text = """
+[![Image 1: IBM Bob 2.0 hackathon](x) Register Online SEP 25 - 27 10 ## IBM Bob 2.0 hackathon 💻 Online Hackathon | 📅 September 25–27, 2026 💰 Prize pool: $10,000](http://lablab.ai/ai-hackathons/ibm-bob-2-hackathon)
+[![Image](x) Finished Online JUN 12 - 19 10 ## Old Hackathon 📅 June 12–19, 2026](http://lablab.ai/ai-hackathons/old)
+[![Image](x) Register On-site SEP 1 - 2 10 ## Local Hackathon 📍 On-site Only](http://lablab.ai/ai-hackathons/local)
+"""
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=text)):
+            rows = scout.fetch_lablab()
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["name"], "IBM Bob 2.0 hackathon")
+        self.assertEqual(rows[0]["deadline"], "2026-09-27")
+        self.assertEqual(rows[0]["prize_usd"], 10_000)
+        self.assertEqual(rows[0]["format"], "online")
+
+    def test_lablab_uses_submission_deadline_and_short_image_title(self):
+        text = """[![Image 13: AI GENESIS](x) Register Hybrid OCT 26 - NOV 2 10 ## AI GENESIS AI Genesis is global. 📅 Oct 26 – Nov 3, 2026. All projects must be submitted by end of day on November 2.](http://lablab.ai/ai-hackathons/ai-genesis-2026)"""
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=text)):
+            rows = scout.fetch_lablab()
+        self.assertEqual(rows[0]["name"], "AI GENESIS")
+        self.assertEqual(rows[0]["deadline"], "2026-11-02")
+
     def test_low_score_candidate_is_preserved_as_unverified(self):
         candidate = scout._candidate_from_item(
             {

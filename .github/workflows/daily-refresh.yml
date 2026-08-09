@@ -39,6 +39,21 @@ jobs:
       - name: Triage personal eligibility
         run: python3 scripts/triage_candidates.py
 
+      - name: Send approaching-deadline digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/deadline_digest.py --days 14 --notify
+
+      - name: Preserve notification delivery receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notification-receipts-${{ github.run_id }}
+          path: logs/notifications.jsonl
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Evaluate discovery coverage
         id: discovery_gate
         continue-on-error: true
@@ -63,21 +78,7 @@ jobs:
           grep -q 'Last successful refresh' docs/index.html
 
       - name: Sync JSON from DB
-        run: |
-          python3 -c "
-          import db, json
-          opps = db.get_all()
-          fields = [
-              'id','name','category','deadline','start_date','prize_usd','prize_note',
-              'theme_fit','status','tracks','angle','url','resubmittable','notes',
-              'submission_url','source','verification_status','verified_at',
-              'last_checked_at','application_status','eligibility','award_type',
-              'max_award_usd','win_probability'
-          ]
-          out = [{k: o[k] for k in fields if k in o} for o in opps]
-          with open('data/opportunities.json', 'w') as f:
-              json.dump(out, f, indent=2)
-          "
+        run: python3 scripts/sync_opportunities.py
 
       - name: Commit and push if changed
         run: |

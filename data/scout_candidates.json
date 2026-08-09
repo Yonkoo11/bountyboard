@@ -19,7 +19,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-eed10620c817",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -41,7 +43,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-96004498561b",
+    "decision_note": ""
   },
   {
     "source": "official lablab.ai event page",
@@ -63,7 +67,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e4e31313ba93",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -85,7 +91,9 @@
     "research_reasons": [],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-53ff989d9383",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -107,7 +115,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-9b71948be0f8",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -130,7 +140,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5c6dd043eda0",
+    "decision_note": ""
   },
   {
     "source": "current third-party event listing; canonical DoraHacks page unconfirmed",
@@ -152,7 +164,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6fb190cb8be5",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -175,7 +189,9 @@
     "research_reasons": [],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e7c60c4b9070",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -198,7 +214,9 @@
     "research_reasons": [],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f488ee54d322",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -221,7 +239,9 @@
     "research_reasons": [],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2282f4857931",
+    "decision_note": ""
   },
   {
     "source": "official Midnight event page",
@@ -244,7 +264,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-4285d094c35e",
+    "decision_note": ""
   },
   {
     "source": "official Devpost event page",
@@ -267,7 +289,9 @@
     "research_reasons": [],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c9bf54e84beb",
+    "decision_note": ""
   },
   {
     "source": "official ETHGlobal event page",
@@ -289,7 +313,9 @@
     "research_reasons": [],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-7646aefa40cf",
+    "decision_note": ""
   },
   {
     "source": "official ETHGlobal event page",
@@ -313,7 +339,9 @@
     ],
     "profile_match": "no",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e23921f4ac61",
+    "decision_note": ""
   },
   {
     "source": "official ETHGlobal event page",
@@ -337,7 +365,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-95a424b5c142",
+    "decision_note": ""
   },
   {
     "source": "official ETHGlobal event page",
@@ -361,7 +391,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e9648679b62f",
+    "decision_note": ""
   },
   {
     "source": "official ETHGlobal event page",
@@ -385,7 +417,9 @@
     ],
     "profile_match": "no",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c9d545d99652",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -409,7 +443,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-10a992795054",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -433,7 +469,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-1948e1f4f421",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -457,7 +495,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-967dbbc33855",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -481,7 +521,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e865a1c66b49",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -505,7 +547,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-7d370dc0eb88",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -529,7 +573,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-dd7073b7cb22",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -553,7 +599,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-da64a171a6e0",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -577,7 +625,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c9f3f5a99c3a",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -601,7 +651,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6dd8867775d2",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -625,7 +677,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-638fe542f8e3",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -649,7 +703,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-9533f45cba5b",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -673,7 +729,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f7a907b187c4",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -697,7 +755,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6bc03e9ad482",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -721,7 +781,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e1bae1e1c21e",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -745,7 +807,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-42e504f49c3a",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -769,7 +833,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c1d6e58d77b0",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -793,7 +859,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-adf38d80ad6f",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -817,7 +885,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-077cf57a9890",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -841,7 +911,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-4878c0811d34",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -865,7 +937,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-7e1622a2ffea",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -889,7 +963,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-4b90c2a51ebd",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -913,7 +989,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e7f7cd4e010b",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -937,7 +1015,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-ce882f7f28c5",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -961,7 +1041,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-43384fafe5b0",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -985,7 +1067,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-192db31af757",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1009,7 +1093,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f3123966d4d3",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1033,7 +1119,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-77bf377c963f",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1057,7 +1145,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-41c061cfc7d1",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1081,7 +1171,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-579f931cdb89",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1105,7 +1197,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-599f8baf21f9",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1129,7 +1223,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5c68f2376617",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1153,7 +1249,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-551a56bae7ee",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1177,7 +1275,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-351012bc6858",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1201,7 +1301,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-68b69abeb223",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1225,7 +1327,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2995d9974539",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1249,7 +1353,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-cbb7b668fd89",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1273,7 +1379,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5814591c1720",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1297,7 +1405,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c72cce463b52",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1321,7 +1431,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-cec095c371ea",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1345,7 +1457,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-356f6227bc91",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1369,7 +1483,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e71178951cea",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1393,7 +1509,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b25bcaecf671",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1417,7 +1535,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2693a17479c3",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1441,7 +1561,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b5b18eb18f63",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1465,7 +1587,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5bc8a47598db",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1489,7 +1613,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f256bd4aec23",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1513,7 +1639,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b9451850053d",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1537,7 +1665,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-d3708b9ed7f4",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1561,7 +1691,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b65a6d978cb5",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1585,7 +1717,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5e9ba73047f1",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1609,7 +1743,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b2b919939a59",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1633,7 +1769,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b31dd5dd6c9a",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1657,7 +1795,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-a630e762684a",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1681,7 +1821,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-fd4bd83d95c9",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1705,7 +1847,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-688df3cd486b",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1729,7 +1873,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-4fbb43177964",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1753,7 +1899,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-659b16d1384e",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1777,7 +1925,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-a49eacf16b91",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1801,7 +1951,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-a9fc537d7161",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1825,7 +1977,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-569f6b39f151",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1849,7 +2003,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-dc3e75e03612",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1873,7 +2029,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-06863aaa5475",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1897,7 +2055,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-dc4a7a9f8460",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1921,7 +2081,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-37b0122fd0f8",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1945,7 +2107,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-be651aca5254",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1969,7 +2133,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-a4e1b82bcd5a",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -1993,7 +2159,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-ea5945d9cbe8",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2017,7 +2185,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-a3101b88cce3",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2040,7 +2210,9 @@
     ],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-82663c43a34f",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2064,7 +2236,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2fbd0404e84d",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2088,7 +2262,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-1e0d5f3ab3de",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2112,7 +2288,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2e87e7fe1168",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2136,7 +2314,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-e5f7658bcb22",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2160,7 +2340,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-07ac0c30b768",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2184,7 +2366,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-93eefe84d6aa",
+    "decision_note": ""
   },
   {
     "source": "devpost",
@@ -2208,7 +2392,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b9c220dadf6a",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2233,7 +2419,9 @@
     ],
     "profile_match": "no",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-aa768386f223",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2258,7 +2446,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f97306a847cb",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2283,7 +2473,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-3f1c1c87a4f7",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2308,7 +2500,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-64b1aaecd8c2",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2333,7 +2527,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-0bff80367744",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2358,7 +2554,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-8e83698b7665",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2382,7 +2580,9 @@
     ],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-faa77adc6b3d",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2406,7 +2606,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-9f3b0e78312c",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2431,7 +2633,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-f6b8e0ee38e9",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2456,7 +2660,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b0958a43d3da",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2481,7 +2687,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6d783d93f8a9",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2505,7 +2713,9 @@
     ],
     "profile_match": "yes",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-2e2b2875b5a6",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2530,7 +2740,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-8a589e4d9ff4",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2555,7 +2767,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-d993b96f2fd1",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2580,7 +2794,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c3fd103abd1d",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2605,7 +2821,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-5175c327fd70",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2629,7 +2847,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b9e0fe1d4116",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2654,7 +2874,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-fa2241c826d2",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2679,7 +2901,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6baf71146766",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2704,7 +2928,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-6bbf43ca9514",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2728,7 +2954,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c318d2d62305",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2753,7 +2981,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-429246b8a03f",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2778,7 +3008,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-ad958432174e",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2803,7 +3035,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-b878b4af65de",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2828,7 +3062,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-fef93aa781ab",
+    "decision_note": ""
   },
   {
     "source": "hacklist",
@@ -2853,7 +3089,9 @@
     ],
     "profile_match": "conditional",
     "review_status": "pending",
-    "reviewed_at": null
+    "reviewed_at": null,
+    "candidate_id": "lead-c7e21858c720",
+    "decision_note": ""
   },
   {
     "source": "devfolio",
@@ -2879,7 +3117,9 @@
     ],
     "review_status": "pending",
     "reviewed_at": null,
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "candidate_id": "lead-3dae42b6433f",
+    "decision_note": ""
   },
   {
     "source": "devfolio",
@@ -2905,7 +3145,9 @@
     ],
     "review_status": "pending",
     "reviewed_at": null,
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "candidate_id": "lead-b0ab26b2233b",
+    "decision_note": ""
   },
   {
     "source": "devfolio",
@@ -2931,7 +3173,9 @@
     ],
     "review_status": "pending",
     "reviewed_at": null,
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "candidate_id": "lead-99f0620d94c4",
+    "decision_note": ""
   },
   {
     "source": "devfolio",
@@ -2957,7 +3201,9 @@
     ],
     "review_status": "pending",
     "reviewed_at": null,
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "candidate_id": "lead-d9efe0984abd",
+    "decision_note": ""
   },
   {
     "source": "devfolio",
@@ -2983,6 +3229,112 @@
     ],
     "review_status": "pending",
     "reviewed_at": null,
+    "profile_match": "yes",
+    "candidate_id": "lead-13acd4c8d0bd",
+    "decision_note": ""
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
+    "name": "AI Infra Summit Hackathon",
+    "description": "\ud83c\udf0e Hybrid Hackathon | \ud83d\udcbb Online Build: September 10\u201316, 2026 | \ud83d\udccd On-site: September 15\u201317, 2026 The official hackathon of AI Infra Summit \u2014 co-organized by Kisaco Research and lablab.ai. Build production-grade AI applications on the modern AI infrastructure stack, alongside 8,000+ attendees, researchers, founders, and infra leaders. \ud83d\udccd On-site Venue (September 15\u201317): Santa Clara Convention Center 5001 Great America Pkwy, Santa Clara, CA \ud83d\udccd On-site participation is by invitation only. Travel and accommodation expenses will not be covered.](http://lablab.ai/ai-hackathons/ai-infra-summit-hackathon)",
+    "deadline": "2026-09-16",
+    "format": "hybrid",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-7df6eb5b7e9e",
+    "availability_state": "conditional",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/ibm-bob-2-hackathon",
+    "name": "IBM Bob 2.0 hackathon",
+    "description": "\ud83d\udcbb Online Hackathon | \u23f3 Build: 48 hours | \ud83d\udcc5 September 25\u201327, 2026 The official IBM Bob 2.0 hackathon. Build what's next in AI-assisted development, alongside the developers and experts shaping it. \u2b50 Get help from experts throughout the event \ud83e\udd1d Join a team or build solo \ud83d\udcb0 Prize pool: $10,000 \ud83e\uddd1\ud83c\udffb\u200d\ud83d\udcbb Register before the Kick-Off Stream to start building with Bob](http://lablab.ai/ai-hackathons/ibm-bob-2-hackathon)",
+    "deadline": "2026-09-27",
+    "format": "online",
+    "prize_usd": 10000,
+    "prize_note": "$10,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-0fe1234b6cb4",
+    "availability_state": "available",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/techex-amsterdam-hackathon",
+    "name": "TechEx Amsterdam Hackathon - AI & Big Data Expo Europe",
+    "description": "\ud83c\udf0e Hybrid Hackathon | \ud83d\udcbb Online Build: October 16\u201319, 2026 | \ud83d\udccd On-site: October 19\u201320, 2026 The official hackathon of AI & Big Data Expo Europe, organized by TechEx Events and lablab.ai. Build AI applications and agents across AI, cybersecurity, cloud, IoT, automation, edge computing, digital transformation, and data infrastructure, then showcase your project live at one of Europe's largest enterprise technology events. \ud83d\udccd On-site Venue (October 19\u201320): RAI Amsterdam Europaplein 24, 1078 GZ Amsterdam, Netherlands \ud83d\udccd If approved for the on-site experience, you'll also have the opportunity to showcase your",
+    "deadline": "2026-10-19",
+    "format": "hybrid",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-ea72b7609994",
+    "availability_state": "conditional",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/ai-genesis-2026",
+    "name": "AI GENESIS",
+    "description": "AI Genesis is a global hybrid hackathon that brings AI builders together from around the world \u2014 starting online and culminating live at /function1 AI Conference & Exhibition 2026 in Dubai. \ud83d\udcc5Oct 26 \u2013 Nov 3, 2026 \u2022 Oct 26 \u2013 Nov 2: Online build & collaboration All projects must be submitted by end of day on November 2. \u2022 Nov 2 (Online + Dubai): An exclusive on-site build day in Dubai for selected participants. \u2022 Nov 3 (Dubai): Live on-stage pitching & winners announcement at the /function1 Conference. \ud83c\udf1f Get support from expert mentors throughout. \ud83d\udc65 Go solo or team up. \ud83d\udccd Please note: If approved for the on-site experience, you\u2019ll also have the",
+    "deadline": "2026-11-02",
+    "format": "hybrid",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-6347394bd66b",
+    "availability_state": "conditional",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]

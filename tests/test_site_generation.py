@@ -165,6 +165,10 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertEqual(generate_site.availability_state({"format": "Online"}), "available")
         self.assertEqual(generate_site.availability_state({"format": "In-person"}), "unavailable")
         self.assertEqual(
+            generate_site.availability_state({"format": "Hybrid", "angle": "Online build; on-site finale by invitation only"}),
+            "conditional",
+        )
+        self.assertEqual(
             generate_site.availability_state({"name": "ETHGlobal Tokyo", "angle": "In-person in Tokyo"}),
             "unavailable",
         )
