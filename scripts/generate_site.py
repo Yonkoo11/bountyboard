@@ -8,6 +8,7 @@ of hiding uncertain leads.
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 import re
 import sys
@@ -315,7 +316,9 @@ def generate() -> str:
     # The deployed HTML still gives visitors an honest maximum age for this refresh.
     generated_at = datetime.combine(today, time.min, tzinfo=timezone.utc)
     generated_iso = generated_at.isoformat().replace("+00:00", "Z")
-    asset_version = today.strftime("%Y%m%d")
+    asset_version = hashlib.sha256(
+        (DOCS_DIR / "styles.css").read_bytes() + (DOCS_DIR / "app.js").read_bytes()
+    ).hexdigest()[:10]
     database_items = db.get_all()
     candidates = load_candidates()
     all_items = deduplicate(database_items + candidates)

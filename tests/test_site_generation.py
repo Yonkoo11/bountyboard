@@ -116,6 +116,7 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertIn("Discovery is not verification", page)
         self.assertIn('styles.css?v=', page)
         self.assertIn('app.js?v=', page)
+        self.assertNotIn('styles.css?v=20260809', page)
         self.assertNotIn("See the opportunity<br>before it passes", page)
 
     def test_generated_page_surfaces_next_move_before_full_queue(self):
