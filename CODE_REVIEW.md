@@ -126,4 +126,9 @@ instead.
 - Fixture tests cover parsing, URL safety, URL deduplication, conservative prize
   extraction, unknown deadlines, and the source-health gate.
 - Live read-only validation found 33 listings: 5 already recognized and 28 gaps.
+- Organizer-prefixed aliases prevent cross-platform duplicates such as
+  `RevenueCat Shipaton 2026` versus `Shipaton 2026`; internal alias metadata is
+  removed before retained records are written.
+- Devpost markup-formatted prize amounts are normalized instead of silently
+  becoming zero.
 - Critical findings remaining: 0. High-priority findings remaining: 0.

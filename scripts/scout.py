@@ -313,7 +313,8 @@ def fetch_devpost() -> list[dict]:
                 if not url or not title or url in seen:
                     continue
                 seen.add(url)
-                prize    = item.get("prize_amount", 0) or 0
+                raw_prize = item.get("prize_amount", 0) or 0
+                prize = int(raw_prize) if str(raw_prize).isdigit() else _usd_amount(str(raw_prize))
                 deadline = _normalize_date(str(item.get("submission_period_dates", "") or ""))
                 results.append({
                     "source":     "devpost",
@@ -321,8 +322,8 @@ def fetch_devpost() -> list[dict]:
                     "name":       title,
                     "description": desc,
                     "deadline":   deadline,
-                    "prize_usd":  int(prize) if str(prize).isdigit() else 0,
-                    "prize_note": f"${prize}" if prize else "",
+                    "prize_usd":  prize,
+                    "prize_note": f"${prize:,}" if prize else "",
                 })
 
             meta = data.get("meta") or {}
@@ -343,7 +344,7 @@ def fetch_devpost() -> list[dict]:
 
 def _usd_amount(raw: str) -> int:
     """Extract a conservative USD amount from a human prize label."""
-    match = re.search(r"\$\s*([0-9][0-9,]*(?:\.\d+)?)\s*([KkMm])?", raw or "")
+    match = re.search(r"\$[^0-9]{0,40}([0-9][0-9,]*(?:\.\d+)?)\s*([KkMm])?", raw or "")
     if not match:
         return 0
     amount = float(match.group(1).replace(",", ""))
@@ -392,6 +393,7 @@ def fetch_hacklist() -> list[dict]:
             if element.get_text(" ", strip=True)
         ]
         description = max(paragraphs, key=len, default="")
+        organizer = paragraphs[0] if paragraphs and paragraphs[0] != description else ""
         aria_label = str(article.get("aria-label") or "")
         prize_label = ""
         if aria_label.startswith(f"{name},"):
@@ -408,6 +410,8 @@ def fetch_hacklist() -> list[dict]:
             "deadline": None,
             "prize_usd": _usd_amount(prize_label),
             "prize_note": prize_label,
+            # Internal-only aliases improve cross-platform entity resolution.
+            "_name_aliases": [f"{organizer} {name}"] if organizer else [],
         })
 
     log.info(f"HackList: {len(results)} entries")
@@ -682,6 +686,12 @@ def _write_run_manifest(
 
 def _name_slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower())[:30].strip("-")
+
+
+def _item_name_slugs(item: dict) -> set[str]:
+    """Return primary and source-provided alias slugs for entity resolution."""
+    names = [str(item.get("name") or ""), *item.get("_name_aliases", [])]
+    return {_name_slug(name) for name in names if _name_slug(name)}
 
 
 def _build_name_slugs(existing_ids: set[str], candidates: list[dict]) -> set[str]:
@@ -1006,13 +1016,14 @@ def main():
 
         # Name-based dedup (catches same event at different URLs)
         name = item.get("name", "")
-        slug = _name_slug(name)
-        if slug and slug in name_slugs:
-            log.debug(f"[DEDUP] '{name}' matches existing slug '{slug}'")
+        item_slugs = _item_name_slugs(item)
+        matched_slug = next((slug for slug in item_slugs if slug in name_slugs), None)
+        if matched_slug:
+            log.debug(f"[DEDUP] '{name}' matches existing slug '{matched_slug}'")
             stats["already_seen"] += 1
             continue
-        if slug:
-            name_slugs.add(slug)
+        name_slugs.update(item_slugs)
+        item.pop("_name_aliases", None)
 
         if not _is_future(item.get("deadline")):
             stats["past"] += 1

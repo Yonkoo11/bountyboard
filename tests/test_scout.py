@@ -63,6 +63,15 @@ class ScoutTests(unittest.TestCase):
             rows = scout.fetch_devpost()
         self.assertEqual(len(rows), 1)
 
+    def test_devpost_extracts_prize_from_markup_label(self):
+        item = devpost_item("Markup Prize", "https://markup.devpost.com")
+        item["prize_amount"] = "$$<span data-currency-value>685,000</span>"
+        payload = {"hackathons": [item], "meta": {"total_count": 1, "per_page": 9}}
+        with patch.object(scout, "_fetch", return_value=FakeResponse(payload)):
+            rows = scout.fetch_devpost()
+        self.assertEqual(rows[0]["prize_usd"], 685_000)
+        self.assertEqual(rows[0]["prize_note"], "$685,000")
+
     def test_low_score_candidate_is_preserved_as_unverified(self):
         candidate = scout._candidate_from_item(
             {
@@ -99,6 +108,7 @@ class ScoutTests(unittest.TestCase):
         self.assertEqual(rows[0]["url"], "https://organizer.example/hackathon")
         self.assertEqual(rows[0]["prize_usd"], 12500)
         self.assertEqual(rows[0]["prize_note"], "$12,500")
+        self.assertEqual(rows[0]["_name_aliases"], ["Organizer New Agent Hack"])
         self.assertIsNone(rows[0]["deadline"])
 
     def test_hacklist_rejects_non_http_apply_links_and_deduplicates_urls(self):
@@ -115,6 +125,16 @@ class ScoutTests(unittest.TestCase):
         self.assertEqual(scout._usd_amount("$2M total"), 2_000_000)
         self.assertEqual(scout._usd_amount("$8.75K"), 8_750)
         self.assertEqual(scout._usd_amount("Hardware prizes"), 0)
+
+    def test_source_name_aliases_match_existing_platform_titles(self):
+        item = {
+            "name": "Shipaton 2026",
+            "_name_aliases": ["RevenueCat Shipaton 2026"],
+        }
+        self.assertIn(
+            scout._name_slug("RevenueCat Shipaton 2026"),
+            scout._item_name_slugs(item),
+        )
 
 
 if __name__ == "__main__":
