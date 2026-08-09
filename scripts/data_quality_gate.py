@@ -17,8 +17,8 @@ LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
 
 CORE_SOURCES = {"ethglobal", "devpost"}
-EXPECTED_SOURCES = {"hacklist", "solana"}
-OPTIONAL_SOURCES = {"devfolio", "mlh", "twitter", "exa"}
+EXPECTED_SOURCES = {"devfolio", "hacklist"}
+OPTIONAL_SOURCES = {"mlh", "solana", "twitter", "exa"}
 RETIRED_SOURCES = {"dorahacks", "gitcoin"}
 MINIMUM_TOTAL_RESULTS = 10
 
@@ -69,9 +69,11 @@ def evaluate(manifest: dict[str, Any], health: dict[str, Any]) -> tuple[list[str
             continue
         baseline = median(previous)
         if baseline >= 5 and int(current or 0) < baseline * 0.25:
-            failures.append(
-                f"source {source} collapsed to {current} results from a median of {baseline:g}"
-            )
+            message = f"source {source} collapsed to {current} results from a median of {baseline:g}"
+            if source in OPTIONAL_SOURCES or source in RETIRED_SOURCES:
+                warnings.append(message)
+            else:
+                failures.append(message)
 
     return failures, warnings
 
