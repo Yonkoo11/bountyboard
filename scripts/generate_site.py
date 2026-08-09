@@ -11,7 +11,7 @@ import html
 import json
 import re
 import sys
-from datetime import date, datetime, time, timezone
+from datetime import datetime, time, timezone
 from pathlib import Path
 from typing import Any
 
@@ -25,7 +25,6 @@ from opportunity_quality import (
     completeness,
     days_until,
     effective_verification,
-    expected_value,
     is_safe_url,
     missing_details,
 )
@@ -219,7 +218,6 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     score = actionability_score(opportunity)
     quality = completeness(opportunity)
     missing = missing_details(opportunity)
-    expected = expected_value(opportunity)
     tracks = opportunity.get("tracks") or []
     if isinstance(tracks, str):
         try:
@@ -249,7 +247,6 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     checked = opportunity.get("last_checked_at") or opportunity.get("verified_at") or "never"
     eligibility = opportunity.get("eligibility") or "Not confirmed"
     availability = availability_state(opportunity)
-    ev_html = f'<span>EV estimate <strong>${expected:,}</strong></span>' if expected is not None else ""
     details_link = ""
     source_url = safe_url(opportunity.get("url"))
     submission_url = safe_url(opportunity.get("submission_url"))
@@ -267,58 +264,46 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
             'target="_blank" rel="noopener noreferrer">Apply <span aria-hidden="true">↗</span></a>'
         )
 
+    actionable = state == "open" and availability != "unavailable" and verification in ("verified", "partially_verified")
+    research = verification != "verified" or bool(missing)
+    details = ""
+    if angle or missing:
+        details = f"""
+    <details class="card-details">
+      <summary>Research notes</summary>
+      <p>{escape(angle[:420])}</p>
+      {missing_html}
+      <dl>
+        <div><dt>Eligibility</dt><dd>{escape(eligibility)}</dd></div>
+        <div><dt>Evidence</dt><dd>{quality}% complete · checked {escape(checked)}</dd></div>
+      </dl>
+    </details>"""
+
     return f"""
 <article class="opportunity" data-search="{escape(search_text)}"
   data-category="{escape(opportunity.get("category") or "other")}"
   data-verification="{verification}" data-state="{state}" data-availability="{availability}"
+  data-actionable="{str(actionable).lower()}" data-research="{str(research).lower()}"
   data-score="{score}" data-prize="{opportunity.get("max_award_usd") or opportunity.get("prize_usd") or 0}"
   data-deadline="{escape(opportunity.get("deadline") or "9999-12-31")}">
-  <div class="rank" aria-label="Actionability rank {rank}">{rank:02d}</div>
+  <div class="score-bar" aria-hidden="true"><span style="width:{score}%"></span></div>
+  <div class="card-topline">
+    <span class="status {verification}"><i aria-hidden="true"></i>{verification_label(verification)}</span>
+    <span class="category">{escape(opportunity.get("category") or "other")}</span>
+    <span class="countdown">{escape(deadline_label(opportunity))}</span>
+  </div>
   <div class="opportunity-main">
-    <div class="eyebrow-row">
-      <span class="status {verification}"><span aria-hidden="true"></span>{verification_label(verification)}</span>
-      <span class="category">{escape(opportunity.get("category") or "other")}</span>
-      <span class="availability {availability}">{availability_label(availability)}</span>
-      <span class="source">via {escape(source)}</span>
-    </div>
     <h3>{escape(opportunity.get("name"))}</h3>
-    <p class="summary">{escape(angle[:260])}</p>
+    <div class="card-meta">
+      <strong>{escape(money_label(opportunity))}</strong>
+      <span>fit {opportunity.get("theme_fit") or 0}/10</span>
+      <span class="availability {availability}">{availability_label(availability)}</span>
+    </div>
     <div class="tags">{tags}</div>
-    {missing_html}
   </div>
-  <dl class="opportunity-facts">
-    <div><dt>Deadline</dt><dd>{escape(deadline_label(opportunity))}</dd></div>
-    <div><dt>Opportunity value</dt><dd>{escape(money_label(opportunity))}</dd></div>
-    <div><dt>Eligibility</dt><dd>{escape(eligibility)}</dd></div>
-    <div><dt>Evidence</dt><dd>{quality}% complete · checked {escape(checked)}</dd></div>
-  </dl>
-  <div class="opportunity-score">
-    <span class="score">{score}</span>
-    <span>actionability</span>
-    {ev_html}
-  </div>
+  {details}
   <div class="opportunity-actions">{details_link}{submit_link}</div>
-</article>"""
-
-
-def hackathon_card(opportunity: dict[str, Any]) -> str:
-    """Render the small, high-visibility summary used above the full radar."""
-    deadline = opportunity.get("deadline")
-    try:
-        date_text = datetime.strptime(deadline, "%Y-%m-%d").strftime("%b %d, %Y")
-    except (TypeError, ValueError):
-        date_text = "Date needs confirmation"
-    source_url = safe_url(opportunity.get("url"))
-    link = (
-        f'<a href="{escape(source_url)}" target="_blank" rel="noopener noreferrer">View official page <span aria-hidden="true">↗</span></a>'
-        if source_url else '<span>Official page needed</span>'
-    )
-    return f"""
-<article class="hackathon-card">
-  <div><span class="category">Hackathon</span><span class="status {effective_verification(opportunity)}"><span aria-hidden="true"></span>{verification_label(effective_verification(opportunity))}</span></div>
-  <h3>{escape(opportunity.get("name"))}</h3>
-  <p class="hackathon-date">Ends {escape(date_text)}</p>
-  {link}
+  <div class="card-foot"><span>priority {score}/100</span><span>via {escape(source)}</span></div>
 </article>"""
 
 
@@ -344,17 +329,17 @@ def generate() -> str:
         if item.get("status") in ("closed", "rejected") or application_state(item) == "closed"
     ]
     visible.sort(key=lambda item: (-actionability_score(item), item.get("deadline") or "9999"))
-    verified_count = sum(effective_verification(item) == "verified" for item in visible)
     research_count = sum(effective_verification(item) != "verified" for item in visible)
-    linked_count = sum(bool(item.get("url")) for item in visible)
-    known_deadlines = sum(days_until(item.get("deadline")) is not None for item in visible)
     total_pool = sum(item.get("prize_usd") or 0 for item in visible)
-    hackathons = sorted(
-        (item for item in visible if item.get("category") == "hackathon" and availability_state(item) != "unavailable"),
-        key=lambda item: item.get("deadline") or "9999-12-31",
+    actionable = [
+        item for item in visible
+        if application_state(item) == "open"
+        and availability_state(item) != "unavailable"
+        and effective_verification(item) in ("verified", "partially_verified")
+    ]
+    next_move = actionable[0] if actionable else next(
+        (item for item in visible if availability_state(item) != "unavailable"), None
     )
-    preview_hackathons = hackathons[:6]
-    hackathon_cards = "".join(hackathon_card(item) for item in preview_hackathons)
 
     rows = "".join(opportunity_row(item, index) for index, item in enumerate(visible, 1))
     if not rows:
@@ -366,6 +351,29 @@ def generate() -> str:
 </div>"""
 
     updated = today.strftime("%B %d, %Y")
+    next_move_html = ""
+    if next_move:
+        next_url = safe_url(next_move.get("submission_url")) or safe_url(next_move.get("url"))
+        next_action = (
+            f'<a class="button primary" href="{escape(next_url)}" target="_blank" rel="noopener noreferrer">Open opportunity <span aria-hidden="true">↗</span></a>'
+            if next_url else '<span class="button disabled" aria-disabled="true">Source needed</span>'
+        )
+        next_move_html = f"""
+    <section class="next-move" aria-labelledby="next-move-title">
+      <p class="kicker">Your next move</p>
+      <div class="next-move-grid">
+        <div>
+          <h1 id="next-move-title">{escape(next_move.get("name"))}</h1>
+          <p>{escape(compact_text(next_move.get("angle") or next_move.get("notes") or "Review the source and confirm the remaining requirements."))}</p>
+        </div>
+        <div class="next-move-facts">
+          <strong>{escape(deadline_label(next_move))}</strong>
+          <span>{escape(money_label(next_move))}</span>
+          <span>fit {next_move.get("theme_fit") or 0}/10</span>
+          {next_action}
+        </div>
+      </div>
+    </section>"""
     return f"""<!doctype html>
 <html lang="en" data-theme="light">
 <head>
@@ -401,75 +409,42 @@ def generate() -> str:
   </header>
 
   <main>
-    <section class="intro" aria-labelledby="hero-title">
-      <div>
-        <p class="kicker">Opportunity radar</p>
-        <h1 id="hero-title">Find what is worth building next.</h1>
-        <p>Hackathons, grants, accelerators, and bounties in one place. Missing facts stay visible as research tasks.</p>
-      </div>
-      <div class="freshness current" id="freshnessStatus" role="status" data-generated-at="{generated_iso}">
-        <span class="freshness-dot" aria-hidden="true"></span>
-        <span><strong id="freshnessLabel">Updated today</strong><small id="freshnessDetail">Page generated {updated}; individual sources have their own check dates.</small></span>
-      </div>
-    </section>
+    <div class="freshness current" id="freshnessStatus" role="status" data-generated-at="{generated_iso}">
+      <span class="freshness-dot" aria-hidden="true"></span>
+      <span><strong id="freshnessLabel">Updated today</strong><small id="freshnessDetail">Generated {updated}. Opportunity evidence has separate check dates.</small></span>
+    </div>
 
-    <section class="metrics" aria-label="Opportunity summary">
-      <div><strong>{len(visible)}</strong><span>on radar</span></div>
-      <div><strong>{verified_count}</strong><span>verified</span></div>
-      <div><strong>{research_count}</strong><span>need research</span></div>
-      <div><strong>{known_deadlines}</strong><span>known deadlines</span></div>
-      <div><strong>${total_pool / 1000:.0f}K</strong><span>reported pools <em>not expected earnings</em></span></div>
-      <div><strong>{len(closed)}</strong><span>archived</span></div>
-    </section>
+    <div class="stats" aria-label="Opportunity summary">
+      <span><strong>{len(actionable)}</strong> actionable</span><i>·</i>
+      <span><strong>{research_count}</strong> need research</span><i>·</i>
+      <span><strong>${total_pool / 1000:.0f}K</strong> reported pools</span><i>·</i>
+      <span><strong>{len(closed)}</strong> archived</span>
+    </div>
 
-    <section class="hackathons" aria-labelledby="hackathons-title">
-      <div class="section-heading compact-heading">
-        <div>
-          <p class="kicker">Upcoming hackathons</p>
-          <h2 id="hackathons-title">{len(hackathons)} hackathons open now</h2>
-          <p>Top {len(preview_hackathons)} by deadline and actionability; use the radar for the full list.</p>
-        </div>
-        <a class="text-link" href="#opportunities">View the full radar ↓</a>
-      </div>
-      <div class="hackathon-grid">{hackathon_cards}</div>
-    </section>
+    {next_move_html}
 
     <section class="workspace" id="opportunities" aria-labelledby="opportunities-title">
       <div class="section-heading">
         <div>
-          <p class="kicker">Full radar</p>
-          <h2 id="opportunities-title">Possible opportunities</h2>
-          <p>{linked_count} have source links. Verification changes confidence and ranking, not inclusion.</p>
+          <p class="kicker">Opportunity queue</p>
+          <h2 id="opportunities-title">What deserves attention</h2>
+          <p>Actionable items first. Unverified leads stay available under Needs research and All.</p>
         </div>
-        <div class="result-count" aria-live="polite"><strong id="visibleCount">{sum(availability_state(item) != "unavailable" for item in visible)}</strong> shown</div>
+        <div class="result-count" aria-live="polite"><strong id="visibleCount">{len(actionable)}</strong> shown</div>
       </div>
 
       <div class="toolbar" aria-label="Opportunity controls">
+        <div class="view-filters" role="group" aria-label="Queue view">
+          <button class="filter-button active" type="button" data-view="actionable">Actionable</button>
+          <button class="filter-button" type="button" data-view="research">Needs research</button>
+          <button class="filter-button" type="button" data-view="all">All</button>
+        </div>
         <label class="search">
           <span class="sr-only">Search opportunities</span>
           <span aria-hidden="true">⌕</span>
           <input id="search" type="search" placeholder="Search names, tracks, sources…" autocomplete="off">
         </label>
-        <label class="select-control">
-          <span>Type</span>
-          <select id="categoryFilter">
-            <option value="all">All types</option>
-            <option value="hackathon">Hackathons</option>
-            <option value="grant">Grants</option>
-            <option value="accelerator">Accelerators</option>
-            <option value="bounty">Bounties</option>
-          </select>
-        </label>
-        <label class="select-control">
-          <span>Evidence</span>
-          <select id="verificationFilter">
-            <option value="all">Any evidence</option>
-            <option value="verified">Verified</option>
-            <option value="partially_verified">Partial</option>
-            <option value="unverified">Unverified</option>
-            <option value="stale">Needs re-check</option>
-          </select>
-        </label>
+        <label class="select-control"><span>Type</span><select id="categoryFilter"><option value="all">All types</option><option value="hackathon">Hackathons</option><option value="grant">Grants</option><option value="accelerator">Accelerators</option><option value="bounty">Bounties</option></select></label>
         <label class="select-control">
           <span>Availability</span>
           <select id="availabilityFilter">
@@ -492,14 +467,6 @@ def generate() -> str:
         <button class="button reset" id="clearFilters" type="button">Reset</button>
       </div>
 
-      <div class="legend" aria-label="Evidence legend">
-        <span><i class="dot verified"></i>Verified recently</span>
-        <span><i class="dot partially_verified"></i>Some facts confirmed</span>
-        <span><i class="dot unverified"></i>Lead awaiting research</span>
-        <span><i class="dot stale"></i>Evidence older than 30 days</span>
-        <span>“For me” hides confirmed in-person-only events; unknown formats stay visible.</span>
-      </div>
-
       <div class="opportunity-list" id="opportunityList">
         {rows}
       </div>
@@ -510,7 +477,7 @@ def generate() -> str:
       </div>
     </section>
 
-    <aside class="method" aria-label="Freshness note"><strong>Recently generated is not the same as verified.</strong> Check each card's evidence date before investing time in an application.</aside>
+    <aside class="method"><strong>Discovery is not verification.</strong> Unknown opportunities remain in the queue so broad monitoring never becomes silent omission.</aside>
   </main>
 
   <footer>

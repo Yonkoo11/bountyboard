@@ -113,12 +113,12 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertIn('id="freshnessStatus"', page)
         self.assertIn('data-generated-at="', page)
         self.assertIn("Last successful refresh", page)
-        self.assertIn("Recently generated is not the same as verified", page)
+        self.assertIn("Discovery is not verification", page)
         self.assertIn('styles.css?v=', page)
         self.assertIn('app.js?v=', page)
         self.assertNotIn("See the opportunity<br>before it passes", page)
 
-    def test_generated_page_surfaces_hackathons_before_full_radar(self):
+    def test_generated_page_surfaces_next_move_before_full_queue(self):
         item = {
             "id": "visible-hackathon",
             "name": "Visible Hackathon",
@@ -127,17 +127,19 @@ class SiteGenerationTests(unittest.TestCase):
             "deadline": "2026-09-16",
             "url": "https://example.com/hackathon",
             "verification_status": "partially_verified",
+            "last_checked_at": "2026-08-09",
             "application_status": "open",
+            "format": "online",
         }
         with patch.object(generate_site.db, "get_all", return_value=[item]), patch.object(
             generate_site, "load_candidates", return_value=[]
         ):
             page = generate_site.generate()
-        self.assertIn("1 hackathons open now", page)
+        self.assertIn("Your next move", page)
         self.assertIn("Visible Hackathon", page)
-        self.assertLess(page.index('id="hackathons-title"'), page.index('id="opportunities-title"'))
+        self.assertLess(page.index('id="next-move-title"'), page.index('id="opportunities-title"'))
 
-    def test_hackathon_preview_does_not_bury_search_controls(self):
+    def test_design_uses_queue_views_instead_of_duplicate_hackathon_preview(self):
         items = [{
             "id": f"hackathon-{index}",
             "name": f"Hackathon {index}",
@@ -153,9 +155,10 @@ class SiteGenerationTests(unittest.TestCase):
             generate_site, "load_candidates", return_value=[]
         ):
             page = generate_site.generate()
-        preview = page[page.index('class="hackathon-grid"'):page.index('id="opportunities"')]
-        self.assertEqual(preview.count('class="hackathon-card"'), 6)
-        self.assertIn("Top 6", page)
+        self.assertNotIn('class="hackathon-grid"', page)
+        self.assertIn('data-view="actionable"', page)
+        self.assertIn('data-view="research"', page)
+        self.assertIn('data-view="all"', page)
 
     def test_availability_classification_is_conservative(self):
         self.assertEqual(generate_site.availability_state({"format": "Online"}), "available")
