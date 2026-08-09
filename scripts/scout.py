@@ -958,8 +958,10 @@ SOURCES = {
     "ethglobal": fetch_ethglobal,
     "devpost":   fetch_devpost,
     "hacklist":  fetch_hacklist,
-    "dorahacks": fetch_dorahacks,
-    "gitcoin":   fetch_gitcoin,
+    # DoraHacks' anonymous API is WAF-protected. HackList is the active
+    # cross-platform redundancy feed until DoraHacks publishes a stable API.
+    # Gitcoin's former indexer is offline/historical-only and cannot prove
+    # current rounds, so it is deliberately excluded from live monitoring.
     "solana":    fetch_solana,
     "twitter":   fetch_twitter_signals,
     "exa":       fetch_exa,

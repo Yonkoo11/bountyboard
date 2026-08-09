@@ -23,6 +23,10 @@ $PYTHON scripts/twitter_watch.py 2>&1 || echo "Twitter watch had errors (continu
 echo "--- Running scout ---"
 $PYTHON scripts/scout.py 2>&1 || echo "Scout had errors (continuing)"
 
+# Step 1b: Apply the confirmed personal profile without guessing unknown traits.
+echo "--- Triaging personal eligibility ---"
+$PYTHON scripts/triage_candidates.py 2>&1
+
 # Step 2: Verify data quality, close expired + cross-check Exa results
 echo "--- Verifying data ---"
 $PYTHON scripts/verify_data.py --verify-exa 2>&1

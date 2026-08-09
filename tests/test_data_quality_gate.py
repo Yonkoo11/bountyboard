@@ -25,9 +25,9 @@ class DataQualityGateTests(unittest.TestCase):
 
     def test_zero_expected_source_blocks_green_run(self):
         manifest = self.healthy_manifest()
-        manifest["source_counts"]["dorahacks"] = 0
+        manifest["source_counts"]["solana"] = 0
         failures, _ = evaluate(manifest, {})
-        self.assertIn("expected source dorahacks returned zero results", failures)
+        self.assertIn("expected source solana returned zero results", failures)
 
     def test_zero_hacklist_crosscheck_blocks_green_run(self):
         manifest = self.healthy_manifest()
@@ -54,7 +54,7 @@ class DataQualityGateTests(unittest.TestCase):
         failures, _ = evaluate(manifest, {})
         self.assertIn("source error: devpost: 1 request failure(s)", failures)
 
-    def test_optional_source_error_is_a_warning(self):
+    def test_retired_source_error_is_a_warning_for_old_manifests(self):
         manifest = self.healthy_manifest()
         manifest["source_errors"] = ["gitcoin: 4 request failure(s)"]
         failures, warnings = evaluate(manifest, {})

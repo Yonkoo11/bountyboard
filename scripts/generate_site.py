@@ -106,6 +106,9 @@ def load_candidates() -> list[dict[str, Any]]:
             "award_type": item.get("award_type") or "unknown",
             "eligibility": item.get("eligibility") or "",
             "format": item.get("format") or "",
+            "availability_state": item.get("availability_state") or "",
+            "research_reasons": item.get("research_reasons") or [],
+            "profile_match": item.get("profile_match") or "conditional",
         })
     return candidates
 
@@ -131,6 +134,9 @@ def deduplicate(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def availability_state(opportunity: dict[str, Any]) -> str:
     """Classify personal availability without pretending unknown means eligible."""
+    stored = opportunity.get("availability_state")
+    if stored in {"available", "conditional", "unavailable", "unknown"}:
+        return str(stored)
     text = " ".join(
         compact_text(opportunity.get(field, ""))
         for field in ("name", "angle", "notes", "description", "eligibility", "format", "location")
@@ -218,7 +224,10 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     state = application_state(opportunity)
     score = actionability_score(opportunity)
     quality = completeness(opportunity)
-    missing = missing_details(opportunity)
+    missing = list(dict.fromkeys([
+        *missing_details(opportunity),
+        *(opportunity.get("research_reasons") or []),
+    ]))
     tracks = opportunity.get("tracks") or []
     if isinstance(tracks, str):
         try:

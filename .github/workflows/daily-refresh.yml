@@ -36,6 +36,9 @@ jobs:
       - name: Discover opportunities
         run: python3 scripts/scout.py
 
+      - name: Triage personal eligibility
+        run: python3 scripts/triage_candidates.py
+
       - name: Evaluate discovery coverage
         id: discovery_gate
         continue-on-error: true

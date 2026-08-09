@@ -17,8 +17,9 @@ LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
 
 CORE_SOURCES = {"ethglobal", "devpost"}
-EXPECTED_SOURCES = {"dorahacks", "hacklist", "solana"}
-OPTIONAL_SOURCES = {"gitcoin", "twitter", "exa"}
+EXPECTED_SOURCES = {"hacklist", "solana"}
+OPTIONAL_SOURCES = {"twitter", "exa"}
+RETIRED_SOURCES = {"dorahacks", "gitcoin"}
 MINIMUM_TOTAL_RESULTS = 10
 
 
@@ -31,7 +32,7 @@ def evaluate(manifest: dict[str, Any], health: dict[str, Any]) -> tuple[list[str
     for error in manifest.get("source_errors") or []:
         source = str(error).split(":", 1)[0]
         message = f"source error: {error}"
-        if source in OPTIONAL_SOURCES:
+        if source in OPTIONAL_SOURCES or source in RETIRED_SOURCES:
             warnings.append(message)
         else:
             failures.append(message)
