@@ -2,7 +2,9 @@ name: Discover, verify, and publish
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    # First-party scans every four hours. GitHub may delay scheduled starts, so
+    # freshness is measured from the persisted run manifest, not cron time.
+    - cron: "17 */4 * * *"
   workflow_dispatch:
   # NOTE: No push trigger. The action commits with GITHUB_TOKEN which
   # doesn't trigger workflows, but removing push trigger entirely
@@ -33,6 +35,11 @@ jobs:
 
       - name: Discover opportunities
         run: python3 scripts/scout.py
+
+      - name: Evaluate discovery coverage
+        id: discovery_gate
+        continue-on-error: true
+        run: python3 scripts/data_quality_gate.py
 
       - name: Check data quality
         run: python3 scripts/verify_data.py --check-urls
@@ -68,9 +75,15 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          git diff --quiet docs/ data/opportunities.json data/scout_candidates.json && exit 0
+          test -z "$(git status --porcelain -- docs/ data/opportunities.json data/scout_candidates.json data/source_health.json data/last_run.json)" && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ data/opportunities.json data/scout_candidates.json
+          git add docs/ data/opportunities.json data/scout_candidates.json data/source_health.json data/last_run.json
           git commit -m "Radar refresh: discover, verify, and regenerate"
           git push
+
+      - name: Fail loudly on degraded discovery
+        if: steps.discovery_gate.outcome == 'failure'
+        run: |
+          echo "Discovery results were published, but source coverage was degraded."
+          exit 1

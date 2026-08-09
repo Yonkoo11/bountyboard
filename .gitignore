@@ -13,7 +13,6 @@ data/roster.db
 data/*.lock
 data/.roster.lock
 data/.heartbeat
-data/.source_health.json
 data/backups/
 data/export.csv
 data/export.json

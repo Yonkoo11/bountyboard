@@ -64,3 +64,55 @@
 - Some sources can change markup or block automated requests.
 - The current GitHub Pages site is read-only; triage and edits remain CLI/database
   operations.
+
+## August 9, 2026 monitoring reliability release
+
+### Scope reviewed
+
+- Broad Devpost pagination across open and upcoming online events.
+- Candidate retention, URL/name deduplication, retries, source-health history,
+  last-run evidence, and degraded-source quality gates.
+- Four-hour GitHub Actions refresh and local launchd path corrections.
+- Generated hackathon data and verification-date handling.
+
+### Automated review fallback
+
+CodeRabbit CLI 0.3.5 was invoked, but it could not run because the local CLI is
+not authenticated. The required manual security and correctness review was used
+instead.
+
+### Manual review results
+
+- Critical findings remaining: 0.
+- High-priority findings remaining: 0.
+- Dynamic opportunity text continues to pass through the generator's HTML
+  escaping and absolute HTTP(S)-URL validation; no new `innerHTML` or inline
+  event-handler path was introduced.
+- Network inputs are parsed as data and are not interpolated into shell commands.
+- Subprocess call sites remain argument-array based; this release adds no
+  `shell=True`, `eval`, or `exec` path.
+- Request failures are retried, attributed to their source, persisted, and made
+  visible to the quality gate instead of being treated as a successful empty run.
+- The publish change detector includes untracked first-run operational files.
+- Workflow permissions remain limited to repository contents writes needed for
+  the generated Pages commit.
+- No credentials, environment files, private keys, or tokens were added to the
+  release diff.
+
+### Verification
+
+- 30 automated tests pass.
+- Python compilation, JavaScript syntax, shell syntax, workflow YAML parsing,
+  launchd plist validation, site generation, and `git diff --check` pass.
+- `docs/styles.css` has no release diff; the established compact interface is
+  intentionally preserved.
+
+### Known limitations
+
+- DoraHacks currently challenges or rejects the existing automated adapter. The
+  gate intentionally marks that source degraded while still publishing results
+  from working sources.
+- Source discovery is broader, but individual eligibility, award terms, and
+  deadlines still require source-level verification before committing build time.
+- CodeRabbit authentication remains a local tooling setup task; manual review is
+  the documented release fallback.

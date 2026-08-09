@@ -82,6 +82,8 @@ def load_candidates() -> list[dict[str, Any]]:
         name = item.get("name") or item.get("title")
         if not name:
             continue
+        verification_status = item.get("verification_status") or "unverified"
+        last_checked_at = item.get("last_checked_at") or item.get("scout_date")
         candidates.append({
             "id": f"radar-{index}-{name[:24]}",
             "name": name,
@@ -95,9 +97,12 @@ def load_candidates() -> list[dict[str, Any]]:
             "angle": item.get("description") or item.get("summary") or "",
             "url": safe_url(item.get("url")),
             "source": item.get("source") or "scout",
-            "verification_status": item.get("verification_status") or "unverified",
+            "verification_status": verification_status,
+            "verified_at": item.get("verified_at") or (
+                last_checked_at if verification_status == "verified" else None
+            ),
             "application_status": item.get("application_status") or "unknown",
-            "last_checked_at": item.get("last_checked_at") or item.get("scout_date"),
+            "last_checked_at": last_checked_at,
             "award_type": item.get("award_type") or "unknown",
             "eligibility": item.get("eligibility") or "",
         })

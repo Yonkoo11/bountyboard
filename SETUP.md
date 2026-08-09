@@ -67,7 +67,7 @@ python scripts/notify.py info "hello"
 ## Automation
 
 GitHub Actions discovers, checks, tests, generates, and publishes the radar
-daily. The `launchd/` definitions provide optional local macOS automation for
+every four hours. The `launchd/` definitions provide optional local macOS automation for
 calendar synchronization, daily briefings, and additional scouts.
 
 ---
@@ -141,7 +141,9 @@ Each event gets 3 reminders: 7 days, 3 days, and 1 day before deadline.
 | `data/roster.db` | SQLite database (source of truth) |
 | `data/backups/YYYY-MM-DD.json` | Daily versioned backups |
 | `data/audit.jsonl` | Audit log of every field change |
-| `data/scout_candidates.json` | Low-score items pending review |
+| `data/scout_candidates.json` | Plausible leads pending source-level review |
+| `data/source_health.json` | Rolling per-source result counts used for anomaly detection |
+| `data/last_run.json` | Evidence from the latest completed discovery scan |
 | `logs/` | Cron logs per run |
 
 ---

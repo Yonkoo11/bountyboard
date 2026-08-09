@@ -29,6 +29,8 @@ from typing import Optional
 
 REPO_DIR        = Path(__file__).parent.parent
 CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
+SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
+LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 LOGS_DIR        = REPO_DIR / "logs"
 TODAY_ISO       = date.today().isoformat()
 
@@ -204,22 +206,27 @@ def _is_future(deadline_str: Optional[str]) -> bool:
 # ── Rate-limited requests ─────────────────────────────────────────────────────
 
 _last_request_time: float = 0.0
+FETCH_FAILURES: list[str] = []
 
 def _fetch(url: str, **kwargs) -> Optional["requests.Response"]:  # type: ignore[name-defined]
     global _last_request_time
     import requests
-    elapsed = time.time() - _last_request_time
-    if elapsed < 2.0:
-        time.sleep(2.0 - elapsed)
-    try:
-        resp = requests.get(url, timeout=12, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36", "Accept": "application/json, text/html,*/*"}, **kwargs)
-        _last_request_time = time.time()
-        resp.raise_for_status()
-        return resp
-    except Exception as e:
-        log.warning(f"Request failed for {url}: {e}")
-        _last_request_time = time.time()
-        return None
+    last_error: Exception | None = None
+    for attempt in range(1, 4):
+        elapsed = time.time() - _last_request_time
+        if elapsed < 2.0:
+            time.sleep(2.0 - elapsed)
+        try:
+            resp = requests.get(url, timeout=12, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36", "Accept": "application/json, text/html,*/*"}, **kwargs)
+            _last_request_time = time.time()
+            resp.raise_for_status()
+            return resp
+        except Exception as error:
+            last_error = error
+            _last_request_time = time.time()
+            log.warning(f"Request attempt {attempt}/3 failed for {url}: {error}")
+    FETCH_FAILURES.append(f"{url}: {last_error}")
+    return None
 
 
 # ── Source: ETHGlobal ─────────────────────────────────────────────────────────
@@ -274,36 +281,58 @@ def fetch_devpost() -> list[dict]:
     results = []
     seen: set[str] = set()
 
-    # Devpost search API (JSON) for relevant tags
-    for tag in ["ai", "blockchain", "web3"]:
-        resp = _fetch(
-            "https://devpost.com/api/hackathons",
-            params={"challenge_type[]": "online", "search": tag, "status[]": "upcoming"},
-        )
-        if not resp:
-            continue
-        try:
-            data = resp.json()
-        except Exception:
-            continue
-        for item in data.get("hackathons", []):
-            url   = str(item.get("url", ""))
-            title = str(item.get("title", ""))
-            desc  = str(item.get("tagline", "") or "")
-            if not url or not title or url in seen:
-                continue
-            seen.add(url)
-            prize    = item.get("prize_amount", 0) or 0
-            deadline = _normalize_date(str(item.get("submission_period_dates", "") or ""))
-            results.append({
-                "source":     "devpost",
-                "url":        url,
-                "name":       title,
-                "description": desc,
-                "deadline":   deadline,
-                "prize_usd":  int(prize) if str(prize).isdigit() else 0,
-                "prize_note": f"${prize}" if prize else "",
-            })
+    # Ingest broadly. Relevance belongs in ranking, not discovery. Query both
+    # lifecycle states because an event can start accepting submissions before
+    # the old "upcoming"-only search sees it.
+    for status in ("open", "upcoming"):
+        page = 1
+        while True:
+            resp = _fetch(
+                "https://devpost.com/api/hackathons",
+                params={
+                    "challenge_type[]": "online",
+                    "status[]": status,
+                    "page": page,
+                },
+            )
+            if not resp:
+                break
+            try:
+                data = resp.json()
+            except Exception:
+                log.warning(f"Devpost returned invalid JSON for {status=} {page=}")
+                break
+
+            items = data.get("hackathons", [])
+            for item in items:
+                url   = str(item.get("url", ""))
+                title = str(item.get("title", ""))
+                themes = item.get("themes") or []
+                desc  = " ".join(str(theme) for theme in themes)
+                if not url or not title or url in seen:
+                    continue
+                seen.add(url)
+                prize    = item.get("prize_amount", 0) or 0
+                deadline = _normalize_date(str(item.get("submission_period_dates", "") or ""))
+                results.append({
+                    "source":     "devpost",
+                    "url":        url,
+                    "name":       title,
+                    "description": desc,
+                    "deadline":   deadline,
+                    "prize_usd":  int(prize) if str(prize).isdigit() else 0,
+                    "prize_note": f"${prize}" if prize else "",
+                })
+
+            meta = data.get("meta") or {}
+            total_count = int(meta.get("total_count") or len(items))
+            per_page = int(meta.get("per_page") or len(items) or 1)
+            if not items or page * per_page >= total_count:
+                break
+            page += 1
+            if page > 25:
+                log.warning(f"Devpost pagination exceeded safety cap for {status=}")
+                break
 
     log.info(f"Devpost: {len(results)} entries")
     return results
@@ -520,10 +549,7 @@ def fetch_twitter_signals() -> list[dict]:
 
 # ── Source health tracking ─────────────────────────────────────────────────────
 
-SOURCE_HEALTH_FILE = REPO_DIR / "data" / ".source_health.json"
-
-
-def _update_source_health(source_counts: dict[str, int]) -> None:
+def _update_source_health(source_counts: dict[str, int]) -> dict[str, dict]:
     """Persist per-source result counts and alert if a source appears dead."""
     try:
         data: dict[str, dict] = {}
@@ -557,6 +583,23 @@ def _update_source_health(source_counts: dict[str, int]) -> None:
         SOURCE_HEALTH_FILE.write_text(json.dumps(data, indent=2))
     except Exception as e:
         log.warning(f"Could not write source health: {e}")
+    return data
+
+
+def _write_run_manifest(
+    source_counts: dict[str, int],
+    errors: list[str],
+    stats: dict[str, int],
+) -> None:
+    """Persist evidence about the scan independently of site generation."""
+    manifest = {
+        "completed_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "source_counts": source_counts,
+        "source_errors": errors,
+        "stats": stats,
+        "degraded_sources": sorted(src for src, count in source_counts.items() if count == 0),
+    }
+    LAST_RUN_FILE.write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 # ── Name-based dedup ────────────────────────────────────────────────────────────
@@ -575,6 +618,30 @@ def _build_name_slugs(existing_ids: set[str], candidates: list[dict]) -> set[str
         if name:
             slugs.add(_name_slug(name))
     return slugs
+
+
+def _candidate_urls(candidates: list[dict]) -> set[str]:
+    """Return canonical non-empty URLs already retained in the candidate pool."""
+    return {
+        str(candidate.get("url", "")).strip()
+        for candidate in candidates
+        if str(candidate.get("url", "")).strip()
+    }
+
+
+def _candidate_from_item(item: dict, score: int, *, scout_date: str = TODAY_ISO) -> dict:
+    """Retain a plausible lead while making its uncertainty explicit."""
+    candidate = dict(item)
+    candidate.update({
+        "category": candidate.get("category") or "hackathon",
+        "theme_fit": score,
+        "scout_date": scout_date,
+        "last_checked_at": candidate.get("last_checked_at") or scout_date,
+        "verification_status": candidate.get("verification_status") or "unverified",
+        "application_status": candidate.get("application_status") or "unknown",
+        "award_type": candidate.get("award_type") or "unknown",
+    })
+    return candidate
 
 
 # ── Source: Exa (via stableenrich.dev) ────────────────────────────────────────
@@ -812,13 +879,17 @@ def main():
     candidates = [
         c for c in candidates
         if (not c.get("deadline") or c["deadline"] >= cutoff_date)
-        and (not c.get("scout_date") or c["scout_date"] >= cutoff_scout)
+        and (
+            not (c.get("last_checked_at") or c.get("scout_date"))
+            or (c.get("last_checked_at") or c.get("scout_date")) >= cutoff_scout
+        )
     ]
     if len(candidates) < before_ttl:
         log.info(f"TTL cleanup: removed {before_ttl - len(candidates)} stale candidates")
 
     # Build name slug dedup set
     name_slugs = _build_name_slugs(existing_ids, candidates)
+    existing_urls.update(_candidate_urls(candidates))
 
     # Fetch all sources
     all_raw: list[dict] = []
@@ -828,11 +899,14 @@ def main():
         if source_filter and src_name != source_filter:
             continue
         try:
+            failures_before = len(FETCH_FAILURES)
             results = fn()
             source_counts[src_name] = len(results)
             all_raw.extend(results)
+            if len(FETCH_FAILURES) > failures_before:
+                errors.append(f"{src_name}: {len(FETCH_FAILURES) - failures_before} request failure(s)")
         except Exception as e:
-            msg = f"{src_name} fetch failed: {e}"
+            msg = f"{src_name}: fetch failed: {e}"
             log.error(msg)
             errors.append(msg)
             source_counts[src_name] = 0
@@ -911,13 +985,11 @@ def main():
             stats["new_review"] += 1
             log.info(f"[REVIEW] {item['name']} (score={s}) from {item['source']}")
 
-        elif s >= 4:
-            item["scout_date"] = TODAY_ISO
-            new_candidates.append(item)
-            stats["candidate"] += 1
-
         else:
-            stats["skipped"] += 1
+            # A trusted source and a future/unknown deadline are enough to keep
+            # a lead on the radar. The score controls ranking, never inclusion.
+            new_candidates.append(_candidate_from_item(item, s))
+            stats["candidate"] += 1
 
     summary = (
         f"{stats['new_review']} new for review, "
@@ -934,6 +1006,9 @@ def main():
     if dry_run:
         log.info("[dry-run] No files written.")
         return
+
+    if not source_filter:
+        _write_run_manifest(source_counts, errors, stats)
 
     # Write new opportunities to DB
     for opp in new_opps:
