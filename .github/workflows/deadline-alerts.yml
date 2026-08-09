@@ -41,9 +41,10 @@ jobs:
           marker="<!-- digest:$digest_hash -->"
           printf '\n%s\n' "$marker" >> /tmp/deadline-digest.md
           if test -z "$issue_number"; then
-            gh issue create --title "$title" --body-file /tmp/deadline-digest.md
+            gh issue create --title "$title" --body-file /tmp/deadline-digest.md --assignee "$GITHUB_REPOSITORY_OWNER"
             exit 0
           fi
+          gh issue edit "$issue_number" --add-assignee "$GITHUB_REPOSITORY_OWNER"
           current_body="$(gh issue view "$issue_number" --json body --jq .body)"
           case "$current_body" in
             *"$marker"*) echo "Deadline digest unchanged; no notification comment needed." ;;
