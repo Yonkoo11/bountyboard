@@ -1,0 +1,29 @@
+{
+  "completed_at": "2026-08-09T08:16:13+00:00",
+  "source_counts": {
+    "ethglobal": 86,
+    "devpost": 85,
+    "dorahacks": 0,
+    "gitcoin": 0,
+    "solana": 8,
+    "twitter": 0,
+    "exa": 0
+  },
+  "source_errors": [
+    "dorahacks: 1 request failure(s)",
+    "gitcoin: 8 request failure(s)"
+  ],
+  "stats": {
+    "new_review": 0,
+    "candidate": 84,
+    "skipped": 0,
+    "already_seen": 19,
+    "past": 76
+  },
+  "degraded_sources": [
+    "dorahacks",
+    "exa",
+    "gitcoin",
+    "twitter"
+  ]
+}

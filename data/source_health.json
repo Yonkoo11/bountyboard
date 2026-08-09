@@ -1,0 +1,51 @@
+{
+  "ethglobal": {
+    "count": 86,
+    "history": [
+      86
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "devpost": {
+    "count": 85,
+    "history": [
+      85
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "dorahacks": {
+    "count": 0,
+    "history": [
+      0
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "gitcoin": {
+    "count": 0,
+    "history": [
+      0
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "solana": {
+    "count": 8,
+    "history": [
+      8
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "twitter": {
+    "count": 0,
+    "history": [
+      0
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  },
+  "exa": {
+    "count": 0,
+    "history": [
+      0
+    ],
+    "last_run": "2026-08-09T08:16:13"
+  }
+}
