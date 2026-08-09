@@ -44,6 +44,9 @@ jobs:
         continue-on-error: true
         run: python3 scripts/data_quality_gate.py
 
+      - name: Validate successful-run receipt
+        run: python3 scripts/check_freshness.py --max-age-hours 1
+
       - name: Check data quality
         run: python3 scripts/verify_data.py --check-urls
 

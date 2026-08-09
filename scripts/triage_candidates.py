@@ -38,6 +38,8 @@ def triage(item: dict, profile: dict) -> dict:
         reasons.append("in-person only")
     normalized["availability_state"] = availability
     normalized["research_reasons"] = reasons
+    normalized.setdefault("review_status", "pending")
+    normalized.setdefault("reviewed_at", None)
     normalized["profile_match"] = (
         "no" if "in-person only" in reasons
         else "conditional" if availability in ("conditional", "unknown")

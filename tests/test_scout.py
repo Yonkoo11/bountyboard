@@ -72,6 +72,34 @@ class ScoutTests(unittest.TestCase):
         self.assertEqual(rows[0]["prize_usd"], 685_000)
         self.assertEqual(rows[0]["prize_note"], "$685,000")
 
+    def test_devfolio_keeps_online_and_rejects_offline_only_cards(self):
+        html = """
+        <section><div><a href="https://remote.devfolio.co/"><h3>Remote Build</h3></a>
+          <p>Online</p><p>Open</p><p>Starts 18/08/26</p><button>Apply now</button></div></section>
+        <section><div><a href="https://local.devfolio.co/"><h3>Local Build</h3></a>
+          <p>Offline</p><p>Open</p><p>Starts 22/08/26</p><button>Apply now</button></div></section>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_devfolio()
+        self.assertEqual([row["name"] for row in rows], ["Remote Build"])
+        self.assertEqual(rows[0]["format"], "online")
+        self.assertEqual(rows[0]["start_date"], "2026-08-18")
+        self.assertIsNone(rows[0]["deadline"])
+
+    @patch("scripts.scout.date")
+    def test_mlh_keeps_only_future_digital_events(self, mock_date):
+        mock_date.today.return_value = __import__("datetime").date(2026, 8, 9)
+        html = """
+        <a href="https://events.mlh.io/events/14000-future-build">Everywhere Future Build AUG 12 - 18 Everywhere, Worldwide Digital</a>
+        <a href="https://local.example">Town Local Build AUG 12 - 18 Town, US In-Person</a>
+        <a href="https://events.mlh.io/events/13000-old-build">Everywhere Old Build JUN 01 - 07 Everywhere, Worldwide Digital</a>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_mlh()
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["deadline"], "2026-08-18")
+        self.assertEqual(rows[0]["format"], "online")
+
     def test_low_score_candidate_is_preserved_as_unverified(self):
         candidate = scout._candidate_from_item(
             {

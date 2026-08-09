@@ -18,7 +18,7 @@ SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
 
 CORE_SOURCES = {"ethglobal", "devpost"}
 EXPECTED_SOURCES = {"hacklist", "solana"}
-OPTIONAL_SOURCES = {"twitter", "exa"}
+OPTIONAL_SOURCES = {"devfolio", "mlh", "twitter", "exa"}
 RETIRED_SOURCES = {"dorahacks", "gitcoin"}
 MINIMUM_TOTAL_RESULTS = 10
 
@@ -37,9 +37,12 @@ def evaluate(manifest: dict[str, Any], health: dict[str, Any]) -> tuple[list[str
         else:
             failures.append(message)
 
-    missing = sorted((CORE_SOURCES | EXPECTED_SOURCES | OPTIONAL_SOURCES) - counts.keys())
-    if missing:
-        failures.append(f"sources did not report a result: {', '.join(missing)}")
+    missing_required = sorted((CORE_SOURCES | EXPECTED_SOURCES) - counts.keys())
+    if missing_required:
+        failures.append(f"sources did not report a result: {', '.join(missing_required)}")
+    missing_optional = sorted(OPTIONAL_SOURCES - counts.keys())
+    if missing_optional:
+        warnings.append(f"optional sources did not report a result: {', '.join(missing_optional)}")
 
     for source in sorted(CORE_SOURCES):
         if int(counts.get(source, 0)) <= 0:
@@ -50,6 +53,8 @@ def evaluate(manifest: dict[str, Any], health: dict[str, Any]) -> tuple[list[str
             failures.append(f"expected source {source} returned zero results")
 
     for source in sorted(OPTIONAL_SOURCES):
+        if source not in counts:
+            continue
         if int(counts.get(source, 0)) <= 0:
             warnings.append(f"optional source {source} returned zero results")
 

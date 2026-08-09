@@ -6,7 +6,8 @@ scout.py — Automated opportunity discovery for BountyBoard.
 Sources:
   - ETHGlobal (events API)
   - Devpost (JSON search API)
-  - DoraHacks (public API)
+  - Devfolio (server-rendered listings)
+  - Major League Hacking (season listings)
   - HackList (curated cross-check feed)
 
 Scores each opportunity against BountyBoard themes.
@@ -361,6 +362,142 @@ def fetch_devpost() -> list[dict]:
                 break
 
     log.info(f"Devpost: {len(results)} entries")
+    return results
+
+
+# ── Source: Devfolio ──────────────────────────────────────────────────────────
+
+def _containing_card(link, marker: str, max_levels: int = 8):
+    """Return the smallest ancestor whose text contains a card marker."""
+    node = link
+    for _ in range(max_levels):
+        node = node.parent
+        if node is None:
+            return None
+        if marker.lower() in node.get_text(" ", strip=True).lower():
+            return node
+    return None
+
+
+def fetch_devfolio() -> list[dict]:
+    """Discover remote-capable hackathons from Devfolio's public catalog."""
+    log.info("Fetching Devfolio hackathons...")
+    resp = _fetch("https://devfolio.co/explore")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping Devfolio")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    for link in soup.find_all("a", href=True):
+        heading = link.find("h3")
+        url = str(link.get("href") or "").strip()
+        if not heading or not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        card = _containing_card(link, "Apply now")
+        if card is None:
+            continue
+        card_text = " ".join(card.get_text(" ", strip=True).split())
+        # The user's profile is remote-only. Reject explicit offline-only cards
+        # here so they never add noise to the personal radar.
+        is_online = bool(re.search(r"\bOnline\b", card_text, re.IGNORECASE))
+        is_offline = bool(re.search(r"\bOffline\b", card_text, re.IGNORECASE))
+        if is_offline and not is_online:
+            continue
+        status_match = re.search(r"\b(Open|Upcoming)\b", card_text, re.IGNORECASE)
+        if not status_match:
+            continue
+        seen.add(url)
+        name = heading.get_text(" ", strip=True)
+        starts = re.search(r"\bStarts\s+(\d{2}/\d{2}/\d{2,4})\b", card_text, re.IGNORECASE)
+        start_date = None
+        if starts:
+            try:
+                start_date = datetime.strptime(starts.group(1), "%d/%m/%y").strftime("%Y-%m-%d")
+            except ValueError:
+                try:
+                    start_date = datetime.strptime(starts.group(1), "%d/%m/%Y").strftime("%Y-%m-%d")
+                except ValueError:
+                    pass
+        results.append({
+            "source": "devfolio",
+            "url": url,
+            "name": name,
+            "description": card_text[:500],
+            "deadline": None,
+            "start_date": start_date,
+            "format": "online" if is_online else "unknown",
+            "prize_usd": 0,
+            "prize_note": "",
+        })
+
+    log.info(f"Devfolio: {len(results)} remote-capable entries")
+    return results
+
+
+# ── Source: Major League Hacking ──────────────────────────────────────────────
+
+def fetch_mlh() -> list[dict]:
+    """Discover digital events from MLH's official season listing."""
+    season_year = date.today().year
+    log.info(f"Fetching MLH {season_year} digital events...")
+    resp = _fetch(f"https://www.mlh.com/seasons/{season_year}/events")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping MLH")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    date_pattern = re.compile(
+        r"\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s+"
+        r"\d{1,2}\s*[–—-]\s*(\d{1,2})\b",
+        re.IGNORECASE,
+    )
+    for link in soup.find_all("a", href=True):
+        text = " ".join(link.get_text(" ", strip=True).split())
+        url = str(link.get("href") or "").strip()
+        if not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        if not re.search(r"\bDigital\b", text, re.IGNORECASE):
+            continue
+        date_match = date_pattern.search(text)
+        if not date_match:
+            continue
+        deadline = _normalize_date(
+            f"{date_match.group(1).title()} {date_match.group(2)} {season_year}"
+        )
+        if not _is_future(deadline):
+            continue
+        # The event name is the text between an optional location prefix and
+        # the date. MLH URLs carry a clean, stable fallback name.
+        before_date = text[:date_match.start()].strip(" ,")
+        slug = re.sub(r"^\d+-", "", url.split("?", 1)[0].rstrip("/").split("/")[-1])
+        fallback = " ".join(word.capitalize() for word in slug.split("-") if word)
+        name = fallback or before_date or "MLH digital event"
+        seen.add(url)
+        results.append({
+            "source": "mlh",
+            "url": url,
+            "name": name,
+            "description": text[:500],
+            "deadline": deadline,
+            "format": "online",
+            "location": "Worldwide",
+            "prize_usd": 0,
+            "prize_note": "",
+        })
+
+    log.info(f"MLH: {len(results)} future digital entries")
     return results
 
 
@@ -957,6 +1094,8 @@ def _run_find_similar(
 SOURCES = {
     "ethglobal": fetch_ethglobal,
     "devpost":   fetch_devpost,
+    "devfolio":  fetch_devfolio,
+    "mlh":       fetch_mlh,
     "hacklist":  fetch_hacklist,
     # DoraHacks' anonymous API is WAF-protected. HackList is the active
     # cross-platform redundancy feed until DoraHacks publishes a stable API.
@@ -1092,6 +1231,7 @@ def main():
                 "name":           item["name"],
                 "category":       "hackathon",
                 "deadline":       item.get("deadline"),
+                "start_date":     item.get("start_date"),
                 "prize_usd":      item.get("prize_usd", 0),
                 "prize_note":     item.get("prize_note", ""),
                 "theme_fit":      s,
@@ -1104,6 +1244,8 @@ def main():
                 "application_status": "unknown",
                 "last_checked_at": TODAY_ISO,
                 "award_type": "unknown",
+                "format": item.get("format", ""),
+                "location": item.get("location", ""),
             }
             new_opps.append(new_opp)
             stats["new_review"] += 1

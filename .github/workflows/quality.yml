@@ -20,6 +20,8 @@ jobs:
         run: python3 -m compileall -q -f . -x '/\.git|/\.venv'
       - name: Unit and integration tests
         run: python3 -m unittest discover -s tests -v
+      - name: Validate committed refresh receipt
+        run: python3 scripts/check_freshness.py --max-age-hours 168
       - name: Build static site
         run: |
           python3 scripts/seed_db.py

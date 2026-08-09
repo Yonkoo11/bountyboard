@@ -17,7 +17,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -37,7 +39,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official lablab.ai event page",
@@ -57,7 +61,9 @@
     "award_type": "non_monetary",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -77,7 +83,9 @@
     "award_type": "prize",
     "availability_state": "conditional",
     "research_reasons": [],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -97,7 +105,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -118,7 +128,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "current third-party event listing; canonical DoraHacks page unconfirmed",
@@ -138,7 +150,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -159,7 +173,9 @@
     "award_type": "prize",
     "availability_state": "conditional",
     "research_reasons": [],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -180,7 +196,9 @@
     "award_type": "prize",
     "availability_state": "conditional",
     "research_reasons": [],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -201,7 +219,9 @@
     "award_type": "non_monetary",
     "availability_state": "conditional",
     "research_reasons": [],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Midnight event page",
@@ -222,7 +242,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official Devpost event page",
@@ -243,7 +265,9 @@
     "award_type": "prize",
     "availability_state": "conditional",
     "research_reasons": [],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official ETHGlobal event page",
@@ -263,7 +287,9 @@
     "award_type": "prize",
     "availability_state": "available",
     "research_reasons": [],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official ETHGlobal event page",
@@ -285,7 +311,9 @@
     "research_reasons": [
       "in-person only"
     ],
-    "profile_match": "no"
+    "profile_match": "no",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official ETHGlobal event page",
@@ -307,7 +335,9 @@
     "research_reasons": [
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official ETHGlobal event page",
@@ -329,7 +359,9 @@
     "research_reasons": [
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "official ETHGlobal event page",
@@ -351,7 +383,9 @@
     "research_reasons": [
       "in-person only"
     ],
-    "profile_match": "no"
+    "profile_match": "no",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -373,7 +407,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -395,7 +431,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -417,7 +455,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -439,7 +479,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -461,7 +503,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -483,7 +527,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -505,7 +551,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -527,7 +575,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -549,7 +599,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -571,7 +623,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -593,7 +647,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -615,7 +671,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -637,7 +695,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -659,7 +719,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -681,7 +743,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -703,7 +767,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -725,7 +791,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -747,7 +815,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -769,7 +839,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -791,7 +863,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -813,7 +887,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -835,7 +911,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -857,7 +935,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -879,7 +959,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -901,7 +983,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -923,7 +1007,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -945,7 +1031,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -967,7 +1055,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -989,7 +1079,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1011,7 +1103,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1033,7 +1127,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1055,7 +1151,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1077,7 +1175,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1099,7 +1199,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1121,7 +1223,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1143,7 +1247,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1165,7 +1271,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1187,7 +1295,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1209,7 +1319,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1231,7 +1343,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1253,7 +1367,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1275,7 +1391,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1297,7 +1415,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1319,7 +1439,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1341,7 +1463,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1363,7 +1487,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1385,7 +1511,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1407,7 +1535,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1429,7 +1559,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1451,7 +1583,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1473,7 +1607,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1495,7 +1631,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1517,7 +1655,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1539,7 +1679,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1561,7 +1703,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1583,7 +1727,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1605,7 +1751,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1627,7 +1775,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1649,7 +1799,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1671,7 +1823,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1693,7 +1847,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1715,7 +1871,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1737,7 +1895,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1759,7 +1919,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1781,7 +1943,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1803,7 +1967,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1825,7 +1991,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1847,7 +2015,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1868,7 +2038,9 @@
     "research_reasons": [
       "eligibility"
     ],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1890,7 +2062,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1912,7 +2086,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1934,7 +2110,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1956,7 +2134,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -1978,7 +2158,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -2000,7 +2182,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "devpost",
@@ -2022,7 +2206,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2045,7 +2231,9 @@
       "eligibility",
       "in-person only"
     ],
-    "profile_match": "no"
+    "profile_match": "no",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2068,7 +2256,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2091,7 +2281,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2114,7 +2306,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2137,7 +2331,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2160,7 +2356,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2182,7 +2380,9 @@
       "deadline",
       "eligibility"
     ],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2204,7 +2404,9 @@
       "deadline",
       "eligibility"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2227,7 +2429,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2250,7 +2454,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2273,7 +2479,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2295,7 +2503,9 @@
       "deadline",
       "eligibility"
     ],
-    "profile_match": "yes"
+    "profile_match": "yes",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2318,7 +2528,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2341,7 +2553,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2364,7 +2578,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2387,7 +2603,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2409,7 +2627,9 @@
       "deadline",
       "eligibility"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2432,7 +2652,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2455,7 +2677,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2478,7 +2702,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2500,7 +2726,9 @@
       "deadline",
       "eligibility"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2523,7 +2751,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2546,7 +2776,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2569,7 +2801,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2592,7 +2826,9 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
   },
   {
     "source": "hacklist",
@@ -2615,6 +2851,138 @@
       "eligibility",
       "participation format"
     ],
-    "profile_match": "conditional"
+    "profile_match": "conditional",
+    "review_status": "pending",
+    "reviewed_at": null
+  },
+  {
+    "source": "devfolio",
+    "url": "https://hefty-hacks.devfolio.co/",
+    "name": "Hefty-Hacks",
+    "description": "Hefty-Hacks Hackathon Theme Blockchain FinTech + 500 participating Online Open Starts 24/10/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-10-24",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "profile_match": "yes"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://dora-hack.devfolio.co/",
+    "name": "Dora Hack 2.0",
+    "description": "Dora Hack 2.0 Hackathon Theme No Restrictions + 1000 participating Online Open Starts 20/08/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-08-20",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "profile_match": "yes"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://revengershack.devfolio.co/",
+    "name": "RevengersHack",
+    "description": "RevengersHack Hackathon Theme No Restrictions + 100 participating Online Open Starts 22/08/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-08-22",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "profile_match": "yes"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://codestorm-futureforge.devfolio.co/",
+    "name": "CodeStorm 2026: FutureForge",
+    "description": "CodeStorm 2026: FutureForge Hackathon Theme Design AI Future Mobility + 500 participating Online Open Live Apply now",
+    "deadline": null,
+    "start_date": null,
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "profile_match": "yes"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://muba-hackathon.devfolio.co/",
+    "name": "MUBA Blockchain Hackathon",
+    "description": "MUBA Blockchain Hackathon Hackathon Theme Blockchain FinTech AI + 250 participating Online Open Starts 26/08/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-08-26",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-09",
+    "last_checked_at": "2026-08-09",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "profile_match": "yes"
   }
 ]
