@@ -119,7 +119,7 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertNotIn('styles.css?v=20260809', page)
         self.assertNotIn("See the opportunity<br>before it passes", page)
 
-    def test_generated_page_surfaces_next_move_before_full_queue(self):
+    def test_generated_page_uses_restored_editorial_hero(self):
         item = {
             "id": "visible-hackathon",
             "name": "Visible Hackathon",
@@ -136,11 +136,11 @@ class SiteGenerationTests(unittest.TestCase):
             generate_site, "load_candidates", return_value=[]
         ):
             page = generate_site.generate()
-        self.assertIn("Your next move", page)
+        self.assertIn("See the opportunity before it passes.", page)
         self.assertIn("Visible Hackathon", page)
-        self.assertLess(page.index('id="next-move-title"'), page.index('id="opportunities-title"'))
+        self.assertLess(page.index('id="hero-title"'), page.index('id="opportunities-title"'))
 
-    def test_design_uses_queue_views_instead_of_duplicate_hackathon_preview(self):
+    def test_design_uses_one_full_radar_and_personal_availability_filter(self):
         items = [{
             "id": f"hackathon-{index}",
             "name": f"Hackathon {index}",
@@ -157,9 +157,9 @@ class SiteGenerationTests(unittest.TestCase):
         ):
             page = generate_site.generate()
         self.assertNotIn('class="hackathon-grid"', page)
-        self.assertIn('data-view="actionable"', page)
-        self.assertIn('data-view="research"', page)
-        self.assertIn('data-view="all"', page)
+        self.assertIn('id="availabilityFilter"', page)
+        self.assertIn('value="for_me"', page)
+        self.assertIn("All possible opportunities", page)
 
     def test_availability_classification_is_conservative(self):
         self.assertEqual(generate_site.availability_state({"format": "Online"}), "available")
