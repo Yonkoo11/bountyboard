@@ -219,7 +219,7 @@ h2 { margin-bottom: var(--space-2); font-family: Georgia, "Times New Roman", ser
 
 .toolbar {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) repeat(3, minmax(150px, auto)) auto;
+  grid-template-columns: minmax(240px, 1fr) repeat(4, minmax(140px, auto)) auto;
   gap: var(--space-3);
   padding: var(--space-4);
   background: var(--surface);
@@ -275,6 +275,10 @@ h2 { margin-bottom: var(--space-2); font-family: Georgia, "Times New Roman", ser
 .dot.partially_verified, .status.partially_verified > span { background: var(--amber); }
 .dot.stale, .status.stale > span { background: var(--red); }
 .dot.unverified, .status.unverified > span { background: var(--blue); }
+.availability { color: var(--muted); font-size: 12px; }
+.availability.available { color: var(--accent); }
+.availability.conditional { color: var(--amber); }
+.availability.unavailable { color: var(--red); }
 
 .opportunity-list { border-top: 1px solid var(--line-strong); }
 .opportunity {
@@ -430,7 +434,7 @@ footer strong { color: var(--ink); }
 .workspace { padding-block: var(--space-10); }
 .section-heading { margin-bottom: var(--space-5); }
 h2 { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 28px; font-weight: 750; letter-spacing: -0.03em; }
-.toolbar { grid-template-columns: minmax(240px, 1fr) repeat(3, minmax(130px, auto)) auto; padding: var(--space-3); }
+.toolbar { grid-template-columns: minmax(220px, 1fr) repeat(4, minmax(128px, auto)) auto; padding: var(--space-3); }
 .legend { margin-block: var(--space-4); }
 .opportunity-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); border-top: 0; }
 .opportunity {

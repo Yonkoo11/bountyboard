@@ -105,6 +105,7 @@ def load_candidates() -> list[dict[str, Any]]:
             "last_checked_at": last_checked_at,
             "award_type": item.get("award_type") or "unknown",
             "eligibility": item.get("eligibility") or "",
+            "format": item.get("format") or "",
         })
     return candidates
 
@@ -126,6 +127,51 @@ def deduplicate(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         seen_names.add(name_key)
         unique.append(item)
     return unique
+
+
+def availability_state(opportunity: dict[str, Any]) -> str:
+    """Classify personal availability without pretending unknown means eligible."""
+    text = " ".join(
+        compact_text(opportunity.get(field, ""))
+        for field in ("name", "angle", "notes", "description", "eligibility", "format", "location")
+    ).lower()
+    # "Global" is intentionally excluded: brand names such as ETHGlobal do not
+    # prove remote participation. Worldwide does describe participant access.
+    online = any(term in text for term in ("online", "virtual", "remote", "worldwide"))
+    in_person = any(term in text for term in ("in-person", "in person", "offline", "irl hackathon"))
+    mandatory_travel = any(term in text for term in (
+        "shortlisted teams travel", "in-person final", "in person final",
+        "live final in", "culminating in a live demo day", "finale at",
+    ))
+    optional_travel = any(term in text for term in (
+        "may be invited", "invited to attend", "optional in-person",
+        "optional in person", "travel opportunity", "invitation to",
+    ))
+    restricted = any(term in text for term in (
+        "students only", "student hackathon", "university students", "high school",
+        "ages 13", "ages 14", "ages 15", "ages 16", "ages 17", "ages 18",
+        "apac-focused", "residents of", "must reside", "team of 2", "teams of 2",
+    ))
+    if mandatory_travel or (in_person and online):
+        return "conditional"
+    if optional_travel:
+        return "conditional"
+    if in_person:
+        return "unavailable"
+    if restricted:
+        return "conditional"
+    if online:
+        return "available"
+    return "unknown"
+
+
+def availability_label(state: str) -> str:
+    return {
+        "available": "Remote-compatible",
+        "conditional": "Check restrictions",
+        "unavailable": "In-person only",
+        "unknown": "Format unknown",
+    }[state]
 
 
 def deadline_label(opportunity: dict[str, Any]) -> str:
@@ -202,6 +248,7 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     source = opportunity.get("source") or "manual"
     checked = opportunity.get("last_checked_at") or opportunity.get("verified_at") or "never"
     eligibility = opportunity.get("eligibility") or "Not confirmed"
+    availability = availability_state(opportunity)
     ev_html = f'<span>EV estimate <strong>${expected:,}</strong></span>' if expected is not None else ""
     details_link = ""
     source_url = safe_url(opportunity.get("url"))
@@ -223,7 +270,7 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     return f"""
 <article class="opportunity" data-search="{escape(search_text)}"
   data-category="{escape(opportunity.get("category") or "other")}"
-  data-verification="{verification}" data-state="{state}"
+  data-verification="{verification}" data-state="{state}" data-availability="{availability}"
   data-score="{score}" data-prize="{opportunity.get("max_award_usd") or opportunity.get("prize_usd") or 0}"
   data-deadline="{escape(opportunity.get("deadline") or "9999-12-31")}">
   <div class="rank" aria-label="Actionability rank {rank}">{rank:02d}</div>
@@ -231,6 +278,7 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
     <div class="eyebrow-row">
       <span class="status {verification}"><span aria-hidden="true"></span>{verification_label(verification)}</span>
       <span class="category">{escape(opportunity.get("category") or "other")}</span>
+      <span class="availability {availability}">{availability_label(availability)}</span>
       <span class="source">via {escape(source)}</span>
     </div>
     <h3>{escape(opportunity.get("name"))}</h3>
@@ -302,10 +350,11 @@ def generate() -> str:
     known_deadlines = sum(days_until(item.get("deadline")) is not None for item in visible)
     total_pool = sum(item.get("prize_usd") or 0 for item in visible)
     hackathons = sorted(
-        (item for item in visible if item.get("category") == "hackathon"),
+        (item for item in visible if item.get("category") == "hackathon" and availability_state(item) != "unavailable"),
         key=lambda item: item.get("deadline") or "9999-12-31",
     )
-    hackathon_cards = "".join(hackathon_card(item) for item in hackathons)
+    preview_hackathons = hackathons[:6]
+    hackathon_cards = "".join(hackathon_card(item) for item in preview_hackathons)
 
     rows = "".join(opportunity_row(item, index) for index, item in enumerate(visible, 1))
     if not rows:
@@ -378,6 +427,7 @@ def generate() -> str:
         <div>
           <p class="kicker">Upcoming hackathons</p>
           <h2 id="hackathons-title">{len(hackathons)} hackathons open now</h2>
+          <p>Top {len(preview_hackathons)} by deadline and actionability; use the radar for the full list.</p>
         </div>
         <a class="text-link" href="#opportunities">View the full radar ↓</a>
       </div>
@@ -391,7 +441,7 @@ def generate() -> str:
           <h2 id="opportunities-title">Possible opportunities</h2>
           <p>{linked_count} have source links. Verification changes confidence and ranking, not inclusion.</p>
         </div>
-        <div class="result-count" aria-live="polite"><strong id="visibleCount">{len(visible)}</strong> shown</div>
+        <div class="result-count" aria-live="polite"><strong id="visibleCount">{sum(availability_state(item) != "unavailable" for item in visible)}</strong> shown</div>
       </div>
 
       <div class="toolbar" aria-label="Opportunity controls">
@@ -421,6 +471,17 @@ def generate() -> str:
           </select>
         </label>
         <label class="select-control">
+          <span>Availability</span>
+          <select id="availabilityFilter">
+            <option value="for_me">For me — hide in-person</option>
+            <option value="all">All opportunities</option>
+            <option value="available">Remote-compatible</option>
+            <option value="conditional">Check restrictions</option>
+            <option value="unknown">Format unknown</option>
+            <option value="unavailable">In-person only</option>
+          </select>
+        </label>
+        <label class="select-control">
           <span>Sort</span>
           <select id="sort">
             <option value="score">Actionability</option>
@@ -436,6 +497,7 @@ def generate() -> str:
         <span><i class="dot partially_verified"></i>Some facts confirmed</span>
         <span><i class="dot unverified"></i>Lead awaiting research</span>
         <span><i class="dot stale"></i>Evidence older than 30 days</span>
+        <span>“For me” hides confirmed in-person-only events; unknown formats stay visible.</span>
       </div>
 
       <div class="opportunity-list" id="opportunityList">

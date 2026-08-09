@@ -137,6 +137,61 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertIn("Visible Hackathon", page)
         self.assertLess(page.index('id="hackathons-title"'), page.index('id="opportunities-title"'))
 
+    def test_hackathon_preview_does_not_bury_search_controls(self):
+        items = [{
+            "id": f"hackathon-{index}",
+            "name": f"Hackathon {index}",
+            "category": "hackathon",
+            "status": "active",
+            "deadline": f"2026-09-{index + 1:02d}",
+            "url": f"https://example.com/{index}",
+            "format": "online",
+            "verification_status": "unverified",
+            "application_status": "open",
+        } for index in range(8)]
+        with patch.object(generate_site.db, "get_all", return_value=items), patch.object(
+            generate_site, "load_candidates", return_value=[]
+        ):
+            page = generate_site.generate()
+        preview = page[page.index('class="hackathon-grid"'):page.index('id="opportunities"')]
+        self.assertEqual(preview.count('class="hackathon-card"'), 6)
+        self.assertIn("Top 6", page)
+
+    def test_availability_classification_is_conservative(self):
+        self.assertEqual(generate_site.availability_state({"format": "Online"}), "available")
+        self.assertEqual(generate_site.availability_state({"format": "In-person"}), "unavailable")
+        self.assertEqual(
+            generate_site.availability_state({"name": "ETHGlobal Tokyo", "angle": "In-person in Tokyo"}),
+            "unavailable",
+        )
+        self.assertEqual(
+            generate_site.availability_state({"angle": "Online qualification with an in-person final"}),
+            "conditional",
+        )
+        self.assertEqual(
+            generate_site.availability_state({"angle": "Students only; virtual hackathon"}),
+            "conditional",
+        )
+        self.assertEqual(generate_site.availability_state({"angle": "Details coming soon"}), "unknown")
+
+    def test_optional_finalist_travel_is_not_hidden(self):
+        state = generate_site.availability_state({
+            "angle": "Finalists may be invited to an in-person tournament in Tokyo."
+        })
+        self.assertEqual(state, "conditional")
+
+    def test_generated_row_exposes_availability_to_filter(self):
+        row = generate_site.opportunity_row({
+            "name": "Local-only event",
+            "format": "In-person",
+            "category": "hackathon",
+            "status": "radar",
+            "application_status": "open",
+            "verification_status": "unverified",
+        }, 1)
+        self.assertIn('data-availability="unavailable"', row)
+        self.assertIn("In-person only", row)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -136,6 +136,29 @@ class ScoutTests(unittest.TestCase):
             scout._item_name_slugs(item),
         )
 
+    def test_ethglobal_keeps_hackathons_cleans_titles_and_skips_conferences(self):
+        html = """
+        <div><a href="/events/ethonline2026">September 4—16 ETHOnline 2026 Async Hackathon Apply</a></div>
+        <div><a href="/events/tokyo2026">September 25—27 ETHGlobal Tokyo 2026 IRL Hackathon Apply</a></div>
+        <div><a href="/events/pragma-tokyo2026">September 26 Pragma Tokyo 2026 Conference Apply</a></div>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_ethglobal()
+        self.assertEqual([row["name"] for row in rows], ["ETHOnline 2026", "ETHGlobal Tokyo 2026"])
+        self.assertEqual([row["deadline"] for row in rows], ["2026-09-16", "2026-09-27"])
+        self.assertFalse(any("Pragma" in row["name"] for row in rows))
+
+    def test_solana_skips_winners_and_generic_links(self):
+        html = """
+        <div><a href="/news/old-hackathon-winners">2023 Hackathon Winners</a></div>
+        <div><a href="/events">Events</a></div>
+        <div><a href="/hackathon/new">New Solana Hackathon</a> December 12, 2099</div>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_solana()
+        self.assertEqual(len(rows), 1)
+        self.assertIn("New Solana Hackathon", rows[0]["name"])
+
 
 if __name__ == "__main__":
     unittest.main()

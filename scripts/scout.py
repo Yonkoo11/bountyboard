@@ -152,6 +152,22 @@ def _normalize_date(raw: str) -> Optional[str]:
     # Pre-process for fuzzy parsing:
     # 1. Strip ordinal suffixes: "3rd" → "3", "21st" → "21"
     clean = re.sub(r"(\d+)(st|nd|rd|th)\b", r"\1", raw)
+    # Event cards can place the event name between a date range and its year:
+    # "September 4—16 ETHOnline 2026". The last day is the deadline.
+    embedded_range = re.search(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2}\s*[–—-]\s*(\d{1,2})\b.*?\b(20\d{2})\b",
+        clean,
+        re.IGNORECASE,
+    )
+    if embedded_range:
+        try:
+            return datetime.strptime(
+                f"{embedded_range.group(1)} {embedded_range.group(2)} {embedded_range.group(3)}",
+                "%B %d %Y",
+            ).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
     # 2. Date ranges: "Mar 31 - Apr 06, 2026" or "Mar 14 - 15, 2026" → use end date
     #    Split on dash/endash surrounded by spaces
     parts = re.split(r"\s*[–—-]\s*", clean, maxsplit=1)
@@ -253,9 +269,17 @@ def fetch_ethglobal() -> list[dict]:
             continue
         seen_hrefs.add(href)
         url   = f"https://ethglobal.com{href}"
-        title = a.get_text(strip=True)
-        if not title or len(title) < 3:
+        raw_title = a.get_text(" ", strip=True)
+        if "hackathon" not in raw_title.lower():
             continue
+
+        title_match = re.search(
+            r"(ETHOnline\s+20\d{2}|ETHGlobal\s+[A-Za-z]+(?:\s+20\d{2})?)",
+            raw_title,
+        )
+        if not title_match:
+            continue
+        title = title_match.group(1)
 
         # Look for date in nearby text
         parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
@@ -264,7 +288,7 @@ def fetch_ethglobal() -> list[dict]:
         results.append({
             "source":    "ethglobal",
             "url":       url,
-            "name":      f"ETHGlobal {title}",
+            "name":      title,
             "description": f"ETHGlobal hackathon: {title}. {parent_text[:200]}",
             "deadline":  deadline,
             "prize_usd": 0,
@@ -393,6 +417,12 @@ def fetch_hacklist() -> list[dict]:
             if element.get_text(" ", strip=True)
         ]
         description = max(paragraphs, key=len, default="")
+        article_text = article.get_text(" ", strip=True)
+        format_label = ""
+        if re.search(r"\b(?:online|virtual|remote)\b", article_text, re.IGNORECASE):
+            format_label = "online"
+        if re.search(r"\b(?:in-person|in person|offline)\b", article_text, re.IGNORECASE):
+            format_label = "hybrid" if format_label else "in-person"
         organizer = paragraphs[0] if paragraphs and paragraphs[0] != description else ""
         aria_label = str(article.get("aria-label") or "")
         prize_label = ""
@@ -410,6 +440,7 @@ def fetch_hacklist() -> list[dict]:
             "deadline": None,
             "prize_usd": _usd_amount(prize_label),
             "prize_note": prize_label,
+            "format": format_label,
             # Internal-only aliases improve cross-platform entity resolution.
             "_name_aliases": [f"{organizer} {name}"] if organizer else [],
         })
@@ -548,16 +579,19 @@ def fetch_solana() -> list[dict]:
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
-        # Look for hackathon/event links
-        lower = href.lower()
-        if not any(kw in lower for kw in ("hackathon", "event", "build", "grants")):
+        # The landing page includes years of winner announcements and generic
+        # ecosystem links. Only retain a dated, current hackathon listing.
+        parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
+        combined = f"{title} {parent_text}".lower()
+        if "hackathon" not in combined or "winner" in combined:
             continue
         if href in seen_hrefs:
             continue
         seen_hrefs.add(href)
         url = href if href.startswith("http") else f"https://solana.com{href}"
-        parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
         deadline = _normalize_date(parent_text[:200]) if parent_text else None
+        if not deadline or not _is_future(deadline):
+            continue
         results.append({
             "source":      "solana",
             "url":         url,
