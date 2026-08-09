@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date, datetime
 from pathlib import Path
 
 REPO_DIR = Path(__file__).parent.parent
 CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
+sys.path.insert(0, str(REPO_DIR))
 
 
 def urgent_candidates(candidates: list[dict], *, today: date | None = None, days: int = 14) -> list[dict]:
@@ -63,7 +65,11 @@ def main() -> int:
     print(digest)
     if args.notify and items:
         from scripts.notify import send
-        send(f"BountyBoard: {len(items)} approaching deadlines", digest, level="warning")
+        notification_items = items[:15]
+        notification = render_digest(notification_items)
+        if len(items) > len(notification_items):
+            notification += f"\n- …and {len(items) - len(notification_items)} more on BountyBoard"
+        send(f"BountyBoard: {len(items)} approaching deadlines", notification, level="warning")
     return 0
 
 
