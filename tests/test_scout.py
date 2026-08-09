@@ -5,8 +5,9 @@ from scripts import scout
 
 
 class FakeResponse:
-    def __init__(self, payload):
+    def __init__(self, payload=None, text=""):
         self.payload = payload
+        self.text = text
 
     def json(self):
         return self.payload
@@ -82,6 +83,38 @@ class ScoutTests(unittest.TestCase):
         candidates = [{"url": "https://candidate.example/event"}]
         existing_urls.update(scout._candidate_urls(candidates))
         self.assertIn("https://candidate.example/event", existing_urls)
+
+    def test_hacklist_uses_canonical_apply_links_as_unverified_leads(self):
+        html = """
+        <article aria-label="New Agent Hack, $12,500. View details.">
+          <p>Organizer</p><h3>New Agent Hack</h3>
+          <p>Build useful autonomous agents with real transactions.</p>
+          <a href="https://organizer.example/hackathon">Apply</a>
+        </article>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_hacklist()
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["source"], "hacklist")
+        self.assertEqual(rows[0]["url"], "https://organizer.example/hackathon")
+        self.assertEqual(rows[0]["prize_usd"], 12500)
+        self.assertEqual(rows[0]["prize_note"], "$12,500")
+        self.assertIsNone(rows[0]["deadline"])
+
+    def test_hacklist_rejects_non_http_apply_links_and_deduplicates_urls(self):
+        html = """
+        <article><h3>Unsafe</h3><a href="javascript:alert(1)">Apply</a></article>
+        <article><h3>First</h3><a href="https://example.com/event">Apply</a></article>
+        <article><h3>Duplicate</h3><a href="https://example.com/event">Apply</a></article>
+        """
+        with patch.object(scout, "_fetch", return_value=FakeResponse(text=html)):
+            rows = scout.fetch_hacklist()
+        self.assertEqual([row["name"] for row in rows], ["First"])
+
+    def test_usd_amount_handles_compact_and_non_cash_labels(self):
+        self.assertEqual(scout._usd_amount("$2M total"), 2_000_000)
+        self.assertEqual(scout._usd_amount("$8.75K"), 8_750)
+        self.assertEqual(scout._usd_amount("Hardware prizes"), 0)
 
 
 if __name__ == "__main__":

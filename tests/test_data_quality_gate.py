@@ -9,6 +9,7 @@ class DataQualityGateTests(unittest.TestCase):
             "source_counts": {
                 "ethglobal": 20,
                 "devpost": 50,
+                "hacklist": 30,
                 "dorahacks": 10,
                 "gitcoin": 0,
                 "solana": 8,
@@ -27,6 +28,12 @@ class DataQualityGateTests(unittest.TestCase):
         manifest["source_counts"]["dorahacks"] = 0
         failures, _ = evaluate(manifest, {})
         self.assertIn("expected source dorahacks returned zero results", failures)
+
+    def test_zero_hacklist_crosscheck_blocks_green_run(self):
+        manifest = self.healthy_manifest()
+        manifest["source_counts"]["hacklist"] = 0
+        failures, _ = evaluate(manifest, {})
+        self.assertIn("expected source hacklist returned zero results", failures)
 
     def test_historical_source_collapse_blocks_green_run(self):
         manifest = self.healthy_manifest()

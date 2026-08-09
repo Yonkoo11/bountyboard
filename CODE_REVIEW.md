@@ -116,3 +116,14 @@ instead.
   deadlines still require source-level verification before committing build time.
 - CodeRabbit authentication remains a local tooling setup task; manual review is
   the documented release fallback.
+
+## August 9, 2026 HackList cross-check adapter
+
+- Uses HackList only for discovery and retains the canonical Apply URL.
+- Does not inherit third-party verification or infer dates from relative countdowns.
+- Rejects non-HTTP(S) Apply links and deduplicates repeated canonical URLs.
+- Treats a zero-result or broken HackList parse as degraded coverage.
+- Fixture tests cover parsing, URL safety, URL deduplication, conservative prize
+  extraction, unknown deadlines, and the source-health gate.
+- Live read-only validation found 33 listings: 5 already recognized and 28 gaps.
+- Critical findings remaining: 0. High-priority findings remaining: 0.

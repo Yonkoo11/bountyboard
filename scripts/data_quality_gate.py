@@ -17,7 +17,7 @@ LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
 
 CORE_SOURCES = {"ethglobal", "devpost"}
-EXPECTED_SOURCES = {"dorahacks", "solana"}
+EXPECTED_SOURCES = {"dorahacks", "hacklist", "solana"}
 OPTIONAL_SOURCES = {"gitcoin", "twitter", "exa"}
 MINIMUM_TOTAL_RESULTS = 10
 

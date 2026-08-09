@@ -118,7 +118,9 @@ python scripts/scout.py --dry-run    # preview, no writes
 python scripts/scout.py --source devpost  # single source
 ```
 
-Sources: ETHGlobal, Devpost, DoraHacks, Gitcoin, Solana Foundation, Twitter/X signals.
+Sources: ETHGlobal, Devpost, HackList cross-check, DoraHacks, Gitcoin, Solana
+Foundation, Twitter/X signals, and optional Exa research. HackList records retain
+the original Apply URL and remain unverified until that canonical source is checked.
 
 ---
 

@@ -7,6 +7,7 @@ Sources:
   - ETHGlobal (events API)
   - Devpost (JSON search API)
   - DoraHacks (public API)
+  - HackList (curated cross-check feed)
 
 Scores each opportunity against BountyBoard themes.
 Deduplicates via DB URLs + seen_urls.json fallback.
@@ -335,6 +336,81 @@ def fetch_devpost() -> list[dict]:
                 break
 
     log.info(f"Devpost: {len(results)} entries")
+    return results
+
+
+# ── Source: HackList coverage cross-check ─────────────────────────────────────
+
+def _usd_amount(raw: str) -> int:
+    """Extract a conservative USD amount from a human prize label."""
+    match = re.search(r"\$\s*([0-9][0-9,]*(?:\.\d+)?)\s*([KkMm])?", raw or "")
+    if not match:
+        return 0
+    amount = float(match.group(1).replace(",", ""))
+    suffix = (match.group(2) or "").lower()
+    if suffix == "k":
+        amount *= 1_000
+    elif suffix == "m":
+        amount *= 1_000_000
+    return int(amount)
+
+
+def fetch_hacklist() -> list[dict]:
+    """Use HackList as a discovery cross-check, never as canonical evidence.
+
+    HackList server-renders one article per curated opportunity and links its
+    Apply action to the organizer/platform page. We retain that canonical URL
+    while keeping the record unverified until BountyBoard checks the source.
+    """
+    log.info("Fetching HackList cross-check feed...")
+    resp = _fetch("https://hacklist-omega.vercel.app/")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping HackList")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    for article in soup.find_all("article"):
+        heading = article.find("h3")
+        apply_link = article.find("a", href=True)
+        if not heading or not apply_link:
+            continue
+        name = heading.get_text(" ", strip=True)
+        url = str(apply_link.get("href") or "").strip()
+        if not name or not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        seen.add(url)
+
+        paragraphs = [
+            element.get_text(" ", strip=True)
+            for element in article.find_all("p")
+            if element.get_text(" ", strip=True)
+        ]
+        description = max(paragraphs, key=len, default="")
+        aria_label = str(article.get("aria-label") or "")
+        prize_label = ""
+        if aria_label.startswith(f"{name},"):
+            prize_label = aria_label[len(name) + 1:].split(". View details", 1)[0].strip()
+            prize_label = re.sub(r"\.\s*Spotlight$", "", prize_label).strip()
+
+        results.append({
+            "source": "hacklist",
+            "url": url,
+            "name": name,
+            "description": description,
+            # Countdown text is presentation data, not canonical evidence.
+            # Leave the deadline unknown until the linked source confirms it.
+            "deadline": None,
+            "prize_usd": _usd_amount(prize_label),
+            "prize_note": prize_label,
+        })
+
+    log.info(f"HackList: {len(results)} entries")
     return results
 
 
@@ -837,6 +913,7 @@ def _run_find_similar(
 SOURCES = {
     "ethglobal": fetch_ethglobal,
     "devpost":   fetch_devpost,
+    "hacklist":  fetch_hacklist,
     "dorahacks": fetch_dorahacks,
     "gitcoin":   fetch_gitcoin,
     "solana":    fetch_solana,
