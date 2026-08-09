@@ -1,30 +1,27 @@
 {
-  "completed_at": "2026-08-09T09:06:33+00:00",
+  "completed_at": "2026-08-09T12:55:48+00:00",
   "source_counts": {
-    "ethglobal": 86,
+    "ethglobal": 24,
     "devpost": 85,
+    "devfolio": 5,
+    "mlh": 0,
     "hacklist": 33,
-    "dorahacks": 0,
-    "gitcoin": 0,
-    "solana": 8,
+    "solana": 0,
     "twitter": 0,
     "exa": 0
   },
-  "source_errors": [
-    "dorahacks: 1 request failure(s)",
-    "gitcoin: 8 request failure(s)"
-  ],
+  "source_errors": [],
   "stats": {
-    "new_review": 1,
-    "candidate": 27,
+    "new_review": 0,
+    "candidate": 0,
     "skipped": 0,
-    "already_seen": 108,
-    "past": 76
+    "already_seen": 129,
+    "past": 18
   },
   "degraded_sources": [
-    "dorahacks",
     "exa",
-    "gitcoin",
+    "mlh",
+    "solana",
     "twitter"
   ]
 }
