@@ -3448,5 +3448,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://agentsforhumans.devpost.com/",
+    "name": "Agents for Humans Hackathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-09-14",
+    "prize_usd": 40000,
+    "prize_note": "$40,000",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-10",
+    "last_checked_at": "2026-08-10",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-9399c0ede3e9",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
