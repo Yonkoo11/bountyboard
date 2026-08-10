@@ -1,5 +1,13 @@
 # BountyBoard - Progress
 
+## 2026-08-10 — Replit Designathon Tracking
+
+### What Changed (Plain English)
+
+Added Replit Designathon 2026 as a Must-Do opportunity for Proof Before Pay, including its official page, submission page, award value, product angle, and local project path. Regenerated the public board locally and verified that this entry has both required links; unrelated pre-existing data warnings remain.
+
+---
+
 ## Last Session: 2026-03-30
 
 ### Summary
