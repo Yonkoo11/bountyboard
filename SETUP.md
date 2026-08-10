@@ -1,13 +1,15 @@
-# BountyBoard — Opportunity Roster
+# BountyBoard — Opportunity Radar
 
-A personal CLI + dashboard for tracking hackathons, grants, and bounties. Automatically discovers new opportunities, syncs deadlines to Apple Calendar, and sends a daily morning briefing via Telegram.
+A CLI and public dashboard for broadly discovering hackathons, grants,
+accelerators, and bounties. Incomplete leads stay visible and are labeled by
+verification state so discovery coverage is not confused with certainty.
 
 ---
 
 ## Requirements
 
 - macOS (Calendar sync and notifications use osascript)
-- Python 3.9+
+- Python 3.10+
 - Apple Calendar app
 
 ---
@@ -15,7 +17,7 @@ A personal CLI + dashboard for tracking hackathons, grants, and bounties. Automa
 ## Install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Yonkoo11/bountyboard.git
 cd bountyboard
 
 python3 -m venv .venv
@@ -62,22 +64,11 @@ python scripts/notify.py info "hello"
 
 ---
 
-## Automate (cron)
+## Automation
 
-Installs 3 cron jobs:
-- **6AM daily** — morning briefing (urgent deadlines + new discoveries)
-- **8AM daily** — sync deadlines to Apple Calendar
-- **9AM Sundays** — scout for new opportunities across 6 sources
-
-```bash
-bash scripts/setup_cron.sh
-```
-
-Verify:
-
-```bash
-crontab -l
-```
+GitHub Actions discovers, checks, tests, generates, and publishes the radar
+every four hours. The `launchd/` definitions provide optional local macOS automation for
+calendar synchronization, daily briefings, and additional scouts.
 
 ---
 
@@ -111,10 +102,11 @@ python roster.py health           System health status
 ## Web Dashboard
 
 ```bash
-streamlit run streamlit_app.py
+python3 scripts/generate_site.py
+python3 -m http.server 8000 --directory docs
 ```
 
-Opens at `http://localhost:8501` — 6 tabs: Overview, Ideas, Sprint, All Active, Needs Review, and a timeline chart.
+Open `http://localhost:8000`.
 
 ---
 
@@ -126,7 +118,9 @@ python scripts/scout.py --dry-run    # preview, no writes
 python scripts/scout.py --source devpost  # single source
 ```
 
-Sources: ETHGlobal, Devpost, DoraHacks, Gitcoin, Solana Foundation, Twitter/X signals.
+Sources: ETHGlobal, Devpost, HackList cross-check, DoraHacks, Gitcoin, Solana
+Foundation, Twitter/X signals, and optional Exa research. HackList records retain
+the original Apply URL and remain unverified until that canonical source is checked.
 
 ---
 
@@ -149,7 +143,9 @@ Each event gets 3 reminders: 7 days, 3 days, and 1 day before deadline.
 | `data/roster.db` | SQLite database (source of truth) |
 | `data/backups/YYYY-MM-DD.json` | Daily versioned backups |
 | `data/audit.jsonl` | Audit log of every field change |
-| `data/scout_candidates.json` | Low-score items pending review |
+| `data/scout_candidates.json` | Plausible leads pending source-level review |
+| `data/source_health.json` | Rolling per-source result counts used for anomaly detection |
+| `data/last_run.json` | Evidence from the latest completed discovery scan |
 | `logs/` | Cron logs per run |
 
 ---

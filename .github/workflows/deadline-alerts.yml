@@ -1,0 +1,70 @@
+name: Deadline alerts
+
+on:
+  schedule:
+    - cron: "5 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: bountyboard-deadline-alerts
+  cancel-in-progress: true
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build deadline digest
+        run: python3 scripts/deadline_digest.py --days 14 --markdown-output /tmp/deadline-digest.md
+
+      - name: Create or update notification issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          title="BountyBoard: approaching deadlines"
+          issue_number="$(gh issue list --state open --search "in:title $title" --json number --jq '.[0].number // empty')"
+          if grep -q '^No personally relevant known deadlines' /tmp/deadline-digest.md; then
+            test -z "$issue_number" || gh issue close "$issue_number" --comment "No known personally relevant deadlines remain in the 14-day window."
+            exit 0
+          fi
+          digest_hash="$(sha256sum /tmp/deadline-digest.md | cut -d ' ' -f 1)"
+          marker="<!-- digest:$digest_hash -->"
+          printf '\n%s\n' "$marker" >> /tmp/deadline-digest.md
+          if test -z "$issue_number"; then
+            gh issue create --title "$title" --body-file /tmp/deadline-digest.md --assignee "$GITHUB_REPOSITORY_OWNER"
+            exit 0
+          fi
+          gh issue edit "$issue_number" --add-assignee "$GITHUB_REPOSITORY_OWNER"
+          current_body="$(gh issue view "$issue_number" --json body --jq .body)"
+          case "$current_body" in
+            *"$marker"*) echo "Deadline digest unchanged; no notification comment needed." ;;
+            *)
+              gh issue edit "$issue_number" --body-file /tmp/deadline-digest.md
+              gh issue comment "$issue_number" --body "Deadline priorities changed. The issue body now contains the current 14-day queue."
+              ;;
+          esac
+
+      - name: Send optional Telegram copy and preserve receipt
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/deadline_digest.py --days 14 --notify
+
+      - name: Upload delivery receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notification-receipts-${{ github.run_id }}
+          path: logs/notifications.jsonl
+          if-no-files-found: warn
+          retention-days: 30

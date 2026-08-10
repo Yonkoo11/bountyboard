@@ -7,10 +7,10 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/yonko/Projects/bountyboard-iv-roster/scripts/scout_pipeline.sh</string>
+        <string>/Users/yonko/bountyboard/scripts/scout_pipeline.sh</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster</string>
+    <string>/Users/yonko/bountyboard</string>
     <key>StartCalendarInterval</key>
     <dict>
         <key>Weekday</key>
@@ -21,9 +21,9 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster/logs/scout_launchd.log</string>
+    <string>/Users/yonko/bountyboard/logs/scout_launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster/logs/scout_launchd_err.log</string>
+    <string>/Users/yonko/bountyboard/logs/scout_launchd_err.log</string>
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>

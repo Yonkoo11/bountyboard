@@ -1,0 +1,28 @@
+{
+  "completed_at": "2026-08-10T17:10:35+00:00",
+  "source_counts": {
+    "ethglobal": 24,
+    "devpost": 80,
+    "devfolio": 6,
+    "mlh": 0,
+    "lablab": 5,
+    "hacklist": 34,
+    "solana": 0,
+    "twitter": 0,
+    "exa": 0
+  },
+  "source_errors": [],
+  "stats": {
+    "new_review": 0,
+    "candidate": 1,
+    "skipped": 0,
+    "already_seen": 130,
+    "past": 18
+  },
+  "degraded_sources": [
+    "exa",
+    "mlh",
+    "solana",
+    "twitter"
+  ]
+}

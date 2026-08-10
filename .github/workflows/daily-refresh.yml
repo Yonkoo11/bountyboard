@@ -1,8 +1,10 @@
-name: Daily site refresh
+name: Discover, verify, and publish
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    # First-party scans every four hours. GitHub may delay scheduled starts, so
+    # freshness is measured from the persisted run manifest, not cron time.
+    - cron: "17 */4 * * *"
   workflow_dispatch:
   # NOTE: No push trigger. The action commits with GITHUB_TOKEN which
   # doesn't trigger workflows, but removing push trigger entirely
@@ -10,6 +12,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: bountyboard-radar-refresh
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -21,27 +27,57 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
       - name: Seed DB from JSON
         run: python3 scripts/seed_db.py
+
+      - name: Discover opportunities
+        run: python3 scripts/scout.py
+
+      - name: Triage personal eligibility
+        run: |
+          python3 scripts/validate_profile.py
+          python3 scripts/triage_candidates.py
+
+      - name: Evaluate discovery coverage
+        id: discovery_gate
+        continue-on-error: true
+        run: python3 scripts/data_quality_gate.py
+
+      - name: Validate successful-run receipt
+        run: python3 scripts/check_freshness.py --max-age-hours 1
+
+      - name: Check data quality
+        run: python3 scripts/verify_data.py --check-urls
+
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
 
       - name: Generate site
         run: python3 scripts/generate_site.py
 
-      - name: Sync JSON from DB
+      - name: Assert freshness metadata
         run: |
-          python3 -c "
-          import db, json
-          opps = db.get_all()
-          out = [{k: o[k] for k in ['id','name','category','deadline','start_date','prize_usd','prize_note','theme_fit','status','tracks','angle','url','resubmittable','notes','submission_url'] if k in o} for o in opps]
-          with open('data/opportunities.json', 'w') as f:
-              json.dump(out, f, indent=2)
-          "
+          grep -q 'id="freshnessStatus"' docs/index.html
+          grep -q 'data-generated-at=' docs/index.html
+          grep -q 'Last successful refresh' docs/index.html
+
+      - name: Sync JSON from DB
+        run: python3 scripts/sync_opportunities.py
 
       - name: Commit and push if changed
         run: |
-          git diff --quiet docs/index.html data/opportunities.json && exit 0
+          test -z "$(git status --porcelain -- docs/ data/opportunities.json data/scout_candidates.json data/source_health.json data/last_run.json)" && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ data/opportunities.json
-          git commit -m "Auto-refresh: close expired entries, regenerate site"
+          git add docs/ data/opportunities.json data/scout_candidates.json data/source_health.json data/last_run.json
+          git commit -m "Radar refresh: discover, verify, and regenerate"
           git push
+
+      - name: Fail loudly on degraded discovery
+        if: steps.discovery_gate.outcome == 'failure'
+        run: |
+          echo "Discovery results were published, but source coverage was degraded."
+          exit 1

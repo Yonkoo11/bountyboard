@@ -75,13 +75,14 @@ def _macos(title: str, body: str) -> bool:
         return False
 
 
-def _log(title: str, body: str, level: str) -> None:
+def _log(title: str, body: str, level: str, channels: dict[str, bool] | None = None) -> None:
     LOG_FILE.parent.mkdir(exist_ok=True)
     entry = {
         "ts":    datetime.now(timezone.utc).isoformat(),
         "level": level,
         "title": title,
         "body":  body,
+        "channels": channels or {},
     }
     with open(LOG_FILE, "a") as f:
         f.write(json.dumps(entry) + "\n")
@@ -96,21 +97,19 @@ def send(title: str, body: str, level: str = "info") -> None:
     Send a notification via all configured channels.
     Never raises — all failures are swallowed.
     """
-    # Always log first
+    channels = {"macos": False, "telegram": False}
     try:
-        _log(title, body, level)
+        channels["macos"] = _macos(title, body)
+    except Exception:
+        pass
+    try:
+        channels["telegram"] = _telegram(title, body, level)
     except Exception:
         pass
 
-    # macOS notification
+    # Log the delivery outcomes, not merely the intent to notify.
     try:
-        _macos(title, body)
-    except Exception:
-        pass
-
-    # Telegram
-    try:
-        _telegram(title, body, level)
+        _log(title, body, level, channels)
     except Exception:
         pass
 

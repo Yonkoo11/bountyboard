@@ -6,7 +6,9 @@ scout.py — Automated opportunity discovery for BountyBoard.
 Sources:
   - ETHGlobal (events API)
   - Devpost (JSON search API)
-  - DoraHacks (public API)
+  - Devfolio (server-rendered listings)
+  - Major League Hacking (season listings)
+  - HackList (curated cross-check feed)
 
 Scores each opportunity against BountyBoard themes.
 Deduplicates via DB URLs + seen_urls.json fallback.
@@ -29,6 +31,8 @@ from typing import Optional
 
 REPO_DIR        = Path(__file__).parent.parent
 CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
+SOURCE_HEALTH_FILE = REPO_DIR / "data" / "source_health.json"
+LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 LOGS_DIR        = REPO_DIR / "logs"
 TODAY_ISO       = date.today().isoformat()
 
@@ -149,6 +153,22 @@ def _normalize_date(raw: str) -> Optional[str]:
     # Pre-process for fuzzy parsing:
     # 1. Strip ordinal suffixes: "3rd" → "3", "21st" → "21"
     clean = re.sub(r"(\d+)(st|nd|rd|th)\b", r"\1", raw)
+    # Event cards can place the event name between a date range and its year:
+    # "September 4—16 ETHOnline 2026". The last day is the deadline.
+    embedded_range = re.search(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2}\s*[–—-]\s*(\d{1,2})\b.*?\b(20\d{2})\b",
+        clean,
+        re.IGNORECASE,
+    )
+    if embedded_range:
+        try:
+            return datetime.strptime(
+                f"{embedded_range.group(1)} {embedded_range.group(2)} {embedded_range.group(3)}",
+                "%B %d %Y",
+            ).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
     # 2. Date ranges: "Mar 31 - Apr 06, 2026" or "Mar 14 - 15, 2026" → use end date
     #    Split on dash/endash surrounded by spaces
     parts = re.split(r"\s*[–—-]\s*", clean, maxsplit=1)
@@ -204,22 +224,33 @@ def _is_future(deadline_str: Optional[str]) -> bool:
 # ── Rate-limited requests ─────────────────────────────────────────────────────
 
 _last_request_time: float = 0.0
+FETCH_FAILURES: list[str] = []
 
 def _fetch(url: str, **kwargs) -> Optional["requests.Response"]:  # type: ignore[name-defined]
     global _last_request_time
     import requests
-    elapsed = time.time() - _last_request_time
-    if elapsed < 2.0:
-        time.sleep(2.0 - elapsed)
-    try:
-        resp = requests.get(url, timeout=12, headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36", "Accept": "application/json, text/html,*/*"}, **kwargs)
-        _last_request_time = time.time()
-        resp.raise_for_status()
-        return resp
-    except Exception as e:
-        log.warning(f"Request failed for {url}: {e}")
-        _last_request_time = time.time()
-        return None
+    last_error: Exception | None = None
+    custom_headers = kwargs.pop("headers", {})
+    for attempt in range(1, 4):
+        elapsed = time.time() - _last_request_time
+        if elapsed < 2.0:
+            time.sleep(2.0 - elapsed)
+        try:
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "Accept": "application/json, text/html,*/*",
+            }
+            headers.update(custom_headers)
+            resp = requests.get(url, timeout=12, headers=headers, **kwargs)
+            _last_request_time = time.time()
+            resp.raise_for_status()
+            return resp
+        except Exception as error:
+            last_error = error
+            _last_request_time = time.time()
+            log.warning(f"Request attempt {attempt}/3 failed for {url}: {error}")
+    FETCH_FAILURES.append(f"{url}: {last_error}")
+    return None
 
 
 # ── Source: ETHGlobal ─────────────────────────────────────────────────────────
@@ -245,9 +276,17 @@ def fetch_ethglobal() -> list[dict]:
             continue
         seen_hrefs.add(href)
         url   = f"https://ethglobal.com{href}"
-        title = a.get_text(strip=True)
-        if not title or len(title) < 3:
+        raw_title = a.get_text(" ", strip=True)
+        if "hackathon" not in raw_title.lower():
             continue
+
+        title_match = re.search(
+            r"(ETHOnline\s+20\d{2}|ETHGlobal\s+[A-Za-z]+(?:\s+20\d{2})?)",
+            raw_title,
+        )
+        if not title_match:
+            continue
+        title = title_match.group(1)
 
         # Look for date in nearby text
         parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
@@ -256,7 +295,7 @@ def fetch_ethglobal() -> list[dict]:
         results.append({
             "source":    "ethglobal",
             "url":       url,
-            "name":      f"ETHGlobal {title}",
+            "name":      title,
             "description": f"ETHGlobal hackathon: {title}. {parent_text[:200]}",
             "deadline":  deadline,
             "prize_usd": 0,
@@ -274,38 +313,339 @@ def fetch_devpost() -> list[dict]:
     results = []
     seen: set[str] = set()
 
-    # Devpost search API (JSON) for relevant tags
-    for tag in ["ai", "blockchain", "web3"]:
-        resp = _fetch(
-            "https://devpost.com/api/hackathons",
-            params={"challenge_type[]": "online", "search": tag, "status[]": "upcoming"},
-        )
-        if not resp:
-            continue
-        try:
-            data = resp.json()
-        except Exception:
-            continue
-        for item in data.get("hackathons", []):
-            url   = str(item.get("url", ""))
-            title = str(item.get("title", ""))
-            desc  = str(item.get("tagline", "") or "")
-            if not url or not title or url in seen:
-                continue
-            seen.add(url)
-            prize    = item.get("prize_amount", 0) or 0
-            deadline = _normalize_date(str(item.get("submission_period_dates", "") or ""))
-            results.append({
-                "source":     "devpost",
-                "url":        url,
-                "name":       title,
-                "description": desc,
-                "deadline":   deadline,
-                "prize_usd":  int(prize) if str(prize).isdigit() else 0,
-                "prize_note": f"${prize}" if prize else "",
-            })
+    # Ingest broadly. Relevance belongs in ranking, not discovery. Query both
+    # lifecycle states because an event can start accepting submissions before
+    # the old "upcoming"-only search sees it.
+    for status in ("open", "upcoming"):
+        page = 1
+        while True:
+            resp = _fetch(
+                "https://devpost.com/api/hackathons",
+                params={
+                    "challenge_type[]": "online",
+                    "status[]": status,
+                    "page": page,
+                },
+            )
+            if not resp:
+                break
+            try:
+                data = resp.json()
+            except Exception:
+                log.warning(f"Devpost returned invalid JSON for {status=} {page=}")
+                break
+
+            items = data.get("hackathons", [])
+            for item in items:
+                url   = str(item.get("url", ""))
+                title = str(item.get("title", ""))
+                themes = item.get("themes") or []
+                desc  = " ".join(str(theme) for theme in themes)
+                if not url or not title or url in seen:
+                    continue
+                seen.add(url)
+                raw_prize = item.get("prize_amount", 0) or 0
+                prize = int(raw_prize) if str(raw_prize).isdigit() else _usd_amount(str(raw_prize))
+                deadline = _normalize_date(str(item.get("submission_period_dates", "") or ""))
+                results.append({
+                    "source":     "devpost",
+                    "url":        url,
+                    "name":       title,
+                    "description": desc,
+                    "deadline":   deadline,
+                    "prize_usd":  prize,
+                    "prize_note": f"${prize:,}" if prize else "",
+                })
+
+            meta = data.get("meta") or {}
+            total_count = int(meta.get("total_count") or len(items))
+            per_page = int(meta.get("per_page") or len(items) or 1)
+            if not items or page * per_page >= total_count:
+                break
+            page += 1
+            if page > 25:
+                log.warning(f"Devpost pagination exceeded safety cap for {status=}")
+                break
 
     log.info(f"Devpost: {len(results)} entries")
+    return results
+
+
+# ── Source: Devfolio ──────────────────────────────────────────────────────────
+
+def _containing_card(link, marker: str, max_levels: int = 8):
+    """Return the smallest ancestor whose text contains a card marker."""
+    node = link
+    for _ in range(max_levels):
+        node = node.parent
+        if node is None:
+            return None
+        if marker.lower() in node.get_text(" ", strip=True).lower():
+            return node
+    return None
+
+
+def fetch_devfolio() -> list[dict]:
+    """Discover remote-capable hackathons from Devfolio's public catalog."""
+    log.info("Fetching Devfolio hackathons...")
+    resp = _fetch("https://devfolio.co/explore")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping Devfolio")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    for link in soup.find_all("a", href=True):
+        heading = link.find("h3")
+        url = str(link.get("href") or "").strip()
+        if not heading or not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        card = _containing_card(link, "Apply now")
+        if card is None:
+            continue
+        card_text = " ".join(card.get_text(" ", strip=True).split())
+        # The user's profile is remote-only. Reject explicit offline-only cards
+        # here so they never add noise to the personal radar.
+        is_online = bool(re.search(r"\bOnline\b", card_text, re.IGNORECASE))
+        is_offline = bool(re.search(r"\bOffline\b", card_text, re.IGNORECASE))
+        if is_offline and not is_online:
+            continue
+        status_match = re.search(r"\b(Open|Upcoming)\b", card_text, re.IGNORECASE)
+        if not status_match:
+            continue
+        seen.add(url)
+        name = heading.get_text(" ", strip=True)
+        starts = re.search(r"\bStarts\s+(\d{2}/\d{2}/\d{2,4})\b", card_text, re.IGNORECASE)
+        start_date = None
+        if starts:
+            try:
+                start_date = datetime.strptime(starts.group(1), "%d/%m/%y").strftime("%Y-%m-%d")
+            except ValueError:
+                try:
+                    start_date = datetime.strptime(starts.group(1), "%d/%m/%Y").strftime("%Y-%m-%d")
+                except ValueError:
+                    pass
+        results.append({
+            "source": "devfolio",
+            "url": url,
+            "name": name,
+            "description": card_text[:500],
+            "deadline": None,
+            "start_date": start_date,
+            "format": "online" if is_online else "unknown",
+            "prize_usd": 0,
+            "prize_note": "",
+        })
+
+    log.info(f"Devfolio: {len(results)} remote-capable entries")
+    return results
+
+
+# ── Source: Major League Hacking ──────────────────────────────────────────────
+
+def fetch_mlh() -> list[dict]:
+    """Discover digital events from MLH's official season listing."""
+    season_year = date.today().year
+    log.info(f"Fetching MLH {season_year} digital events...")
+    resp = _fetch(f"https://www.mlh.com/seasons/{season_year}/events")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping MLH")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    date_pattern = re.compile(
+        r"\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s+"
+        r"\d{1,2}\s*[–—-]\s*(\d{1,2})\b",
+        re.IGNORECASE,
+    )
+    for link in soup.find_all("a", href=True):
+        text = " ".join(link.get_text(" ", strip=True).split())
+        url = str(link.get("href") or "").strip()
+        if not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        if not re.search(r"\bDigital\b", text, re.IGNORECASE):
+            continue
+        date_match = date_pattern.search(text)
+        if not date_match:
+            continue
+        deadline = _normalize_date(
+            f"{date_match.group(1).title()} {date_match.group(2)} {season_year}"
+        )
+        if not _is_future(deadline):
+            continue
+        # The event name is the text between an optional location prefix and
+        # the date. MLH URLs carry a clean, stable fallback name.
+        before_date = text[:date_match.start()].strip(" ,")
+        slug = re.sub(r"^\d+-", "", url.split("?", 1)[0].rstrip("/").split("/")[-1])
+        fallback = " ".join(word.capitalize() for word in slug.split("-") if word)
+        name = fallback or before_date or "MLH digital event"
+        seen.add(url)
+        results.append({
+            "source": "mlh",
+            "url": url,
+            "name": name,
+            "description": text[:500],
+            "deadline": deadline,
+            "format": "online",
+            "location": "Worldwide",
+            "prize_usd": 0,
+            "prize_note": "",
+        })
+
+    log.info(f"MLH: {len(results)} future digital entries")
+    return results
+
+
+def fetch_lablab() -> list[dict]:
+    """Discover lablab events through a text mirror when its WAF blocks bots."""
+    log.info("Fetching lablab.ai hackathons...")
+    resp = _fetch(
+        "https://r.jina.ai/http://lablab.ai/ai-hackathons",
+        headers={"User-Agent": "curl/8.0", "Accept": "text/plain"},
+    )
+    if not resp:
+        return []
+    results: list[dict] = []
+    seen: set[str] = set()
+    for line in resp.text.splitlines():
+        if "lablab.ai/ai-hackathons/" not in line or "## " not in line or re.search(r"\bFinished\b", line, re.IGNORECASE):
+            continue
+        link_match = re.search(r"\]\((https?://lablab\.ai/ai-hackathons/[^)]+)\)", line)
+        title_match = re.search(r"Image\s+\d+:\s+([^]]+)\]", line) or re.search(
+            r"##\s+(.+?)(?:\s+[🌎💻⏱️📅🏆]|\s{2,})", line
+        )
+        if not link_match or not title_match:
+            continue
+        url = link_match.group(1).replace("http://", "https://", 1)
+        text = re.sub(r"!\[[^]]*\]\([^)]*\)", "", line)
+        text = re.sub(r"\s+", " ", text).strip()
+        if url in seen or not re.search(r"\b(?:Online|Hybrid|online build)\b", text, re.IGNORECASE):
+            continue
+        seen.add(url)
+        submission_match = re.search(
+            r"(?:submitted by end of day on|submissions? (?:close|ends?)(?: on)?)\s*"
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+            r"(\d{1,2})",
+            text,
+            re.IGNORECASE,
+        )
+        year_match = re.search(r"\b(20\d{2})\b", text)
+        deadline = _normalize_date(
+            f"{submission_match.group(1)} {submission_match.group(2)}, {year_match.group(1)}"
+            if submission_match and year_match else text
+        )
+        prize = _usd_amount(text)
+        title = title_match.group(1).strip()
+        description = text.split("##", 1)[-1].strip()
+        if description.startswith(title):
+            description = description[len(title):].strip()
+        results.append({
+            "source": "lablab",
+            "url": url,
+            "name": title,
+            "description": description[:700],
+            "deadline": deadline,
+            "format": "hybrid" if re.search(r"\bHybrid\b", text, re.IGNORECASE) else "online",
+            "prize_usd": prize,
+            "prize_note": f"${prize:,}" if prize else "",
+        })
+    log.info(f"lablab.ai: {len(results)} current remote-capable entries")
+    return results
+
+
+# ── Source: HackList coverage cross-check ─────────────────────────────────────
+
+def _usd_amount(raw: str) -> int:
+    """Extract a conservative USD amount from a human prize label."""
+    match = re.search(r"\$[^0-9]{0,40}([0-9][0-9,]*(?:\.\d+)?)\s*([KkMm])?", raw or "")
+    if not match:
+        return 0
+    amount = float(match.group(1).replace(",", ""))
+    suffix = (match.group(2) or "").lower()
+    if suffix == "k":
+        amount *= 1_000
+    elif suffix == "m":
+        amount *= 1_000_000
+    return int(amount)
+
+
+def fetch_hacklist() -> list[dict]:
+    """Use HackList as a discovery cross-check, never as canonical evidence.
+
+    HackList server-renders one article per curated opportunity and links its
+    Apply action to the organizer/platform page. We retain that canonical URL
+    while keeping the record unverified until BountyBoard checks the source.
+    """
+    log.info("Fetching HackList cross-check feed...")
+    resp = _fetch("https://hacklist-omega.vercel.app/")
+    if not resp:
+        return []
+    try:
+        from bs4 import BeautifulSoup  # type: ignore[import-untyped]
+    except ImportError:
+        log.warning("beautifulsoup4 not installed — skipping HackList")
+        return []
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    results: list[dict] = []
+    seen: set[str] = set()
+    for article in soup.find_all("article"):
+        heading = article.find("h3")
+        apply_link = article.find("a", href=True)
+        if not heading or not apply_link:
+            continue
+        name = heading.get_text(" ", strip=True)
+        url = str(apply_link.get("href") or "").strip()
+        if not name or not url.startswith(("https://", "http://")) or url in seen:
+            continue
+        seen.add(url)
+
+        paragraphs = [
+            element.get_text(" ", strip=True)
+            for element in article.find_all("p")
+            if element.get_text(" ", strip=True)
+        ]
+        description = max(paragraphs, key=len, default="")
+        article_text = article.get_text(" ", strip=True)
+        format_label = ""
+        if re.search(r"\b(?:online|virtual|remote)\b", article_text, re.IGNORECASE):
+            format_label = "online"
+        if re.search(r"\b(?:in-person|in person|offline)\b", article_text, re.IGNORECASE):
+            format_label = "hybrid" if format_label else "in-person"
+        organizer = paragraphs[0] if paragraphs and paragraphs[0] != description else ""
+        aria_label = str(article.get("aria-label") or "")
+        prize_label = ""
+        if aria_label.startswith(f"{name},"):
+            prize_label = aria_label[len(name) + 1:].split(". View details", 1)[0].strip()
+            prize_label = re.sub(r"\.\s*Spotlight$", "", prize_label).strip()
+
+        results.append({
+            "source": "hacklist",
+            "url": url,
+            "name": name,
+            "description": description,
+            # Countdown text is presentation data, not canonical evidence.
+            # Leave the deadline unknown until the linked source confirms it.
+            "deadline": None,
+            "prize_usd": _usd_amount(prize_label),
+            "prize_note": prize_label,
+            "format": format_label,
+            # Internal-only aliases improve cross-platform entity resolution.
+            "_name_aliases": [f"{organizer} {name}"] if organizer else [],
+        })
+
+    log.info(f"HackList: {len(results)} entries")
     return results
 
 
@@ -439,16 +779,19 @@ def fetch_solana() -> list[dict]:
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
-        # Look for hackathon/event links
-        lower = href.lower()
-        if not any(kw in lower for kw in ("hackathon", "event", "build", "grants")):
+        # The landing page includes years of winner announcements and generic
+        # ecosystem links. Only retain a dated, current hackathon listing.
+        parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
+        combined = f"{title} {parent_text}".lower()
+        if "hackathon" not in combined or "winner" in combined:
             continue
         if href in seen_hrefs:
             continue
         seen_hrefs.add(href)
         url = href if href.startswith("http") else f"https://solana.com{href}"
-        parent_text = a.parent.get_text(" ", strip=True) if a.parent else ""
         deadline = _normalize_date(parent_text[:200]) if parent_text else None
+        if not deadline or not _is_future(deadline):
+            continue
         results.append({
             "source":      "solana",
             "url":         url,
@@ -520,10 +863,7 @@ def fetch_twitter_signals() -> list[dict]:
 
 # ── Source health tracking ─────────────────────────────────────────────────────
 
-SOURCE_HEALTH_FILE = REPO_DIR / "data" / ".source_health.json"
-
-
-def _update_source_health(source_counts: dict[str, int]) -> None:
+def _update_source_health(source_counts: dict[str, int]) -> dict[str, dict]:
     """Persist per-source result counts and alert if a source appears dead."""
     try:
         data: dict[str, dict] = {}
@@ -557,12 +897,35 @@ def _update_source_health(source_counts: dict[str, int]) -> None:
         SOURCE_HEALTH_FILE.write_text(json.dumps(data, indent=2))
     except Exception as e:
         log.warning(f"Could not write source health: {e}")
+    return data
+
+
+def _write_run_manifest(
+    source_counts: dict[str, int],
+    errors: list[str],
+    stats: dict[str, int],
+) -> None:
+    """Persist evidence about the scan independently of site generation."""
+    manifest = {
+        "completed_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "source_counts": source_counts,
+        "source_errors": errors,
+        "stats": stats,
+        "degraded_sources": sorted(src for src, count in source_counts.items() if count == 0),
+    }
+    LAST_RUN_FILE.write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 # ── Name-based dedup ────────────────────────────────────────────────────────────
 
 def _name_slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower())[:30].strip("-")
+
+
+def _item_name_slugs(item: dict) -> set[str]:
+    """Return primary and source-provided alias slugs for entity resolution."""
+    names = [str(item.get("name") or ""), *item.get("_name_aliases", [])]
+    return {_name_slug(name) for name in names if _name_slug(name)}
 
 
 def _build_name_slugs(existing_ids: set[str], candidates: list[dict]) -> set[str]:
@@ -575,6 +938,30 @@ def _build_name_slugs(existing_ids: set[str], candidates: list[dict]) -> set[str
         if name:
             slugs.add(_name_slug(name))
     return slugs
+
+
+def _candidate_urls(candidates: list[dict]) -> set[str]:
+    """Return canonical non-empty URLs already retained in the candidate pool."""
+    return {
+        str(candidate.get("url", "")).strip()
+        for candidate in candidates
+        if str(candidate.get("url", "")).strip()
+    }
+
+
+def _candidate_from_item(item: dict, score: int, *, scout_date: str = TODAY_ISO) -> dict:
+    """Retain a plausible lead while making its uncertainty explicit."""
+    candidate = dict(item)
+    candidate.update({
+        "category": candidate.get("category") or "hackathon",
+        "theme_fit": score,
+        "scout_date": scout_date,
+        "last_checked_at": candidate.get("last_checked_at") or scout_date,
+        "verification_status": candidate.get("verification_status") or "unverified",
+        "application_status": candidate.get("application_status") or "unknown",
+        "award_type": candidate.get("award_type") or "unknown",
+    })
+    return candidate
 
 
 # ── Source: Exa (via stableenrich.dev) ────────────────────────────────────────
@@ -770,8 +1157,14 @@ def _run_find_similar(
 SOURCES = {
     "ethglobal": fetch_ethglobal,
     "devpost":   fetch_devpost,
-    "dorahacks": fetch_dorahacks,
-    "gitcoin":   fetch_gitcoin,
+    "devfolio":  fetch_devfolio,
+    "mlh":       fetch_mlh,
+    "lablab":    fetch_lablab,
+    "hacklist":  fetch_hacklist,
+    # DoraHacks' anonymous API is WAF-protected. HackList is the active
+    # cross-platform redundancy feed until DoraHacks publishes a stable API.
+    # Gitcoin's former indexer is offline/historical-only and cannot prove
+    # current rounds, so it is deliberately excluded from live monitoring.
     "solana":    fetch_solana,
     "twitter":   fetch_twitter_signals,
     "exa":       fetch_exa,
@@ -812,13 +1205,17 @@ def main():
     candidates = [
         c for c in candidates
         if (not c.get("deadline") or c["deadline"] >= cutoff_date)
-        and (not c.get("scout_date") or c["scout_date"] >= cutoff_scout)
+        and (
+            not (c.get("last_checked_at") or c.get("scout_date"))
+            or (c.get("last_checked_at") or c.get("scout_date")) >= cutoff_scout
+        )
     ]
     if len(candidates) < before_ttl:
         log.info(f"TTL cleanup: removed {before_ttl - len(candidates)} stale candidates")
 
     # Build name slug dedup set
     name_slugs = _build_name_slugs(existing_ids, candidates)
+    existing_urls.update(_candidate_urls(candidates))
 
     # Fetch all sources
     all_raw: list[dict] = []
@@ -828,11 +1225,14 @@ def main():
         if source_filter and src_name != source_filter:
             continue
         try:
+            failures_before = len(FETCH_FAILURES)
             results = fn()
             source_counts[src_name] = len(results)
             all_raw.extend(results)
+            if len(FETCH_FAILURES) > failures_before:
+                errors.append(f"{src_name}: {len(FETCH_FAILURES) - failures_before} request failure(s)")
         except Exception as e:
-            msg = f"{src_name} fetch failed: {e}"
+            msg = f"{src_name}: fetch failed: {e}"
             log.error(msg)
             errors.append(msg)
             source_counts[src_name] = 0
@@ -855,13 +1255,14 @@ def main():
 
         # Name-based dedup (catches same event at different URLs)
         name = item.get("name", "")
-        slug = _name_slug(name)
-        if slug and slug in name_slugs:
-            log.debug(f"[DEDUP] '{name}' matches existing slug '{slug}'")
+        item_slugs = _item_name_slugs(item)
+        matched_slug = next((slug for slug in item_slugs if slug in name_slugs), None)
+        if matched_slug:
+            log.debug(f"[DEDUP] '{name}' matches existing slug '{matched_slug}'")
             stats["already_seen"] += 1
             continue
-        if slug:
-            name_slugs.add(slug)
+        name_slugs.update(item_slugs)
+        item.pop("_name_aliases", None)
 
         if not _is_future(item.get("deadline")):
             stats["past"] += 1
@@ -894,26 +1295,32 @@ def main():
                 "name":           item["name"],
                 "category":       "hackathon",
                 "deadline":       item.get("deadline"),
+                "start_date":     item.get("start_date"),
                 "prize_usd":      item.get("prize_usd", 0),
                 "prize_note":     item.get("prize_note", ""),
                 "theme_fit":      s,
                 "status":         "needs_review",
                 "url":            url,
+                "angle":          item.get("description", "")[:500],
                 "notes":          f"Auto-discovered via {item['source']} on {TODAY_ISO}. Score: {s}/10.",
                 "source":         item["source"],
                 "calendar_synced": False,
+                "verification_status": "unverified",
+                "application_status": "unknown",
+                "last_checked_at": TODAY_ISO,
+                "award_type": "unknown",
+                "format": item.get("format", ""),
+                "location": item.get("location", ""),
             }
             new_opps.append(new_opp)
             stats["new_review"] += 1
             log.info(f"[REVIEW] {item['name']} (score={s}) from {item['source']}")
 
-        elif s >= 4:
-            item["scout_date"] = TODAY_ISO
-            new_candidates.append(item)
-            stats["candidate"] += 1
-
         else:
-            stats["skipped"] += 1
+            # A trusted source and a future/unknown deadline are enough to keep
+            # a lead on the radar. The score controls ranking, never inclusion.
+            new_candidates.append(_candidate_from_item(item, s))
+            stats["candidate"] += 1
 
     summary = (
         f"{stats['new_review']} new for review, "
@@ -930,6 +1337,9 @@ def main():
     if dry_run:
         log.info("[dry-run] No files written.")
         return
+
+    if not source_filter:
+        _write_run_manifest(source_counts, errors, stats)
 
     # Write new opportunities to DB
     for opp in new_opps:

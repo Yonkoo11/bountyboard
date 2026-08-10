@@ -1,0 +1,32 @@
+name: Quality gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Compile
+        run: python3 -m compileall -q -f . -x '/\.git|/\.venv'
+      - name: Unit and integration tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate eligibility profile
+        run: python3 scripts/validate_profile.py
+      - name: Validate committed refresh receipt
+        run: python3 scripts/check_freshness.py --max-age-hours 168
+      - name: Build static site
+        run: |
+          python3 scripts/seed_db.py
+          python3 scripts/generate_site.py
+      - name: Assert generated site is committed
+        run: git diff --exit-code docs/

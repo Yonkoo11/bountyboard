@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "remote_only": true,
+  "country": "unknown",
+  "student_status": "unknown",
+  "age_band": "unknown",
+  "travel_regions": [],
+  "notes": "Only remote-only preference is confirmed. Unknown personal attributes must never be treated as eligible."
+}

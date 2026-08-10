@@ -6,17 +6,13 @@ classify.py — Tier classification for BountyBoard opportunities.
 Single source of truth for Must-Do / Should-Do / May-Do logic.
 """
 
-from datetime import date, datetime
+from opportunity_quality import days_until as quality_days_until
 
 
 def days_until(deadline_str: str | None) -> int:
-    """Days until deadline. Returns 9999 if no deadline."""
-    if not deadline_str:
-        return 9999
-    try:
-        return (datetime.strptime(deadline_str, "%Y-%m-%d").date() - date.today()).days
-    except ValueError:
-        return 9999
+    """Legacy CLI representation: unknown deadlines sort last."""
+    result = quality_days_until(deadline_str)
+    return result if result is not None else 9999
 
 
 def classify(opp: dict) -> str:
@@ -26,19 +22,19 @@ def classify(opp: dict) -> str:
         return status.capitalize()
     if status == "needs_review":
         return "Needs-Review"
-    days = days_until(opp.get("deadline"))
-    if days < 0:
+    days = quality_days_until(opp.get("deadline"))
+    if days is not None and days < 0:
         return "Expired"
     prize = opp.get("prize_usd", 0) or 0
     fit = opp.get("theme_fit", 0) or 0
     cat = opp.get("category", "")
-    if days <= 7:
+    if days is not None and days <= 7:
         return "Must-Do"
-    if prize >= 50_000 and fit >= 7:
+    if prize >= 50_000 and fit >= 7 and opp.get("url"):
         return "Must-Do"
-    if cat == "accelerator" and fit >= 7:
+    if cat == "accelerator" and fit >= 7 and opp.get("url") and opp.get("verification_status") == "verified":
         return "Must-Do"
-    if days <= 21 and (prize >= 20_000 or fit >= 5):
+    if days is not None and days <= 21 and (prize >= 20_000 or fit >= 5):
         return "Should-Do"
     if prize >= 20_000 and fit >= 5:
         return "Should-Do"

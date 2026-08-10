@@ -7,10 +7,10 @@
     <key>ProgramArguments</key>
     <array>
         <string>/opt/homebrew/bin/python3</string>
-        <string>/Users/yonko/Projects/bountyboard-iv-roster/scripts/exa_daily.py</string>
+        <string>/Users/yonko/bountyboard/scripts/exa_daily.py</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster</string>
+    <string>/Users/yonko/bountyboard</string>
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
@@ -19,9 +19,9 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster/logs/exa_daily_launchd.log</string>
+    <string>/Users/yonko/bountyboard/logs/exa_daily_launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/yonko/Projects/bountyboard-iv-roster/logs/exa_daily_launchd_err.log</string>
+    <string>/Users/yonko/bountyboard/logs/exa_daily_launchd_err.log</string>
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>

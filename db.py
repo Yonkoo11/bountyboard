@@ -50,6 +50,14 @@ CREATE TABLE IF NOT EXISTS opportunities (
     github_link       TEXT NOT NULL DEFAULT '',
     deploy_url        TEXT NOT NULL DEFAULT '',
     hours_spent       INTEGER,
+    verification_status TEXT NOT NULL DEFAULT 'unverified',
+    verified_at       TEXT,
+    last_checked_at   TEXT,
+    application_status TEXT NOT NULL DEFAULT 'unknown',
+    eligibility       TEXT NOT NULL DEFAULT '',
+    award_type        TEXT NOT NULL DEFAULT 'unknown',
+    max_award_usd     INTEGER,
+    win_probability   REAL,
     created_at        TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at        TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -73,6 +81,14 @@ def _connect() -> sqlite3.Connection:
         ("github_link",    "TEXT NOT NULL DEFAULT ''"),
         ("deploy_url",     "TEXT NOT NULL DEFAULT ''"),
         ("hours_spent",    "INTEGER"),
+        ("verification_status", "TEXT NOT NULL DEFAULT 'unverified'"),
+        ("verified_at", "TEXT"),
+        ("last_checked_at", "TEXT"),
+        ("application_status", "TEXT NOT NULL DEFAULT 'unknown'"),
+        ("eligibility", "TEXT NOT NULL DEFAULT ''"),
+        ("award_type", "TEXT NOT NULL DEFAULT 'unknown'"),
+        ("max_award_usd", "INTEGER"),
+        ("win_probability", "REAL"),
     ]:
         try:
             conn.execute(f"ALTER TABLE opportunities ADD COLUMN {col} {defn}")
@@ -171,6 +187,17 @@ def _validate(opp: dict) -> dict:
     if outcome not in VALID_OUTCOMES:
         errors.append(f"outcome must be one of {VALID_OUTCOMES}, got '{outcome}'")
 
+    from opportunity_quality import APPLICATION_STATES, AWARD_TYPES, VERIFICATION_STATES
+    verification_status = opp.get("verification_status", "unverified")
+    if verification_status not in VERIFICATION_STATES:
+        errors.append(f"verification_status must be one of {VERIFICATION_STATES}")
+    application_status = opp.get("application_status", "unknown")
+    if application_status not in APPLICATION_STATES:
+        errors.append(f"application_status must be one of {APPLICATION_STATES}")
+    award_type = opp.get("award_type", "unknown")
+    if award_type not in AWARD_TYPES:
+        errors.append(f"award_type must be one of {AWARD_TYPES}")
+
     deadline = opp.get("deadline")
     if deadline:
         try:
@@ -222,11 +249,19 @@ def _validate(opp: dict) -> dict:
         "submitted_project": opp.get("submitted_project"),
         "outcome":           outcome,
         "prize_won":         opp.get("prize_won"),
-        "source":            str(opp.get("source", "manual")),
+        "source":            str(opp.get("source") or "manual"),
         "submission_url":    str(opp.get("submission_url", "")),
         "github_link":       str(opp.get("github_link", "")),
         "deploy_url":        str(opp.get("deploy_url", "")),
         "hours_spent":       opp.get("hours_spent"),
+        "verification_status": verification_status,
+        "verified_at":       opp.get("verified_at"),
+        "last_checked_at":   opp.get("last_checked_at"),
+        "application_status": application_status,
+        "eligibility":       str(opp.get("eligibility", "")),
+        "award_type":        award_type,
+        "max_award_usd":     opp.get("max_award_usd"),
+        "win_probability":   opp.get("win_probability"),
     }
 
 
@@ -301,6 +336,9 @@ def update_field(opp_id: str, field: str, value: Any) -> None:
         "theme_fit", "status", "tracks", "angle", "url", "resubmittable", "notes",
         "calendar_synced", "submitted_project", "outcome", "prize_won", "source",
         "submission_url", "github_link", "deploy_url", "hours_spent",
+        "verification_status", "verified_at", "last_checked_at",
+        "application_status", "eligibility", "award_type", "max_award_usd",
+        "win_probability",
     }
     if field not in allowed_fields:
         raise ValueError(f"Field '{field}' not updatable")
