@@ -3474,5 +3474,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://brainwave-2026-midnight-track.devpost.com/",
+    "name": "Brainwave 2026 \u2013 Midnight Track",
+    "description": "{'id': 1, 'name': 'Blockchain'} {'id': 3, 'name': 'Fintech'}",
+    "deadline": "2026-08-17",
+    "prize_usd": 220,
+    "prize_note": "$220",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-10",
+    "last_checked_at": "2026-08-10",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-6e03cc01103c",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
