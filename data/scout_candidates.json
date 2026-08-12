@@ -3397,5 +3397,59 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/alpaca-ai-trading-agents-hackathon",
+    "name": "Alpaca AI Trading Agents Hackathon",
+    "description": "Build AI trading agents on Alpaca \u2014 autonomous agents and trading apps using Alpaca's Trading API, MCP server and CLI.](http://lablab.ai/ai-hackathons/alpaca-ai-trading-agents-hackathon)",
+    "deadline": null,
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-12",
+    "last_checked_at": "2026-08-12",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-4b8366f1eb58",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
+  },
+  {
+    "source": "hacklist",
+    "url": "https://hackhydra.hydradb.com/",
+    "name": "HackHydra",
+    "description": "Build applications using HydraDB \u2014 a Postgres-compatible database with built-in analytics and vector search. Three tracks: AI and Vector Search (semantic search, RAG, embeddings), Analytics and Data (real-time dashboards, reporting tools), and Developer Tooling (SDKs, ORMs, migration tools). All submissions must use HydraDB as the primary database.",
+    "deadline": null,
+    "prize_usd": 10000,
+    "prize_note": "$10,000",
+    "format": "online",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-12",
+    "last_checked_at": "2026-08-12",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-85c6344e1cc6",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
