@@ -3558,5 +3558,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://opencv26.devpost.com/",
+    "name": "OpenCV AI Competition 2026, powered by AWS",
+    "description": "{'id': 7, 'name': 'IoT'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 29, 'name': 'Serverless'}",
+    "deadline": "2026-10-27",
+    "prize_usd": 12000,
+    "prize_note": "$12,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-13",
+    "last_checked_at": "2026-08-13",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-c3461e04a60b",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
