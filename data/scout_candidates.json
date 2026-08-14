@@ -3587,5 +3587,33 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://road-to-devcon-nitk-surathkal.devfolio.co/",
+    "name": "Road to Devcon - NITK Surathkal",
+    "description": "Road to Devcon - NITK Surathkal Hackathon Theme Blockchain FinTech AI Online Open Starts 17/08/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-08-17",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-14",
+    "last_checked_at": "2026-08-14",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-7b5fee82176e",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
