@@ -3593,5 +3593,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://steminate-wildcard-hack.devpost.com/",
+    "name": "STEMinate Wildcard Hack",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-08-22",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-15",
+    "last_checked_at": "2026-08-15",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-9bfc42ad5196",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://lexhack-2026.devpost.com/",
+    "name": "LexHack 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 17, 'name': 'Low/No Code'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-09-27",
+    "prize_usd": 1260,
+    "prize_note": "$1,260",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-15",
+    "last_checked_at": "2026-08-15",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-646872fa278f",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
