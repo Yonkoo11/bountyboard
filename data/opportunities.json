@@ -939,7 +939,7 @@
     "tracks": [
       "Autonomous AI incident response (Protocol SIFT)"
     ],
-    "angle": "Custody — provenance-gated DFIR agent that cannot hallucinate a finding (architectural verifier over SIFT via MCP)",
+    "angle": "Custody \u2014 provenance-gated DFIR agent that cannot hallucinate a finding (architectural verifier over SIFT via MCP)",
     "url": "https://findevil.devpost.com/",
     "resubmittable": false,
     "notes": "",
@@ -969,7 +969,7 @@
       "Multi-Agent Software Development",
       "Regulated & High-Stakes Workflows"
     ],
-    "angle": "Overturn — 5 agents collaborate via Band to win health-insurance appeals (Track 3, medical-SME wedge)",
+    "angle": "Overturn \u2014 5 agents collaborate via Band to win health-insurance appeals (Track 3, medical-SME wedge)",
     "url": "https://lablab.ai/ai-hackathons/band-of-agents-hackathon",
     "resubmittable": false,
     "notes": "",
@@ -1029,7 +1029,7 @@
     "tracks": [
       "single open track"
     ],
-    "angle": "Solvent — ZK proof-of-reserves for Stellar issuers (Circom/Groth16 verified on Soroban)",
+    "angle": "Solvent \u2014 ZK proof-of-reserves for Stellar issuers (Circom/Groth16 verified on Soroban)",
     "url": "https://dorahacks.io/hackathon/stellar-hacks-zk/detail",
     "resubmittable": false,
     "notes": "",
@@ -1062,7 +1062,7 @@
       "Creative Genius",
       "Social Buzz"
     ],
-    "angle": "LP Copilot — paid A2MCP x402 LP intelligence on OKX.AI (FILE #3 Tier 1)",
+    "angle": "LP Copilot \u2014 paid A2MCP x402 LP intelligence on OKX.AI (FILE #3 Tier 1)",
     "url": "https://web3.okx.com/xlayer/build-x-series",
     "resubmittable": false,
     "notes": "",
@@ -1090,7 +1090,7 @@
     "tracks": [
       "App Contest (open)"
     ],
-    "angle": "ShelfShot — one product photo to full ad kit; HF image+video; usage-loop design",
+    "angle": "ShelfShot \u2014 one product photo to full ad kit; HF image+video; usage-loop design",
     "url": "https://higgsfield.ai/supercomputer/apps?tab=prizes",
     "resubmittable": false,
     "notes": "",
@@ -1147,7 +1147,7 @@
       "Open product design",
       "Best use of MCP"
     ],
-    "angle": "Elsewhen: translate invitations between wall time and a night-shift worker’s self-set body time",
+    "angle": "Elsewhen: translate invitations between wall time and a night-shift worker\u2019s self-set body time",
     "url": "https://contra.com/community/topic/flowstepchallenge/guidelines",
     "resubmittable": false,
     "notes": "",
@@ -1178,7 +1178,7 @@
       "Production ML Agents",
       "Open / Wildcard"
     ],
-    "angle": "Crumple — compile DataHub lineage into executable, approval-bound resilience contracts and write observed behavior back to affected assets",
+    "angle": "Crumple \u2014 compile DataHub lineage into executable, approval-bound resilience contracts and write observed behavior back to affected assets",
     "url": "https://datahub.devpost.com/",
     "resubmittable": false,
     "notes": "",
@@ -1225,6 +1225,34 @@
     "eligibility": "Official rules apply; teams disabled; non-US citizens receive Replit credits instead of cash",
     "award_type": "cash_prize",
     "max_award_usd": 16000,
+    "win_probability": null
+  },
+  {
+    "id": "build-with-gemini-xprize",
+    "name": "Build with Gemini XPRIZE",
+    "category": "hackathon",
+    "deadline": "2026-08-17",
+    "start_date": "2026-05-19",
+    "prize_usd": 2000000,
+    "prize_note": "$2M total; $500K first place; category prize $50K",
+    "theme_fit": 10,
+    "status": "active",
+    "tracks": [
+      "Small Business Services"
+    ],
+    "angle": "EgressProof \u2014 purpose, processor, and expiry enforcement for personal data carried by AI-agent tool calls",
+    "url": "https://www.geminixprize.com/",
+    "resubmittable": false,
+    "notes": "",
+    "submission_url": "https://xprize.devpost.com/",
+    "source": "official",
+    "verification_status": "verified",
+    "verified_at": "2026-08-16",
+    "last_checked_at": "2026-08-16",
+    "application_status": "unknown",
+    "eligibility": "",
+    "award_type": "cash_prize",
+    "max_award_usd": 500000,
     "win_probability": null
   },
   {
@@ -1481,41 +1509,6 @@
     "eligibility": "",
     "award_type": "unknown",
     "max_award_usd": null,
-    "win_probability": null
-  },
-  {
-    "id": "build-with-gemini-xprize",
-    "name": "Build with Gemini XPRIZE",
-    "category": "hackathon",
-    "deadline": "2026-08-17",
-    "start_date": "2026-05-19",
-    "prize_usd": 2000000,
-    "prize_note": "$2M total; $500K first place; category prize $50K",
-    "theme_fit": 10,
-    "status": "active",
-    "tracks": [
-      "Small Business Services"
-    ],
-    "angle": "EgressProof — purpose, processor, and expiry enforcement for personal data carried by AI-agent tool calls",
-    "url": "https://www.geminixprize.com/",
-    "resubmittable": false,
-    "notes": "",
-    "calendar_synced": true,
-    "submitted_project": null,
-    "outcome": null,
-    "prize_won": null,
-    "source": "official",
-    "submission_url": "https://xprize.devpost.com/",
-    "github_link": "",
-    "deploy_url": "",
-    "hours_spent": null,
-    "verification_status": "verified",
-    "verified_at": "2026-08-16",
-    "last_checked_at": "2026-08-16",
-    "application_status": "unknown",
-    "eligibility": "",
-    "award_type": "cash_prize",
-    "max_award_usd": 500000,
     "win_probability": null
   }
 ]
