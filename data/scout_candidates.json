@@ -3460,5 +3460,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://prompt-wars-2026.devpost.com/",
+    "name": "Prompt Wars 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 17, 'name': 'Low/No Code'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-08-29",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-17",
+    "last_checked_at": "2026-08-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-d02071d3e9e8",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
