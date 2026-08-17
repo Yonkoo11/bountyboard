@@ -3407,5 +3407,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hack47-offgrid.devpost.com/",
+    "name": "HACK47: OFFGRID",
+    "description": "{'id': 21, 'name': 'Enterprise'} {'id': 22, 'name': 'Open Ended'} {'id': 27, 'name': 'Robotic Process Automation'}",
+    "deadline": "2026-10-15",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-17",
+    "last_checked_at": "2026-08-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-c8089e91ceef",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
