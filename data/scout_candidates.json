@@ -3433,5 +3433,32 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "hacklist",
+    "url": "https://tally.so/r/OD9eeY",
+    "name": "Arkiv Ideathon #2: Marketplaces",
+    "description": "Pitch a marketplace idea built on Arkiv \u2014 listings, quotes, bookings, or bounties with a lifecycle. Design filterable, self-pruning inventory with verifiable authorship on every write. Ideas include RFQ quote boards, availability slots, bounty microboards, and dispute evidence packets. No code or deployment required.",
+    "deadline": null,
+    "prize_usd": 1000,
+    "prize_note": "$1,000 USDC",
+    "format": "online",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-17",
+    "last_checked_at": "2026-08-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-8547cd373f4e",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
