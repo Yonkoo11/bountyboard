@@ -3544,5 +3544,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://august-ai-challenge-31059.devpost.com/",
+    "name": "Prometheus August AI Challenge",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 18, 'name': 'Design'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-08-30",
+    "prize_usd": 1500,
+    "prize_note": "$1,500",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-18",
+    "last_checked_at": "2026-08-18",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-4f8a91ec66db",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
