@@ -420,32 +420,6 @@
   },
   {
     "source": "devpost",
-    "url": "https://quantumhacks.devpost.com/",
-    "name": "QuantumHacks",
-    "description": "{'id': 28, 'name': 'Databases'} {'id': 3, 'name': 'Fintech'} {'id': 24, 'name': 'Quantum'}",
-    "deadline": "2026-08-20",
-    "prize_usd": 0,
-    "prize_note": "$$<span data-currency-value>1,000</span>",
-    "theme_fit": 1,
-    "category": "hackathon",
-    "scout_date": "2026-08-09",
-    "last_checked_at": "2026-08-09",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "profile_match": "conditional",
-    "review_status": "pending",
-    "reviewed_at": null,
-    "candidate_id": "lead-e1bae1e1c21e",
-    "decision_note": ""
-  },
-  {
-    "source": "devpost",
     "url": "https://hack-for-humanity-summer-26.devpost.com/",
     "name": "Hack for Humanity | Summer 2026",
     "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 16, 'name': 'Health'} {'id': 6, 'name': 'Machine Learning/AI'}",
@@ -3521,32 +3495,6 @@
   },
   {
     "source": "devpost",
-    "url": "https://prismbuild.devpost.com/",
-    "name": "Prism Build Challenge",
-    "description": "{'id': 21, 'name': 'Enterprise'} {'id': 11, 'name': 'Productivity'} {'id': 3, 'name': 'Fintech'}",
-    "deadline": "2026-08-20",
-    "prize_usd": 0,
-    "prize_note": "",
-    "theme_fit": 0,
-    "category": "hackathon",
-    "scout_date": "2026-08-20",
-    "last_checked_at": "2026-08-20",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "candidate_id": "lead-928ef7df9148",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "review_status": "pending",
-    "reviewed_at": null,
-    "decision_note": "",
-    "profile_match": "conditional"
-  },
-  {
-    "source": "devpost",
     "url": "https://inspire-hackathon.devpost.com/",
     "name": "Inspire Hackathon ",
     "description": "{'id': 21, 'name': 'Enterprise'} {'id': 3, 'name': 'Fintech'} {'id': 11, 'name': 'Productivity'}",
@@ -3624,5 +3572,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://quantumhacks.devpost.com/",
+    "name": "QuantumHacks",
+    "description": "{'id': 28, 'name': 'Databases'} {'id': 3, 'name': 'Fintech'} {'id': 24, 'name': 'Quantum'}",
+    "deadline": "2026-08-24",
+    "prize_usd": 1000,
+    "prize_note": "$1,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-21",
+    "last_checked_at": "2026-08-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e1bae1e1c21e",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
