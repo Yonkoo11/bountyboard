@@ -3598,5 +3598,83 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://compsphere12.devpost.com/",
+    "name": "COMPSPHERE 12",
+    "description": "{'id': 1, 'name': 'Blockchain'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 9, 'name': 'Cybersecurity'}",
+    "deadline": "2026-09-17",
+    "prize_usd": 1247,
+    "prize_note": "$1,247",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-08-21",
+    "last_checked_at": "2026-08-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-722135f825ca",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hyperbloom-september2.devpost.com/",
+    "name": "Hyperbloom September - Beginer Freindly",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 19, 'name': 'Education'} {'id': 17, 'name': 'Low/No Code'}",
+    "deadline": "2026-09-23",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-21",
+    "last_checked_at": "2026-08-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-44a5535dc20b",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hyperbloom-october.devpost.com/",
+    "name": "Hyperbloom October- UI/UX and Web Design",
+    "description": "{'id': 18, 'name': 'Design'} {'id': 11, 'name': 'Productivity'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-10-12",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-21",
+    "last_checked_at": "2026-08-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-ee3df52ed65c",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
