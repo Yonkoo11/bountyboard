@@ -3783,5 +3783,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://zero-origin.devpost.com/",
+    "name": "Zero Origin",
+    "description": "{'id': 3, 'name': 'Fintech'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 23, 'name': 'Beginner Friendly'}",
+    "deadline": "2026-09-25",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-22",
+    "last_checked_at": "2026-08-22",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-5f214d038504",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
