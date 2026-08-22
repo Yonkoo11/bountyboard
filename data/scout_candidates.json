@@ -3756,5 +3756,32 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "lablab",
+    "url": "https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon",
+    "name": "AssemblyAI - Voice Agent Hackathon",
+    "description": "\ud83c\udf0e Online Hackathon | \ud83d\udcbb Month-long challenge | Dates: Sep 1\u201330, 2026 | \ud83c\udfc6 $10,000 Prize Pool A month-long online challenge run by lablab.ai together with AssemblyAI, the Voice AI infrastructure company for builders. Every participant builds on AssemblyAI. You can join at any point \u2014 registration stays open for the whole build window, so you can start on day one or pick the project up halfway through and still submit. \ud83c\udf0d Fully online hackathon. Join and build from anywhere in the world.](http://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon)",
+    "deadline": null,
+    "format": "online",
+    "prize_usd": 10000,
+    "prize_note": "$10,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-22",
+    "last_checked_at": "2026-08-22",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-07ae608a6e70",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
