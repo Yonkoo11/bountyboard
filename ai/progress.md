@@ -110,3 +110,14 @@ bountyboard/
 
 ### Live URL
 https://yonkoo11.github.io/bountyboard/
+
+# Session: 2026-08-23 — Ready, Spec, Ship Hackathon
+
+### What Was Done
+
+- Added and verified `ready-spec-ship-kiro-2026` from the official event page and binding rules.
+- Recorded the 2026-08-23 23:59 UTC deadline, $5,000 maximum cash award, eligibility, submission requirements, and official application link.
+- Marked calendar sync complete and regenerated `docs/index.html`.
+- Did not spend USDC, publish, deploy, or change launchd jobs.
+
+---
