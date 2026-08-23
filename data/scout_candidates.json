@@ -3725,5 +3725,56 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://innovart2027.devpost.com/",
+    "name": "InnovArt 2027: Art and Technology Hack Day",
+    "description": "{'id': 15, 'name': 'Music/Art'} {'id': 23, 'name': 'Beginner Friendly'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2027-01-02",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-23",
+    "last_checked_at": "2026-08-23",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-4bc8e0041f6e",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://powered-by-mel.devpost.com/",
+    "name": "Agentic Day Online Hackathon Powered by Mel",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 12, 'name': 'Lifehacks'} {'id': 17, 'name': 'Low/No Code'}",
+    "deadline": "2026-08-30",
+    "prize_usd": 600,
+    "prize_note": "$600",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-23",
+    "last_checked_at": "2026-08-23",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-b4ab6835fafe",
+    "availability_state": "available",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
