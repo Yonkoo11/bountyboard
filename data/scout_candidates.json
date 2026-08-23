@@ -3776,5 +3776,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://mlai-hackathon.devpost.com/",
+    "name": "MLAI Hackathon",
+    "description": "{'id': 28, 'name': 'Databases'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-10-16",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-23",
+    "last_checked_at": "2026-08-23",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-66125e60cadf",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
