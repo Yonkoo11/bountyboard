@@ -3776,5 +3776,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://shpe-jr-designathon.devpost.com/",
+    "name": "SHPE Jr. Designathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'}",
+    "deadline": "2026-09-19",
+    "prize_usd": 350,
+    "prize_note": "$350",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-24",
+    "last_checked_at": "2026-08-24",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-647a3e80eed3",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
