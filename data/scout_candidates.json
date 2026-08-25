@@ -3698,5 +3698,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://webmcp.devpost.com/",
+    "name": "The WebMCP Challenge",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 20, 'name': 'E-commerce/Retail'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-09-03",
+    "prize_usd": 35000,
+    "prize_note": "$35,000",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-08-25",
+    "last_checked_at": "2026-08-25",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-adb66871593e",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hack2heal.devpost.com/",
+    "name": "Hack2Heal 2.0 - Global Healthcare Innovation Hackathon",
+    "description": "{'id': 16, 'name': 'Health'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 23, 'name': 'Beginner Friendly'}",
+    "deadline": "2026-09-10",
+    "prize_usd": 100,
+    "prize_note": "$100",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-08-25",
+    "last_checked_at": "2026-08-25",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-79358687a3ce",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
