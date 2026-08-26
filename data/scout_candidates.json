@@ -3698,5 +3698,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://nebiusglobalaihackathon.devpost.com/",
+    "name": "Nebius x NVIDIA Global AI Hackathon",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 23, 'name': 'Beginner Friendly'} {'id': 27, 'name': 'Robotic Process Automation'}",
+    "deadline": "2026-10-30",
+    "prize_usd": 50000,
+    "prize_note": "$50,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-08-26",
+    "last_checked_at": "2026-08-26",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-0356467f26e9",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
