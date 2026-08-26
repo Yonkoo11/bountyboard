@@ -3672,5 +3672,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://graphiques-challenge.devpost.com/",
+    "name": "Graphiques Innovation Challenge ",
+    "description": "{'id': 21, 'name': 'Enterprise'} {'id': 3, 'name': 'Fintech'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-08-26",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-26",
+    "last_checked_at": "2026-08-26",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-2ea4e348380e",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
