@@ -4485,5 +4485,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://ai-content-engine-hackathon.devpost.com/",
+    "name": "N/A",
+    "description": "{'id': 14, 'name': 'COVID-19'} {'id': 18, 'name': 'Design'} {'id': 4, 'name': 'Gaming'}",
+    "deadline": "2027-04-06",
+    "prize_usd": 2,
+    "prize_note": "$2",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-08-30",
+    "last_checked_at": "2026-08-30",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-1362d7b87a91",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
