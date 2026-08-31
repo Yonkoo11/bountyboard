@@ -4513,5 +4513,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://amazonappdev2026.devpost.com/",
+    "name": "Build, Ship, Shape: Amazon Developer Hackathon",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-10-23",
+    "prize_usd": 138000,
+    "prize_note": "$138,000",
+    "theme_fit": 4,
+    "category": "hackathon",
+    "scout_date": "2026-08-31",
+    "last_checked_at": "2026-08-31",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-ec990578219f",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://tigerhacks-2026.devpost.com/",
+    "name": "TigerHacks 2026",
+    "description": "{'id': 16, 'name': 'Health'} {'id': 22, 'name': 'Open Ended'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-09-27",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-08-31",
+    "last_checked_at": "2026-08-31",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-da3df02e80c9",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
