@@ -4308,32 +4308,6 @@
   },
   {
     "source": "devpost",
-    "url": "https://3d-websites-hackathon.devpost.com/",
-    "name": "3D Websites Hackathon",
-    "description": "{'id': 18, 'name': 'Design'} {'id': 25, 'name': 'Web'} {'id': 23, 'name': 'Beginner Friendly'}",
-    "deadline": "2026-09-02",
-    "prize_usd": 55,
-    "prize_note": "$55",
-    "theme_fit": 2,
-    "category": "hackathon",
-    "scout_date": "2026-09-01",
-    "last_checked_at": "2026-09-01",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "candidate_id": "lead-6dd8867775d2",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "review_status": "pending",
-    "reviewed_at": null,
-    "decision_note": "",
-    "profile_match": "conditional"
-  },
-  {
-    "source": "devpost",
     "url": "https://galuxium-nexus-v2-29411.devpost.com/",
     "name": "Galuxium Nexus V2",
     "description": "{'id': 21, 'name': 'Enterprise'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'}",
@@ -4348,32 +4322,6 @@
     "application_status": "unknown",
     "award_type": "unknown",
     "candidate_id": "lead-4878c0811d34",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "review_status": "pending",
-    "reviewed_at": null,
-    "decision_note": "",
-    "profile_match": "conditional"
-  },
-  {
-    "source": "devpost",
-    "url": "https://graphiques-challenge.devpost.com/",
-    "name": "Graphiques Innovation Challenge ",
-    "description": "{'id': 21, 'name': 'Enterprise'} {'id': 3, 'name': 'Fintech'} {'id': 11, 'name': 'Productivity'}",
-    "deadline": "2026-09-02",
-    "prize_usd": 0,
-    "prize_note": "",
-    "theme_fit": 0,
-    "category": "hackathon",
-    "scout_date": "2026-09-02",
-    "last_checked_at": "2026-09-02",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "candidate_id": "lead-2ea4e348380e",
     "availability_state": "unknown",
     "research_reasons": [
       "eligibility",
@@ -4463,5 +4411,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://graphiques-challenge.devpost.com/",
+    "name": "Graphiques Innovation Challenge ",
+    "description": "{'id': 21, 'name': 'Enterprise'} {'id': 3, 'name': 'Fintech'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-09-03",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-09-03",
+    "last_checked_at": "2026-09-03",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-2ea4e348380e",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
