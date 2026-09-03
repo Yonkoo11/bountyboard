@@ -4463,5 +4463,59 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://practicetocreate.devpost.com/",
+    "name": "Practice to Create [Feedback To All Projects!]",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 17, 'name': 'Low/No Code'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-09-25",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-09-03",
+    "last_checked_at": "2026-09-03",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-3ca5c94abab6",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://avalon-openhack.devfolio.co/",
+    "name": "Avalon OpenHack",
+    "description": "Avalon OpenHack Hackathon Theme No Restrictions Online Open Starts 13/09/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-09-13",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-09-03",
+    "last_checked_at": "2026-09-03",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-cffa2f091dc1",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
