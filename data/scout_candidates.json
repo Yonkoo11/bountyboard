@@ -4437,5 +4437,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://checkpoint-1.devpost.com/",
+    "name": "checkpoint 1 \u2014 games for good",
+    "description": "{'id': 4, 'name': 'Gaming'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2027-01-10",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-09-03",
+    "last_checked_at": "2026-09-03",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-19efc7328879",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
