@@ -4680,5 +4680,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://code-to-connect-wit.devpost.com/",
+    "name": "Code to Connect: Women in Tech Hackathon 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 10, 'name': 'Communication'} {'id': 4, 'name': 'Gaming'}",
+    "deadline": "2026-09-06",
+    "prize_usd": 600,
+    "prize_note": "$600",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-09-04",
+    "last_checked_at": "2026-09-04",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-650d0ff39057",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
