@@ -4628,5 +4628,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://shared-os-hackathon.devpost.com/",
+    "name": "Shared OS Hackathon",
+    "description": "{'id': 2, 'name': 'DevOps'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-09-11",
+    "prize_usd": 5500,
+    "prize_note": "$5,500",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-09-05",
+    "last_checked_at": "2026-09-05",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-daccdd425be5",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
