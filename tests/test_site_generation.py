@@ -107,6 +107,21 @@ class SiteGenerationTests(unittest.TestCase):
             "Online | Sept 25–27 - register",
         )
 
+    def test_generate_evaluates_as_of_pinned_refresh_date(self):
+        item = {
+            "id": "pinned", "name": "Pinned Hackathon", "category": "hackathon",
+            "status": "active", "deadline": "2026-09-01", "url": "https://example.com/p",
+            "application_status": "open", "format": "online",
+        }
+        with patch.object(generate_site.db, "get_all", return_value=[item]), patch.object(
+            generate_site, "load_candidates", return_value=[]
+        ):
+            page = generate_site.generate(date(2026, 8, 20))
+        self.assertIn('data-generated-at="2026-08-20T00:00:00Z"', page)
+        self.assertIn("Pinned Hackathon", page)
+        from opportunity_quality import current_date
+        self.assertEqual(current_date(), date.today())
+
     def test_safe_url_accepts_only_absolute_http_urls(self):
         self.assertEqual(generate_site.safe_url("https://example.com/path"), "https://example.com/path")
         self.assertEqual(generate_site.safe_url("http://example.com"), "http://example.com")

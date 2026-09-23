@@ -33,12 +33,25 @@ def parse_date(value: str | None) -> date | None:
         return None
 
 
+_pinned_date: date | None = None
+
+
+def pin_date(value: date | None) -> None:
+    """Evaluate deadlines and evidence age as of a fixed day (None = today)."""
+    global _pinned_date
+    _pinned_date = value
+
+
+def current_date() -> date:
+    return _pinned_date or date.today()
+
+
 def days_until(value: str | None, *, today: date | None = None) -> int | None:
     """Return days to a known deadline; unknown and invalid dates return None."""
     parsed = parse_date(value)
     if parsed is None:
         return None
-    return (parsed - (today or date.today())).days
+    return (parsed - (today or current_date())).days
 
 
 def verification_age_days(opportunity: dict[str, Any], *, today: date | None = None) -> int | None:
@@ -49,7 +62,7 @@ def verification_age_days(opportunity: dict[str, Any], *, today: date | None = N
         checked = parse_date(opportunity.get("last_checked_at") or opportunity.get("verified_at"))
     if checked is None:
         return None
-    return ((today or date.today()) - checked).days
+    return ((today or current_date()) - checked).days
 
 
 def effective_verification(opportunity: dict[str, Any], *, today: date | None = None) -> str:

@@ -29,10 +29,12 @@ from opportunity_quality import (
     expected_value,
     is_safe_url,
     missing_details,
+    pin_date,
 )
 
 DOCS_DIR = REPO_DIR / "docs"
 CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
+LAST_RUN_FILE = REPO_DIR / "data" / "last_run.json"
 
 
 # Scraped listings (lablab et al.) use emoji as bullets and em dashes as
@@ -305,8 +307,28 @@ def opportunity_row(opportunity: dict[str, Any], rank: int) -> str:
 </article>"""
 
 
-def generate() -> str:
-    today = date.today()
+def refresh_date() -> date | None:
+    """UTC day of the last successful refresh, from the committed receipt."""
+    try:
+        completed = json.loads(LAST_RUN_FILE.read_text())["completed_at"]
+        return datetime.fromisoformat(completed).astimezone(timezone.utc).date()
+    except (OSError, KeyError, TypeError, ValueError):
+        return None
+
+
+def generate(as_of: date | None = None) -> str:
+    # Pinning the day makes a rebuild of the same data byte-identical, which the
+    # quality workflow asserts. Otherwise a push made a day after the refresh
+    # re-ages deadlines and evidence and the committed page never matches.
+    today = as_of or date.today()
+    pin_date(today)
+    try:
+        return render(today)
+    finally:
+        pin_date(None)
+
+
+def render(today: date) -> str:
     # Day-level precision keeps committed output reproducible during CI rebuilds.
     # The deployed HTML still gives visitors an honest maximum age for this refresh.
     generated_at = datetime.combine(today, time.min, tzinfo=timezone.utc)
@@ -495,7 +517,7 @@ def generate() -> str:
 
 
 def main() -> None:
-    page = "\n".join(line.rstrip() for line in generate().splitlines()) + "\n"
+    page = "\n".join(line.rstrip() for line in generate(refresh_date()).splitlines()) + "\n"
     if "--dry-run" in sys.argv:
         print(page)
         return

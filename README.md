@@ -55,7 +55,7 @@ fresh clone on 2026-09-24; the seed counts change as the data changes.
 git clone https://github.com/Yonkoo11/bountyboard && cd bountyboard
 python3 -m venv .venv && . .venv/bin/activate
 pip install -q -r requirements.txt
-python3 -m unittest discover -s tests   # -> Ran 63 tests ... OK
+python3 -m unittest discover -s tests   # -> Ran 64 tests ... OK
 python3 scripts/seed_db.py              # -> Seeded 53 entries: {'active': 3, 'closed': 41, 'needs_review': 6, 'rejected': 2, 'submitted': 1}
 python3 scripts/validate_profile.py     # -> Profile valid. Unconfirmed fields: country, student_status, age_band
 python3 scripts/generate_site.py        # -> Generated .../docs/index.html (291,060 bytes)
@@ -125,6 +125,6 @@ data/
   opportunities.json    # curated, committed dataset
   scout_candidates.json # lower-confidence leads kept on the radar
 docs/                   # the published site (GitHub Pages)
-tests/                  # 63 unit tests, run on every refresh and push
+tests/                  # 64 unit tests, run on every refresh and push
 .github/workflows/      # 4-hourly refresh, hourly freshness watch, deadline alerts, quality
 ```
