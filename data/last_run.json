@@ -1,28 +1,25 @@
 {
-  "completed_at": "2026-09-01T19:24:51+00:00",
+  "completed_at": "2026-09-23T23:50:24+00:00",
   "source_counts": {
-    "ethglobal": 24,
-    "devpost": 0,
-    "devfolio": 4,
+    "ethglobal": 23,
+    "devpost": 69,
+    "devfolio": 5,
     "mlh": 0,
-    "lablab": 10,
-    "hacklist": 49,
+    "lablab": 9,
+    "hacklist": 63,
     "solana": 0,
     "twitter": 0,
     "exa": 0
   },
-  "source_errors": [
-    "devpost: 2 request failure(s)"
-  ],
+  "source_errors": [],
   "stats": {
-    "new_review": 0,
-    "candidate": 0,
+    "new_review": 3,
+    "candidate": 66,
     "skipped": 0,
-    "already_seen": 69,
+    "already_seen": 82,
     "past": 18
   },
   "degraded_sources": [
-    "devpost",
     "exa",
     "mlh",
     "solana",
