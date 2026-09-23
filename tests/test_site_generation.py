@@ -101,6 +101,12 @@ class SiteGenerationTests(unittest.TestCase):
         self.assertNotIn("data:text", row)
         self.assertIn("Source needed", row)
 
+    def test_scraped_emoji_and_em_dashes_are_normalized(self):
+        self.assertEqual(
+            generate_site.escape("💻 Online | 📅 Sept 25–27 — 🧑🏻‍💻 register"),
+            "Online | Sept 25–27 - register",
+        )
+
     def test_safe_url_accepts_only_absolute_http_urls(self):
         self.assertEqual(generate_site.safe_url("https://example.com/path"), "https://example.com/path")
         self.assertEqual(generate_site.safe_url("http://example.com"), "http://example.com")

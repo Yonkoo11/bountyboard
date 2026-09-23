@@ -35,8 +35,22 @@ DOCS_DIR = REPO_DIR / "docs"
 CANDIDATES_FILE = REPO_DIR / "data" / "scout_candidates.json"
 
 
+# Scraped listings (lablab et al.) use emoji as bullets and em dashes as
+# separators. Both read as noise on the board, so they are normalized at render
+# time; the stored source text is left untouched.
+EMOJI = re.compile(
+    "[\U0001F000-\U0001FAFF\u2300-\u23FF\u2600-\u27BF\u2B00-\u2BFF"
+    "\uFE0F\u200D\u20E3]"
+)
+
+
+def clean_copy(value: Any) -> str:
+    text = re.sub(r"\s*\u2014\s*", " - ", str(value or ""))
+    return re.sub(r"[ \t]{2,}", " ", EMOJI.sub("", text)).strip()
+
+
 def escape(value: Any) -> str:
-    return html.escape(str(value or ""), quote=True)
+    return html.escape(clean_copy(value), quote=True)
 
 
 def compact_text(value: Any) -> str:
@@ -334,14 +348,14 @@ def generate() -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A broad radar for hackathons, grants, accelerators, bounties, and builder opportunities.">
   <meta name="theme-color" content="#f5f2ea">
-  <meta property="og:title" content="BountyBoard — Opportunity Radar">
+  <meta property="og:title" content="BountyBoard: Opportunity Radar">
   <meta property="og:description" content="Discover broadly. Verify quickly. Never miss a serious builder opportunity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yonkoo11.github.io/bountyboard/">
   <link rel="canonical" href="https://yonkoo11.github.io/bountyboard/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v={asset_version}">
-  <title>BountyBoard — Opportunity Radar</title>
+  <title>BountyBoard: Opportunity Radar</title>
   <script>
     try {{
       const saved = localStorage.getItem("bb-theme");
