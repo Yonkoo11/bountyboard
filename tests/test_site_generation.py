@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -37,13 +38,14 @@ class SiteGenerationTests(unittest.TestCase):
     def test_verified_candidate_keeps_verification_date(self):
         with tempfile.TemporaryDirectory() as directory:
             candidate_file = Path(directory) / "candidates.json"
+            checked = (date.today() - timedelta(days=2)).isoformat()
             candidate_file.write_text(
                 '[{"name":"Verified event","url":"https://example.com",'
-                '"verification_status":"verified","last_checked_at":"2026-08-08"}]'
+                f'"verification_status":"verified","last_checked_at":"{checked}"}}]'
             )
             with patch.object(generate_site, "CANDIDATES_FILE", candidate_file):
                 leads = generate_site.load_candidates()
-        self.assertEqual(leads[0]["verified_at"], "2026-08-08")
+        self.assertEqual(leads[0]["verified_at"], checked)
         self.assertEqual(
             generate_site.effective_verification(leads[0]),
             "verified",
@@ -125,10 +127,10 @@ class SiteGenerationTests(unittest.TestCase):
             "name": "Visible Hackathon",
             "category": "hackathon",
             "status": "active",
-            "deadline": "2026-09-16",
+            "deadline": (date.today() + timedelta(days=21)).isoformat(),
             "url": "https://example.com/hackathon",
             "verification_status": "partially_verified",
-            "last_checked_at": "2026-08-09",
+            "last_checked_at": (date.today() - timedelta(days=2)).isoformat(),
             "application_status": "open",
             "format": "online",
         }
