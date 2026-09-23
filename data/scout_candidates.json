@@ -5219,5 +5219,32 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "no"
+  },
+  {
+    "source": "hacklist",
+    "url": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-rpc-fast-infrastructure-sidetrack",
+    "name": "Colosseum Crypto World's Fair Hackathon | RPC Fast Infrastructure Sidetrack",
+    "description": "An infrastructure sidetrack of the Colosseum Crypto World's Fair Solana Global Hackathon for teams building with RPC Fast. Eligible projects must also participate in the main Colosseum hackathon, use RPC Fast infrastructure, and demonstrate strong project execution, meaningful infrastructure integration, community engagement, and ecosystem impact.",
+    "deadline": null,
+    "prize_usd": 10500,
+    "prize_note": "~$10,500 in RPC infrastructure credits",
+    "format": "online",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-09-23",
+    "last_checked_at": "2026-09-23",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-46c3cf3b8ac3",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
