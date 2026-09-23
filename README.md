@@ -56,12 +56,14 @@ git clone https://github.com/Yonkoo11/bountyboard && cd bountyboard
 python3 -m venv .venv && . .venv/bin/activate
 pip install -q -r requirements.txt
 python3 -m unittest discover -s tests   # -> Ran 64 tests ... OK
-python3 scripts/seed_db.py              # -> Seeded 53 entries: {'active': 3, 'closed': 41, 'needs_review': 6, 'rejected': 2, 'submitted': 1}
+python3 scripts/seed_db.py              # -> Seeded 56 entries: {'active': 3, 'closed': 41, 'needs_review': 9, 'rejected': 2, 'submitted': 1}
 python3 scripts/validate_profile.py     # -> Profile valid. Unconfirmed fields: country, student_status, age_band
-python3 scripts/generate_site.py        # -> Generated .../docs/index.html (291,060 bytes)
+python3 scripts/generate_site.py        # -> Generated .../docs/index.html (429,421 bytes)
+git status --short docs/               # -> (no output: the rebuild matches the published page)
 ```
 
-This proves the page builds from the data in the repo and that the ranking,
+This proves the page rebuilds byte-for-byte from the data in the repo (it is
+built as of the last refresh date, not the day you run it) and that the ranking,
 escaping, deadline and freshness rules behave as the tests describe. It does
 not prove any listed opportunity is still open: that is what the evidence
 labels on each card are for.
@@ -102,10 +104,10 @@ Broad coverage and truthful uncertainty are both required:
 
 | Capability | Status |
 |---|---|
-| **Broad discovery** | Real. The 2026-09-24 build lists 137 leads on the radar, 136 with a source link, 52 with a known deadline, 43 archived. |
-| **Verification** | Measured negative. 0 of those 137 leads are currently marked verified; all 137 need research. Discovery is running, verification is not keeping up. |
+| **Broad discovery** | Real. The 2026-09-23 refresh lists 207 leads on the radar, 206 with a source link, 83 with a known deadline, 43 archived. |
+| **Verification** | Measured negative. 0 of those 207 leads are currently marked verified; all 207 need research. Discovery is running, verification is not keeping up. |
 | **Scheduled refresh** | Measured negative. Every scheduled refresh from at least 2026-09-13 to 2026-09-23 failed on two date-dependent tests, so the live page went about 22 days without updating. Fixed 2026-09-24; the refresh badge above is the live status. |
-| **Reported pools** | Advertised totals only ($2317K in that build). Not expected earnings, not what one person can win. |
+| **Reported pools** | Advertised totals only, never expected earnings. The 2026-09-23 refresh summed to $37.5B because the prize reader took the "m" in "$37,500 milestone" (ARC Prize) as millions; fixed 2026-09-24 with a regression test. Scraped figures are still unchecked. |
 | **Freshness alarm** | Real. An hourly workflow fails when the last successful refresh is more than 8 hours old. It is how the outage above was noticed. |
 | Eligibility for any specific person | Not claimed. The profile has unconfirmed fields (country, student status, age band). |
 

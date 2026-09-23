@@ -174,6 +174,8 @@ class ScoutTests(unittest.TestCase):
         self.assertEqual(scout._usd_amount("$2M total"), 2_000_000)
         self.assertEqual(scout._usd_amount("$8.75K"), 8_750)
         self.assertEqual(scout._usd_amount("Hardware prizes"), 0)
+        self.assertEqual(scout._usd_amount("$37,500 milestone cash if open-sourced"), 37_500)
+        self.assertEqual(scout._usd_amount("$1.5 million"), 1_500_000)
 
     def test_source_name_aliases_match_existing_platform_titles(self):
         item = {

@@ -568,14 +568,19 @@ def fetch_lablab() -> list[dict]:
 
 def _usd_amount(raw: str) -> int:
     """Extract a conservative USD amount from a human prize label."""
-    match = re.search(r"\$[^0-9]{0,40}([0-9][0-9,]*(?:\.\d+)?)\s*([KkMm])?", raw or "")
+    # The unit must stand alone: "$37,500 milestone" is not $37.5 billion.
+    match = re.search(
+        r"\$[^0-9]{0,40}([0-9][0-9,]*(?:\.\d+)?)(?:\s*(k|m|mn|thousand|million)\b)?",
+        raw or "",
+        re.IGNORECASE,
+    )
     if not match:
         return 0
     amount = float(match.group(1).replace(",", ""))
     suffix = (match.group(2) or "").lower()
-    if suffix == "k":
+    if suffix in ("k", "thousand"):
         amount *= 1_000
-    elif suffix == "m":
+    elif suffix in ("m", "mn", "million"):
         amount *= 1_000_000
     return int(amount)
 
