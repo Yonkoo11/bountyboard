@@ -5521,5 +5521,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://start-developer-competition-26.devpost.com/",
+    "name": "Meta VR Start Developer Competition 2026",
+    "description": "{'id': 5, 'name': 'AR/VR'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-11-18",
+    "prize_usd": 1000000,
+    "prize_note": "$1,000,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-09-24",
+    "last_checked_at": "2026-09-24",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-3f377fe4a413",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
