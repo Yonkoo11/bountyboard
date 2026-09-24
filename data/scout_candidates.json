@@ -4568,7 +4568,7 @@
     "name": "ARC Prize 2026: ARC-AGI-3 Milestone 2",
     "description": "A research contest on Kaggle to advance general AI reasoning against the ARC-AGI-3 benchmark. No internet access during evaluation, and GPT or Claude APIs are excluded. Cash prizes require open-sourcing your solution by the deadline.",
     "deadline": null,
-    "prize_usd": 37500000000,
+    "prize_usd": 37500,
     "prize_note": "$37,500 milestone cash ($25,000/$10,000/$2,500) if open-sourced, plus a $75,000 top-score bonus and a $700,000 grand prize for hitting 100%",
     "format": "online",
     "theme_fit": 2,
