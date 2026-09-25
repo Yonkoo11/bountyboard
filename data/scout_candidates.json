@@ -2664,32 +2664,6 @@
     "profile_match": "conditional"
   },
   {
-    "source": "devpost",
-    "url": "https://neurohack-1-0-by-axonic.devpost.com/",
-    "name": "NeuroHack - 1.0 ",
-    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 16, 'name': 'Health'} {'id': 7, 'name': 'IoT'}",
-    "deadline": "2026-09-24",
-    "prize_usd": 1260,
-    "prize_note": "$1,260",
-    "theme_fit": 1,
-    "category": "hackathon",
-    "scout_date": "2026-08-28",
-    "last_checked_at": "2026-08-28",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "candidate_id": "lead-64ae0f67f49b",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "review_status": "pending",
-    "reviewed_at": null,
-    "decision_note": "",
-    "profile_match": "conditional"
-  },
-  {
     "source": "hacklist",
     "url": "https://motionmux.com/contest/",
     "name": "FUTURE IN MOTION \u2014 Global AI Video Hackathon",
@@ -5538,6 +5512,32 @@
     "application_status": "unknown",
     "award_type": "unknown",
     "candidate_id": "lead-3f377fe4a413",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://neeley-ai-forward.devpost.com/",
+    "name": "Neeley AI Forward: AI Innovation Competition ",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 19, 'name': 'Education'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-10-18",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-09-25",
+    "last_checked_at": "2026-09-25",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-f10a9eb7d262",
     "availability_state": "unknown",
     "research_reasons": [
       "eligibility",
