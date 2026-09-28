@@ -5369,5 +5369,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://dsh-hacks-v2.devpost.com/",
+    "name": "DSH Hacks V2 ($100k+ in prizes!)",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 17, 'name': 'Low/No Code'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-11-08",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-09-28",
+    "last_checked_at": "2026-09-28",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-db1753c2867b",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
