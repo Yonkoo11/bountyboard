@@ -5369,5 +5369,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://gitlab-transcend.devpost.com/",
+    "name": "Life After Code",
+    "description": "{'id': 2, 'name': 'DevOps'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-10-27",
+    "prize_usd": 45000,
+    "prize_note": "$45,000",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-09-29",
+    "last_checked_at": "2026-09-29",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-96a146cfe44c",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://open-source-impact.devpost.com/",
+    "name": "Open Source Impact",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 22, 'name': 'Open Ended'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-10-31",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-09-29",
+    "last_checked_at": "2026-09-29",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-7c7c889a78cd",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
