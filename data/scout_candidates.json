@@ -5369,5 +5369,56 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://qloo.devpost.com/",
+    "name": "Qloo Agent Hackathon",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-10-30",
+    "prize_usd": 25000,
+    "prize_note": "$25,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-09-30",
+    "last_checked_at": "2026-09-30",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-7be4db93010a",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://kuk-virtual-hackathon.devpost.com/",
+    "name": "KUK VIRTUAL HACKATHON",
+    "description": "{'id': 28, 'name': 'Databases'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-11-22",
+    "prize_usd": 800,
+    "prize_note": "$800",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-09-30",
+    "last_checked_at": "2026-09-30",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-d28018998ee2",
+    "availability_state": "available",
+    "research_reasons": [
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
