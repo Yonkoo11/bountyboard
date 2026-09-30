@@ -5420,5 +5420,33 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://hackodisha-6a.devfolio.co/",
+    "name": "hackodisha-6.0",
+    "description": "hackodisha-6.0 Hackathon Theme No Restrictions + 250 participating Online Open Starts 31/10/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-10-31",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-09-30",
+    "last_checked_at": "2026-09-30",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-4156bbde6572",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
