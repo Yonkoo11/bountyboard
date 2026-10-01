@@ -5318,5 +5318,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://paypalaihackathon.devpost.com/",
+    "name": "PayPal AI Hackathon",
+    "description": "{'id': 17, 'name': 'Low/No Code'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-11-12",
+    "prize_usd": 67500,
+    "prize_note": "$67,500",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-01",
+    "last_checked_at": "2026-10-01",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-360e79c11c45",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
