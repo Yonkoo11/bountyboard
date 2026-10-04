@@ -5266,5 +5266,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://all-you-can-do-with-ai.devpost.com/",
+    "name": "All you can do with AI ",
+    "description": "{'id': 1, 'name': 'Blockchain'} {'id': 28, 'name': 'Databases'} {'id': 29, 'name': 'Serverless'}",
+    "deadline": "2026-10-12",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-04",
+    "last_checked_at": "2026-10-04",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-7be9d67e7eca",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
