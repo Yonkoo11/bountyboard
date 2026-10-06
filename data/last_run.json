@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-10-06T11:18:08+00:00",
+  "completed_at": "2026-10-06T18:24:04+00:00",
   "source_counts": {
     "ethglobal": 23,
     "devpost": 66,
@@ -14,9 +14,9 @@
   "source_errors": [],
   "stats": {
     "new_review": 0,
-    "candidate": 2,
+    "candidate": 0,
     "skipped": 0,
-    "already_seen": 116,
+    "already_seen": 118,
     "past": 19
   },
   "degraded_sources": [
