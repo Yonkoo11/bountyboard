@@ -5266,5 +5266,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://lehigh-hacks.devpost.com/",
+    "name": "Lehigh Fall 2026 Collegiate Hackathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 11, 'name': 'Productivity'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-10-18",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-06",
+    "last_checked_at": "2026-10-06",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-b6dc3a5ca118",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://the-top-500-uh-v2.devpost.com/",
+    "name": "The Top 500 (UH v2)",
+    "description": "{'id': 17, 'name': 'Low/No Code'} {'id': 22, 'name': 'Open Ended'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-10-25",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-06",
+    "last_checked_at": "2026-10-06",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-a680d82a8caf",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
