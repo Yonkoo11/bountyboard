@@ -5292,5 +5292,59 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://univabio.devpost.com/",
+    "name": "UnivaBio ($40,000 in prizes) ",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 16, 'name': 'Health'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-10-13",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-07",
+    "last_checked_at": "2026-10-07",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-2693a17479c3",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://arkiv.devfolio.co/",
+    "name": "Arkiv: Global Tour Stop \ud83c\udf0d",
+    "description": "Arkiv: Global Tour Stop \ud83c\udf0d Hackathon Theme Blockchain Online Open Starts 09/10/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-10-09",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-07",
+    "last_checked_at": "2026-10-07",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e2796ca118c2",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
