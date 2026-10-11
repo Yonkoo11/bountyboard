@@ -5269,5 +5269,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://buildyourownwebsite.devpost.com/",
+    "name": "BuildyourOwnWebsite",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 19, 'name': 'Education'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-11-25",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-10-11",
+    "last_checked_at": "2026-10-11",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-eb80f27af5f7",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
