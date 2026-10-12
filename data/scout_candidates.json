@@ -5321,5 +5321,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://pumpkin-playground.devpost.com/",
+    "name": "Pumpkin Playground",
+    "description": "{'id': 18, 'name': 'Design'} {'id': 4, 'name': 'Gaming'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-10-23",
+    "prize_usd": 30,
+    "prize_note": "$30",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-10-12",
+    "last_checked_at": "2026-10-12",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-04a7ea0e6686",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
