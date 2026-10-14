@@ -5425,5 +5425,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://kiroween.devpost.com/",
+    "name": "Kiroween 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-12-04",
+    "prize_usd": 100000,
+    "prize_note": "$100,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-14",
+    "last_checked_at": "2026-10-14",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-3f86935f37a2",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://spu-hacks.devpost.com/",
+    "name": "SPU Hacks",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 22, 'name': 'Open Ended'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-10-18",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-14",
+    "last_checked_at": "2026-10-14",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-9f566389e302",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
