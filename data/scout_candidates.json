@@ -5533,5 +5533,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://sose-halloween-hackathon-2.devpost.com/",
+    "name": "Society of Software Engineers | 2nd Annual Halloween Hackathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 19, 'name': 'Education'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-10-24",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-15",
+    "last_checked_at": "2026-10-15",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-283b65aef5f1",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
