@@ -5455,5 +5455,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://launchpad-hacks.devpost.com/",
+    "name": "LaunchPad Hacks",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-11-20",
+    "prize_usd": 300,
+    "prize_note": "$300",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-10-16",
+    "last_checked_at": "2026-10-16",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-8f277d5f936f",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hackwithaditya.devpost.com/",
+    "name": "HackWithAditya",
+    "description": "{'id': 19, 'name': 'Education'} {'id': 16, 'name': 'Health'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-11-25",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-16",
+    "last_checked_at": "2026-10-16",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-c4bfbc06dcd6",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
