@@ -5559,5 +5559,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://the-arcticathon.devpost.com/",
+    "name": "The Arcticathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 18, 'name': 'Design'} {'id': 19, 'name': 'Education'}",
+    "deadline": "2027-01-30",
+    "prize_usd": 100500,
+    "prize_note": "$100,500",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-17",
+    "last_checked_at": "2026-10-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e330baafa8d8",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
