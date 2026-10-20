@@ -5611,5 +5611,33 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devfolio",
+    "url": "https://lean-in-hacks-8.devfolio.co/",
+    "name": "Lean In Hacks 8.0",
+    "description": "Lean In Hacks 8.0 Hackathon Theme No Restrictions Online Open Starts 31/10/26 Apply now",
+    "deadline": null,
+    "start_date": "2026-10-31",
+    "format": "online",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-20",
+    "last_checked_at": "2026-10-20",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-450d674820ad",
+    "availability_state": "available",
+    "research_reasons": [
+      "deadline",
+      "eligibility"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "yes"
   }
 ]
