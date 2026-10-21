@@ -5639,5 +5639,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://scope-ai-thon-2026.devpost.com/",
+    "name": "Scope-AI-Thon 2026 - AI for Detection of Acute Patient Deterioration",
+    "description": "{'id': 18, 'name': 'Design'} {'id': 16, 'name': 'Health'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-11-14",
+    "prize_usd": 1400,
+    "prize_note": "$1,400",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-21",
+    "last_checked_at": "2026-10-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-1047a91543a4",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://ctrl-v-hackathon-31831.devpost.com/",
+    "name": "Ctrl+V Hackathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-11-10",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-21",
+    "last_checked_at": "2026-10-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-1432bebc00cf",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
