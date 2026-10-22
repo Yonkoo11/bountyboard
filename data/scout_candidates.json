@@ -5820,5 +5820,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://ugreenhackathon.devpost.com/",
+    "name": "UGREEN Hackathon 2026 on AI NAS",
+    "description": "{'id': 12, 'name': 'Lifehacks'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-11-16",
+    "prize_usd": 46000,
+    "prize_note": "$46,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-22",
+    "last_checked_at": "2026-10-22",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-a0b8308a1e3a",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://ieee-ai-hack-for-humanity.devpost.com/",
+    "name": "IEEE Hack For Humanity",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-10-23",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-10-22",
+    "last_checked_at": "2026-10-22",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e7228ef5ae51",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
