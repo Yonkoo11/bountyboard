@@ -5406,32 +5406,6 @@
   },
   {
     "source": "devpost",
-    "url": "https://hack-insight.devpost.com/",
-    "name": "HACK INSIGHT",
-    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 8, 'name': 'Voice skills'} {'id': 19, 'name': 'Education'}",
-    "deadline": "2026-10-22",
-    "prize_usd": 144,
-    "prize_note": "$144",
-    "theme_fit": 2,
-    "category": "hackathon",
-    "scout_date": "2026-10-18",
-    "last_checked_at": "2026-10-18",
-    "verification_status": "unverified",
-    "application_status": "unknown",
-    "award_type": "unknown",
-    "candidate_id": "lead-d62b3a46029b",
-    "availability_state": "unknown",
-    "research_reasons": [
-      "eligibility",
-      "participation format"
-    ],
-    "review_status": "pending",
-    "reviewed_at": null,
-    "decision_note": "",
-    "profile_match": "conditional"
-  },
-  {
-    "source": "devpost",
     "url": "https://fuse-society-blueprint-2026.devpost.com/",
     "name": "FUSE Society Blueprint 2026",
     "description": "{'id': 23, 'name': 'Beginner Friendly'}",
