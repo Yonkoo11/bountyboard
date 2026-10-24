@@ -5924,5 +5924,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://obscura.devpost.com/",
+    "name": "OBSCURA: Satellite AI Research Challenge",
+    "description": "{'id': 19, 'name': 'Education'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-11-24",
+    "prize_usd": 50,
+    "prize_note": "$50",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-24",
+    "last_checked_at": "2026-10-24",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-eb99ae41b6e3",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hackthefashion-global26.devpost.com/",
+    "name": "HackTheFashion Global'26",
+    "description": "{'id': 5, 'name': 'AR/VR'} {'id': 23, 'name': 'Beginner Friendly'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-12-31",
+    "prize_usd": 45000,
+    "prize_note": "$45,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-24",
+    "last_checked_at": "2026-10-24",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-8a0ca29a504b",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
