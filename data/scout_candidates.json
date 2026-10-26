@@ -5846,5 +5846,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://lovhack-trmi-2026.devpost.com/",
+    "name": "TRMI X Lovhack : Multiplayer Everything Hackathon",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-11-01",
+    "prize_usd": 300,
+    "prize_note": "$300",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-26",
+    "last_checked_at": "2026-10-26",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-db39fe02ad9d",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://joints2026.devpost.com/",
+    "name": "Joints 2026",
+    "description": "{'id': 18, 'name': 'Design'} {'id': 26, 'name': 'Mobile'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-10-27",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-26",
+    "last_checked_at": "2026-10-26",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-ba391816e273",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
