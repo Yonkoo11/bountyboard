@@ -5924,5 +5924,83 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://codegeist2026.devpost.com/",
+    "name": "Codegeist 2026: Build with context. Ship with confidence.",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 21, 'name': 'Enterprise'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-12-22",
+    "prize_usd": 120000,
+    "prize_note": "$120,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-27",
+    "last_checked_at": "2026-10-27",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e9a14855afdb",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://build-your-first-ai-app.devpost.com/",
+    "name": "Build Your First AI App",
+    "description": "{'id': 19, 'name': 'Education'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-11-27",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-10-27",
+    "last_checked_at": "2026-10-27",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-8ece7418e6c2",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://code-con.devpost.com/",
+    "name": "Code-con",
+    "description": "{'id': 1, 'name': 'Blockchain'} {'id': 3, 'name': 'Fintech'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-10-30",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-10-27",
+    "last_checked_at": "2026-10-27",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-8e7cead76077",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
