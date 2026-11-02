@@ -5663,5 +5663,83 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://qnx.devpost.com/",
+    "name": "QNX Global Hackathon",
+    "description": "{'id': 7, 'name': 'IoT'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 22, 'name': 'Open Ended'}",
+    "deadline": "2026-12-15",
+    "prize_usd": 50000,
+    "prize_note": "$50,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-11-02",
+    "last_checked_at": "2026-11-02",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-1cf9ceb17d79",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://aws-agentic-msp.devpost.com/",
+    "name": "AWS MSP AI Hackathon",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-12-11",
+    "prize_usd": 64000,
+    "prize_note": "$64,000",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-11-02",
+    "last_checked_at": "2026-11-02",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-0bc2edb4a70c",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://kyc-test.devpost.com/",
+    "name": "Test Hackathon - Didit KYC",
+    "description": "{'id': 10, 'name': 'Communication'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-11-30",
+    "prize_usd": 232,
+    "prize_note": "$232",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-11-02",
+    "last_checked_at": "2026-11-02",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-fed54b349b85",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
