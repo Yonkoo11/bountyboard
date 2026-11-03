@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-02T18:24:06+00:00",
+  "completed_at": "2026-11-03T02:20:27+00:00",
   "source_counts": {
     "ethglobal": 23,
     "devpost": 79,
@@ -16,10 +16,10 @@
   ],
   "stats": {
     "new_review": 0,
-    "candidate": 3,
+    "candidate": 1,
     "skipped": 0,
-    "already_seen": 84,
-    "past": 19
+    "already_seen": 85,
+    "past": 20
   },
   "degraded_sources": [
     "exa",
