@@ -5067,5 +5067,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "yes"
+  },
+  {
+    "source": "devpost",
+    "url": "https://datajam-2026.devpost.com/",
+    "name": "DataJam 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'}",
+    "deadline": "2026-11-15",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-11-08",
+    "last_checked_at": "2026-11-08",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-19881ec42a93",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
