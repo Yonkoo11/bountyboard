@@ -4983,5 +4983,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://deckthepixels.devpost.com/",
+    "name": "Deck the Pixels",
+    "description": "{'id': 18, 'name': 'Design'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 17, 'name': 'Low/No Code'}",
+    "deadline": "2026-12-07",
+    "prize_usd": 25000,
+    "prize_note": "$25,000",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-11-10",
+    "last_checked_at": "2026-11-10",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-eb978b30c33f",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://learn-specs.devpost.com/",
+    "name": "Learn AR with SPECS",
+    "description": "{'id': 5, 'name': 'AR/VR'} {'id': 18, 'name': 'Design'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-12-07",
+    "prize_usd": 2500,
+    "prize_note": "$2,500",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-11-10",
+    "last_checked_at": "2026-11-10",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-3320f3fff5b3",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
