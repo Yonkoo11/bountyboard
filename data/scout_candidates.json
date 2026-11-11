@@ -4903,5 +4903,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://relate.devpost.com/",
+    "name": "Relate by Neo4j Hackathon",
+    "description": "{'id': 28, 'name': 'Databases'} {'id': 6, 'name': 'Machine Learning/AI'} {'id': 11, 'name': 'Productivity'}",
+    "deadline": "2026-12-11",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 3,
+    "category": "hackathon",
+    "scout_date": "2026-11-11",
+    "last_checked_at": "2026-11-11",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-e8f6939c593a",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
