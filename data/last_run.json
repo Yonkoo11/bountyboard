@@ -1,8 +1,8 @@
 {
-  "completed_at": "2026-11-12T16:49:45+00:00",
+  "completed_at": "2026-11-13T01:06:02+00:00",
   "source_counts": {
     "ethglobal": 27,
-    "devpost": 89,
+    "devpost": 88,
     "devfolio": 5,
     "mlh": 0,
     "lablab": 0,
@@ -16,7 +16,7 @@
   ],
   "stats": {
     "new_review": 0,
-    "candidate": 1,
+    "candidate": 0,
     "skipped": 0,
     "already_seen": 102,
     "past": 18
