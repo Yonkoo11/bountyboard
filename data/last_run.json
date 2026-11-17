@@ -1,8 +1,8 @@
 {
-  "completed_at": "2026-11-17T13:29:06+00:00",
+  "completed_at": "2026-11-17T23:31:56+00:00",
   "source_counts": {
     "ethglobal": 27,
-    "devpost": 84,
+    "devpost": 85,
     "devfolio": 5,
     "mlh": 0,
     "lablab": 0,
@@ -12,11 +12,12 @@
     "exa": 0
   },
   "source_errors": [
+    "lablab: 1 request failure(s)",
     "solana: 1 request failure(s)"
   ],
   "stats": {
     "new_review": 0,
-    "candidate": 1,
+    "candidate": 2,
     "skipped": 0,
     "already_seen": 97,
     "past": 18

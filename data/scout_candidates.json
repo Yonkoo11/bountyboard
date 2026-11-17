@@ -4602,5 +4602,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://cloud9.devpost.com/",
+    "name": "Cloud9 x JetBrains: Sky's The Limit Hackathon 2026",
+    "description": "{'id': 28, 'name': 'Databases'} {'id': 4, 'name': 'Gaming'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2027-01-12",
+    "prize_usd": 25000,
+    "prize_note": "$25,000",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-11-17",
+    "last_checked_at": "2026-11-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-074a65c6a224",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://semester-sprint.devpost.com/",
+    "name": "AI@UCF Semester Sprint",
+    "description": "{'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-11-20",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-11-17",
+    "last_checked_at": "2026-11-17",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-dc85cba16e0d",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
