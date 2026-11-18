@@ -1,5 +1,5 @@
 {
-  "completed_at": "2026-11-18T07:31:40+00:00",
+  "completed_at": "2026-11-18T17:17:26+00:00",
   "source_counts": {
     "ethglobal": 27,
     "devpost": 86,
@@ -12,13 +12,14 @@
     "exa": 0
   },
   "source_errors": [
-    "solana: 1 request failure(s)"
+    "solana: 1 request failure(s)",
+    "twitter: 1 request failure(s)"
   ],
   "stats": {
     "new_review": 0,
-    "candidate": 3,
+    "candidate": 0,
     "skipped": 0,
-    "already_seen": 97,
+    "already_seen": 100,
     "past": 18
   },
   "degraded_sources": [
