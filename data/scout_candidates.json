@@ -4600,5 +4600,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://codethecure-winter-hackathon.devpost.com/",
+    "name": "CodeTheCure Winter Hackathon",
+    "description": "{'id': 19, 'name': 'Education'} {'id': 16, 'name': 'Health'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2027-01-06",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-11-19",
+    "last_checked_at": "2026-11-19",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-ecf7b1ba4654",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
