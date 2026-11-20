@@ -4520,5 +4520,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://stem-innovation-challenge-2026.devpost.com/",
+    "name": "STEM Innovation Challenge 2026",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 22, 'name': 'Open Ended'} {'id': 13, 'name': 'Social Good'}",
+    "deadline": "2026-11-27",
+    "prize_usd": 200,
+    "prize_note": "$200",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-11-20",
+    "last_checked_at": "2026-11-20",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-5b5f4b4e4210",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
