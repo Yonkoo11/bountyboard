@@ -4493,5 +4493,57 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hackstead.devpost.com/",
+    "name": "Hackstead: Winterfest",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 25, 'name': 'Web'}",
+    "deadline": "2026-12-20",
+    "prize_usd": 430,
+    "prize_note": "$430",
+    "theme_fit": 1,
+    "category": "hackathon",
+    "scout_date": "2026-11-21",
+    "last_checked_at": "2026-11-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-c9b97ce001a2",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://biokindxubsa-2026.devpost.com/",
+    "name": "BiokindxUBSA 2026 Datathon",
+    "description": "{'id': 23, 'name': 'Beginner Friendly'} {'id': 28, 'name': 'Databases'} {'id': 16, 'name': 'Health'}",
+    "deadline": "2026-11-21",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 0,
+    "category": "hackathon",
+    "scout_date": "2026-11-21",
+    "last_checked_at": "2026-11-21",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-43d8dcf71530",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
