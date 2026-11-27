@@ -4180,5 +4180,31 @@
     "reviewed_at": null,
     "decision_note": "",
     "profile_match": "conditional"
+  },
+  {
+    "source": "devpost",
+    "url": "https://hackathon-agentico-2026b.devpost.com/",
+    "name": "Hackathon Ag\u00e9ntico SoftwareChido 2026B",
+    "description": "{'id': 19, 'name': 'Education'} {'id': 6, 'name': 'Machine Learning/AI'}",
+    "deadline": "2026-11-27",
+    "prize_usd": 0,
+    "prize_note": "",
+    "theme_fit": 2,
+    "category": "hackathon",
+    "scout_date": "2026-11-27",
+    "last_checked_at": "2026-11-27",
+    "verification_status": "unverified",
+    "application_status": "unknown",
+    "award_type": "unknown",
+    "candidate_id": "lead-292a40334d40",
+    "availability_state": "unknown",
+    "research_reasons": [
+      "eligibility",
+      "participation format"
+    ],
+    "review_status": "pending",
+    "reviewed_at": null,
+    "decision_note": "",
+    "profile_match": "conditional"
   }
 ]
